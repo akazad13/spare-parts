@@ -1,0 +1,44 @@
+<app-block-space layout="after-header"></app-block-space>
+
+<div class="block">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                <div class="card ml-md-3 mr-md-3">
+                    <div class="card-body card-body--padding--2">
+                        <h1 class="card-title card-title--lg">{{ 'HEADER_TRACK_ORDER'|translate }}</h1>
+
+                        <p class="mb-4">{{ 'TEXT_TRACK_ORDER_HELP'|translate }}</p>
+                        <form>
+                            <div class="form-group">
+                                <label for="track-order-id">{{ 'INPUT_ORDER_ID_LABEL'|translate }}</label>
+                                <input
+                                    id="track-order-id"
+                                    type="text"
+                                    class="form-control"
+                                    [placeholder]="'INPUT_ORDER_ID_PLACEHOLDER'|translate"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="track-email">{{ 'INPUT_EMAIL_ADDRESS_LABEL'|translate }}</label>
+                                <input
+                                    id="track-email"
+                                    type="email"
+                                    class="form-control"
+                                    [placeholder]="'INPUT_EMAIL_ADDRESS_PLACEHOLDER'|translate"
+                                >
+                            </div>
+                            <div class="form-group pt-4 mb-1">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                    {{ 'BUTTON_TRACK'|translate }}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-block-space layout="before-footer"></app-block-space>

@@ -1,0 +1,64 @@
+<div class="auth-bg">
+  <div class="authentication-box">
+    <div class="text-center">
+      <img
+        src="assets/images/logo/logo_black.svg"
+        alt="site logo"
+        height="100"
+      />
+    </div>
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="text-center">
+          <h4>LOGIN</h4>
+          <h6>Enter your Email and Password</h6>
+        </div>
+        <form [formGroup]="loginForm" class="theme-form">
+          <div
+            *ngIf="loginForm.errors?.server"
+            class="alert alert-sm alert-danger"
+          >
+            {{ loginForm.errors.server }}
+          </div>
+          <div class="form-group">
+            <label class="col-form-label pt-0" for="signin-email">Email</label>
+            <input
+              id="signin-email"
+              type="email"
+              class="form-control"
+              [class.is-invalid]="loginForm.controls.email | isInvalid"
+              formControlName="email"
+            />
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="signin-password">Password</label>
+            <input
+              id="signin-password"
+              type="password"
+              class="form-control"
+              [class.is-invalid]="
+                loginForm.controls.password.invalid &&
+                (loginForm.controls.password.dirty ||
+                  loginForm.controls.password.touched)
+              "
+              formControlName="password"
+            />
+          </div>
+          <small class="form-text text-muted">
+            <a routerLink="/auth/forget-password">Forgot password?</a>
+          </small>
+          <div class="form-group form-row mt-3 mb-0">
+            <button
+              class="btn btn-primary btn-block"
+              type="submit"
+              [class.spinner]="loginInProgress"
+              (click)="login()"
+            >
+              <span>Login</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

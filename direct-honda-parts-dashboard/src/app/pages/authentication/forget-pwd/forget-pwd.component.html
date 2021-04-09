@@ -1,0 +1,66 @@
+<!-- Container-fluid starts-->
+<div class="auth-bg">
+  <div class="authentication-box">
+    <div class="text-center">
+      <img
+        src="assets/images/logo/logo_black.svg"
+        alt="site logo"
+        height="100"
+      />
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="text-center">
+          <h4>Forgot Password</h4>
+          <h6>Enter your Email</h6>
+        </div>
+        <form class="theme-form" [formGroup]="resetForm">
+          <div
+            *ngIf="resetForm.errors?.server"
+            class="alert alert-sm alert-danger"
+          >
+            {{ resetForm.errors.server }}
+          </div>
+          <div
+            *ngIf="successResponse != null"
+            class="alert alert-sm alert-success"
+          >
+            {{ successResponse }}
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input
+              id="email"
+              class="form-control"
+              type="email"
+              maxlength="50"
+              formControlName="email"
+              [class.is-invalid]="resetForm.controls.email | isInvalid"
+            />
+            <div class="invalid-feedback">
+              <div *ngIf="resetForm.controls.email | hasError: 'required'">
+                Email is required
+              </div>
+              <div *ngIf="resetForm.controls.email | hasError: 'email'">
+                Please provide a valid Email
+              </div>
+            </div>
+          </div>
+          <div class="form-group form-row mt-3 mb-0">
+            <button
+              class="btn btn-primary btn-block"
+              type="submit"
+              [class.spinner]="resetInProgress"
+              (click)="send()"
+            >
+              <span>Submit</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Container-fluid Ends-->

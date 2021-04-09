@@ -1,0 +1,109 @@
+<div class="modal fade" tabindex="-1" role="dialog" bsModal #modal="bs-modal">
+    <div class="modal-dialog modal-dialog-centered vehicle-picker-modal">
+        <div class="modal-content">
+            <button type="button" class="vehicle-picker-modal__close" (click)="modal.hide()">
+                <app-icon icon="cross-12"></app-icon>
+            </button>
+            <div
+                class="vehicle-picker-modal__panel"
+                [class.vehicle-picker-modal__panel--active]="currentPanel === 'list' && (vehicles$|async).length !== 0"
+            >
+                <div class="vehicle-picker-modal__title card-title">{{ 'HEADER_SELECT_VEHICLE'|translate }}</div>
+
+                <div class="vehicle-picker-modal__text">
+                    {{ 'TEXT_SELECT_VEHICLE_TO_FIND_EXACT_FIT_PARTS'|translate }}
+                </div>
+
+                <div class="vehicles-list">
+                    <div class="vehicles-list__body" appRadioGroup [formControl]="currentVehicleControl">
+                        <label class="vehicles-list__item">
+                            <app-radio-button class="vehicles-list__item-radio" [value]="null"></app-radio-button>
+                            <span class="vehicles-list__item-info">
+                                <span class="vehicles-list__item-name">
+                                    {{ 'TEXT_ALL_VEHICLES'|translate }}
+                                </span>
+                            </span>
+                        </label>
+                        <label *ngFor="let vehicle of vehicles$|async" class="vehicles-list__item">
+                            <app-radio-button class="vehicles-list__item-radio" [value]="vehicle.id"></app-radio-button>
+                            <span class="vehicles-list__item-info">
+                                    <span class="vehicles-list__item-name">
+                                        {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
+                                    </span>
+                                    <span class="vehicles-list__item-details">
+                                        {{ 'TEXT_VEHICLE_ENGINE'|translate:{engine: vehicle.engine} }}
+                                    </span>
+                                </span>
+                            <button
+                                appRemoveVehicle
+                                type="button"
+                                class="vehicles-list__item-remove"
+                                [class.vehicles-list__item-remove--loading]="removeVehicle.inProgress"
+                                (click)="removeVehicle.remove(vehicle)"
+                                #removeVehicle="removeVehicle"
+                            >
+                                <app-icon icon="recycle-bin-16"></app-icon>
+                            </button>
+                        </label>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn btn-sm btn-secondary btn-block mt-2 vehicle-picker-modal__add-button"
+                    (click)="currentPanel = 'form'"
+                >
+                    {{ 'BUTTON_ADD_VEHICLE_LONG'|translate }}
+                </button>
+
+                <div class="vehicle-picker-modal__actions">
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-secondary"
+                        (click)="close()"
+                    >
+                        {{ 'BUTTON_CANCEL'|translate }}
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-sm btn-primary"
+                        (click)="onSelectClick$.next()"
+                    >
+                        {{ 'BUTTON_SELECT_VEHICLE'|translate }}
+                    </button>
+                </div>
+            </div>
+            <div
+                class="vehicle-picker-modal__panel"
+                [class.vehicle-picker-modal__panel--active]="currentPanel === 'form' || (vehicles$|async).length === 0"
+            >
+                <div class="vehicle-picker-modal__title card-title">{{ 'HEADER_ADD_VEHICLE'|translate }}</div>
+
+                <app-vehicle-form location="modal" [formControl]="addVehicleControl"></app-vehicle-form>
+
+                <div class="vehicle-picker-modal__actions">
+                    <button
+                        *ngIf="(vehicles$|async).length !== 0"
+                        type="button"
+                        class="btn btn-sm btn-secondary"
+                        (click)="currentPanel = 'list'"
+                    >
+                        {{ 'BUTTON_BACK_TO_LIST'|translate }}
+                    </button>
+                    <button
+                        appAddVehicle
+                        type="button"
+                        class="btn btn-sm btn-primary"
+                        [class.btn-loading]="addVehicle.inProgress"
+                        [disabled]="addVehicleControl.value === null"
+                        (click)="addVehicle.add(addVehicleControl.value?.id)"
+                        (vehicleAdded)="onVehicleAdded($event)"
+                        #addVehicle="addVehicle"
+                    >
+                        {{ 'BUTTON_ADD_VEHICLE'|translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

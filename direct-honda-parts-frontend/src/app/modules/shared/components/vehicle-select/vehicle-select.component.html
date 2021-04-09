@@ -1,0 +1,21 @@
+<div class="vehicle-select__list" [formGroup]="form">
+  <div
+    *ngFor="let item of items; let index = index"
+    class="vehicle-select__item"
+    [class.vehicle-select__item--loading]="item.loading"
+  >
+    <select
+      class="vehicle-select__item-control"
+      [attr.aria-label]="item.label | translate"
+      [formControlName]="item.key"
+    >
+      <option value="none">
+        {{ item.placeholder | translate }}
+      </option>
+      <option *ngFor="let option of item.options" [value]="option.id">
+        {{ option.description }}
+      </option>
+    </select>
+    <div class="vehicle-select__item-loader"></div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Product]
+(
+	[ID] INT CONSTRAINT PK_Product PRIMARY KEY CLUSTERED (ID),
+	[Description] VARCHAR(50) NOT NULL,
+	[EffectiveDate] DATETIME NOT NULL CONSTRAINT DF_Product_EffectiveDate DEFAULT(GETDATE()),
+	[DateLastUpdated] DATETIME NOT NULL CONSTRAINT DF_Product_DateLastUpdated DEFAULT(GETDATE()),
+	[UserIDLastUpdated] BIGINT NOT NULL CONSTRAINT DF_Product_UserIDLastUpdated DEFAULT(0)
+)

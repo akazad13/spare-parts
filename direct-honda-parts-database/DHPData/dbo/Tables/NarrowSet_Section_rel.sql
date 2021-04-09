@@ -1,0 +1,13 @@
+﻿CREATE TABLE [dbo].[NarrowSet_Section_rel]
+(
+	[CatalogID] INT NOT NULL,
+	[NarrowSetSequenceID] INT NOT NULL,
+	[SectionID] INT NOT NULL,
+	CONSTRAINT [IX_NarrowSet_Section_rel] UNIQUE CLUSTERED 
+	(
+		[CatalogID] ASC,
+		[NarrowSetSequenceID] ASC,
+		[SectionID] ASC
+	)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 90) ON [PRIMARY]
+) ON [PRIMARY]
+GO

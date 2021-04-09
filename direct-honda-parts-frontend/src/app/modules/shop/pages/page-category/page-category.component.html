@@ -1,0 +1,99 @@
+<app-block-header
+  [pageTitle]="pageTitle$ | async"
+  [breadcrumb]="breadcrumbs$ | async"
+></app-block-header>
+
+<ng-template #sidebar>
+  <div class="block-split__item block-split__item-sidebar col-auto">
+    <app-filter-vehicle></app-filter-vehicle>
+    <div
+      class="widget-categories-list__body"
+      *ngIf="(children$ | async).length"
+    >
+      <div class="pb-2 category-title">Categories</div>
+      <ul class="widget-categories-list__root">
+        <li
+          *ngFor="let category of children$ | async"
+          class="widget-categories-list__root-item"
+        >
+          <span class="widget-categories-list__root-link">{{
+            category.name
+          }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+
+<div class="block block-split block-split--has-sidebar">
+  <div class="container">
+    <div class="block-split__row row no-gutters">
+      <ng-container>
+        <ng-container *ngTemplateOutlet="sidebar"></ng-container>
+      </ng-container>
+      <div
+        class="block-split__item block-split__item-content col-auto flex-grow-1"
+      >
+        <ng-container *ngIf="(children$ | async).length">
+          <div class="block">
+            <div
+              class="categories-list categories-list--layout--columns-4-sidebar"
+            >
+              <ul class="categories-list__body">
+                <ng-container *ngFor="let category of children$ | async">
+                  <div class="w-100">
+                    <accordion [isAnimated]="true">
+                      <accordion-group
+                        heading="{{ category.name }}"
+                        [isOpen]="isContentOpen"
+                      >
+                        <div class="container">
+                          <div class="row padding-category-div">
+                            <div class="col-6">
+                              <ul>
+                                <li
+                                  *ngFor="
+                                    let sub of category.children
+                                      | slice
+                                        : 0
+                                        : category.children.length / 2 +
+                                            (category.children.length % 2)
+                                  "
+                                >
+                                  <a>{{ sub.name }}</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="col-6">
+                              <ul>
+                                <li
+                                  *ngFor="
+                                    let sub of category.children
+                                      | slice
+                                        : category.children.length / 2 +
+                                            (category.children.length % 2)
+                                        : category.children.length
+                                  "
+                                >
+                                  <a>{{ sub.name }}</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </accordion-group>
+                    </accordion>
+                  </div>
+                </ng-container>
+              </ul>
+            </div>
+          </div>
+
+          <app-block-space layout="divider-nl"></app-block-space>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-block-space layout="before-footer"></app-block-space>

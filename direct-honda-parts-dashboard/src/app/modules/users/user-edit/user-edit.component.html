@@ -1,0 +1,256 @@
+<div class="modal-header">
+  <h4 class="modal-title">Edit User</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="edit-profile">
+    <form [formGroup]="editProfileForm">
+      <div
+        *ngIf="editProfileForm.errors?.server"
+        class="alert alert-sm alert-danger"
+      >
+        {{ editProfileForm.errors.server }}
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input
+              class="form-control"
+              type="text"
+              maxlength="50"
+              formControlName="firstName"
+              [class.is-invalid]="
+                editProfileForm.controls.firstName | isInvalid
+              "
+            />
+            <div class="invalid-feedback">
+              <div
+                *ngIf="
+                  editProfileForm.controls.firstName | hasError: 'required'
+                "
+              >
+                FirstName is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input
+              class="form-control"
+              type="text"
+              maxlength="50"
+              formControlName="lastName"
+              [class.is-invalid]="editProfileForm.controls.lastName | isInvalid"
+            />
+            <div class="invalid-feedback">
+              <div
+                *ngIf="editProfileForm.controls.lastName | hasError: 'required'"
+              >
+                LastName is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label class="form-label">Role</label>
+            <select
+              class="form-control"
+              formControlName="role"
+              [class.is-invalid]="editProfileForm.controls.role | isInvalid"
+            >
+              <option value="Admin">Admin</option>
+              <option value="Dealer">Dealer</option>
+              <option value="Standard">Standard</option>
+            </select>
+            <div class="invalid-feedback">
+              <div *ngIf="editProfileForm.controls.role | hasError: 'required'">
+                Select a role.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="form-group">
+            <label class="form-label">Address</label>
+            <input
+              class="form-control"
+              type="text"
+              maxlength="255"
+              formControlName="address"
+              [class.is-invalid]="editProfileForm.controls.address | isInvalid"
+            />
+            <div class="invalid-feedback">
+              <div
+                *ngIf="editProfileForm.controls.address | hasError: 'required'"
+              >
+                Address is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label class="form-label">Phone</label>
+            <input
+              class="form-control"
+              type="text"
+              maxlength="50"
+              formControlName="phone"
+              [class.is-invalid]="editProfileForm.controls.phone | isInvalid"
+            />
+            <div class="invalid-feedback">
+              <div
+                *ngIf="editProfileForm.controls.phone | hasError: 'required'"
+              >
+                Phone is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="form-group">
+            <label class="form-label">Company (Optional)</label>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="companyName"
+              maxlength="100"
+            />
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select
+              class="form-control"
+              formControlName="active"
+              [class.is-invalid]="editProfileForm.controls.active | isInvalid"
+            >
+              <option value="true">Active</option>
+              <option value="false">Inactive</option>
+            </select>
+            <div class="invalid-feedback">
+              <div
+                *ngIf="editProfileForm.controls.active | hasError: 'required'"
+              >
+                Select a status.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label class="form-label">City</label>
+            <input
+              class="form-control"
+              type="text"
+              maxlength="50"
+              formControlName="city"
+              [class.is-invalid]="editProfileForm.controls.city | isInvalid"
+            />
+            <div class="invalid-feedback">
+              <div *ngIf="editProfileForm.controls.city | hasError: 'required'">
+                City is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label class="form-label">State</label>
+            <input
+              class="form-control"
+              type="text"
+              maxlength="50"
+              formControlName="state"
+              [class.is-invalid]="editProfileForm.controls.state | isInvalid"
+            />
+            <div class="invalid-feedback">
+              <div
+                *ngIf="editProfileForm.controls.state | hasError: 'required'"
+              >
+                State is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label class="form-label">Zip</label>
+            <input
+              class="form-control"
+              type="number"
+              formControlName="postCode"
+              [class.is-invalid]="editProfileForm.controls.postCode | isInvalid"
+            />
+            <div class="invalid-feedback">
+              <div
+                *ngIf="editProfileForm.controls.postCode | hasError: 'required'"
+              >
+                Postal Code is required.
+              </div>
+              <div
+                *ngIf="
+                  !(editProfileForm.controls.postCode | hasError: 'required') &&
+                    editProfileForm.controls.postCode | isInvalid
+                "
+              >
+                Please put a valid postal code.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="form-group">
+            <label class="form-label">Country</label>
+            <select
+              class="form-control"
+              formControlName="country"
+              [class.is-invalid]="editProfileForm.controls.country | isInvalid"
+            >
+              <option *ngFor="let country of countries" [value]="country">
+                {{ country | translate }}
+              </option>
+            </select>
+
+            <div class="invalid-feedback">
+              <div
+                *ngIf="editProfileForm.controls.country | hasError: 'required'"
+              >
+                Country is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-primary"
+    [class.spinner]="updateInProgress"
+    (click)="updateUser()"
+  >
+    <span>Update</span>
+  </button>
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="activeModal.close('Close click')"
+  >
+    Cancel
+  </button>
+</div>

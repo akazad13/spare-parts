@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div *ngFor="let column of columns" class="col-4">
+            <div class="block-products-columns__title">{{ column.title }}</div>
+            <div class="block-products-columns__list">
+                <div *ngFor="let product of column.products" class="block-products-columns__list-item">
+                    <app-product-card
+                        [product]="product"
+                        [exclude]="['actions', 'status-badge', 'features', 'buttons', 'meta']"
+                    ></app-product-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

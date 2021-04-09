@@ -1,0 +1,244 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="edit-profile">
+    <div class="row">
+      <div class="col-lg-12 compact-padding">
+        <form class="card" [formGroup]="editProfileForm">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Edit Profile</h4>
+          </div>
+          <div class="card-body">
+            <div
+              *ngIf="editProfileForm.errors?.server"
+              class="alert alert-sm alert-danger"
+            >
+              {{ editProfileForm.errors.server }}
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="firstName"
+                    [class.is-invalid]="
+                      editProfileForm.controls.firstName | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        editProfileForm.controls.firstName
+                          | hasError: 'required'
+                      "
+                    >
+                      FirstName is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="lastName"
+                    [class.is-invalid]="
+                      editProfileForm.controls.lastName | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        editProfileForm.controls.lastName | hasError: 'required'
+                      "
+                    >
+                      LastName is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Phone</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="phone"
+                    [class.is-invalid]="
+                      editProfileForm.controls.phone | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        editProfileForm.controls.phone | hasError: 'required'
+                      "
+                    >
+                      Phone is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Address</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="255"
+                    formControlName="address"
+                    [class.is-invalid]="
+                      editProfileForm.controls.address | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        editProfileForm.controls.address | hasError: 'required'
+                      "
+                    >
+                      Address is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Company (Optional)</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    formControlName="companyName"
+                    maxlength="100"
+                  />
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">City</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="city"
+                    [class.is-invalid]="
+                      editProfileForm.controls.city | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        editProfileForm.controls.city | hasError: 'required'
+                      "
+                    >
+                      City is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">State</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="state"
+                    [class.is-invalid]="
+                      editProfileForm.controls.state | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        editProfileForm.controls.state | hasError: 'required'
+                      "
+                    >
+                      State is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Zip</label>
+                  <input
+                    maxlength="9"
+                    class="form-control"
+                    type="number"
+                    formControlName="postCode"
+                    [class.is-invalid]="
+                      editProfileForm.controls.postCode | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        editProfileForm.controls.postCode | hasError: 'required'
+                      "
+                    >
+                      Postal Code is required.
+                    </div>
+                    <div
+                      *ngIf="
+                        !(
+                          editProfileForm.controls.postCode
+                          | hasError: 'required'
+                        ) && editProfileForm.controls.postCode | isInvalid
+                      "
+                    >
+                      Please put a valid postal code.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Country</label>
+                  <select
+                    class="form-control"
+                    formControlName="country"
+                    [class.is-invalid]="
+                      editProfileForm.controls.country | isInvalid
+                    "
+                  >
+                    <option *ngFor="let country of countries" [value]="country">
+                      {{ country | translate }}
+                    </option>
+                  </select>
+
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        editProfileForm.controls.country | hasError: 'required'
+                      "
+                    >
+                      Country is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-right">
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  [class.spinner]="saveInProgress"
+                  (click)="save()"
+                >
+                  <span>Save</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->

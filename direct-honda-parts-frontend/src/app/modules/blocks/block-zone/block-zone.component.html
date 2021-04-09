@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="block-zone__body">
+        <div class="block-zone__card category-card category-card--layout--overlay">
+            <div class="category-card__body">
+                <div class="category-card__overlay-image">
+                    <img
+                        srcset="{{ mobileImage }} 530w, {{ image }} 305w"
+                        src="{{ image }}"
+                        sizes="(max-width: 575px) 530px, 305px"
+                        alt=""
+                    >
+                </div>
+                <div class="category-card__overlay-image category-card__overlay-image--blur">
+                    <img
+                        srcset="{{ mobileImage }} 530w, {{ image }} 305w"
+                        src="{{ image }}"
+                        sizes="(max-width: 575px) 530px, 305px"
+                        alt=""
+                    >
+                </div>
+                <div class="category-card__content">
+                    <div class="category-card__info">
+                        <div class="category-card__name">
+                            <a [routerLink]="url.category(category)">{{ category?.name }}</a>
+                        </div>
+                        <ul class="category-card__children">
+                            <li *ngFor="let child of children">
+                                <a [routerLink]="url.category(child)">{{ child.name}}</a>
+                            </li>
+                        </ul>
+                        <div class="category-card__actions">
+                            <a [routerLink]="url.category(category)" class="btn btn-primary btn-sm">{{ 'BUTTON_SHOP_ALL'|translate }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block-zone__widget">
+            <div class="block-zone__widget-header">
+                <div class="block-zone__tabs">
+                    <button
+                        *ngFor="let tab of tabs"
+                        type="button"
+                        class="block-zone__tabs-button"
+                        [class.block-zone__tabs-button--active]="tab == currentTab"
+                        (click)="setCurrentTab(tab)"
+                    >{{ tab.name|translate }}</button>
+                </div>
+                <app-arrow
+                    class="block-zone__arrow block-zone__arrow--prev"
+                    direction="prev"
+                    (click)="carousel.prev()"
+                ></app-arrow>
+                <app-arrow
+                    class="block-zone__arrow block-zone__arrow--next"
+                    direction="next"
+                    (click)="carousel.next()"
+                ></app-arrow>
+            </div>
+            <div class="block-zone__widget-body">
+                <div
+                    *ngIf="showCarousel"
+                    class="block-zone__carousel"
+                    [class.block-zone__carousel--loading]="loading"
+                >
+                    <div class="block-zone__carousel-loader"></div>
+
+                    <owl-carousel-o [options]="carouselOptions" appOwlPreventClick>
+                        <ng-template *ngFor="let product of products$|async" carouselSlide>
+                            <div class="block-zone__carousel-item">
+                                <app-product-card
+                                    [product]="product"
+                                    [exclude]="['features', 'list-buttons']"
+                                ></app-product-card>
+                            </div>
+                        </ng-template>
+                    </owl-carousel-o>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

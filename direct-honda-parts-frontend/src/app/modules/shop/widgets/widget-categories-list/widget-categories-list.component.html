@@ -1,0 +1,37 @@
+<div class="widget-categories-list__body">
+    <ul class="widget-categories-list__root">
+        <li
+            *ngFor="let category of categories"
+            class="widget-categories-list__root-item"
+            [class.widget-categories-list__root-item--has-children]="category.children?.length"
+            appCollapseItem="widget-categories-list--open"
+            #collapseItem="appCollapseItem"
+        >
+            <a [routerLink]="url.category(category)" class="widget-categories-list__root-link">{{ category.name }}</a>
+
+            <ng-container *ngIf="category?.children?.length > 0">
+                <ul class="widget-categories-list__child">
+                    <li
+                        *ngFor="let sub of category.children|slice:0:(category.children.length > 6 ? 5 : 6)"
+                        class="widget-categories-list__child-item"
+                    >
+                        <a [routerLink]="url.category(sub)" class="widget-categories-list__child-link">{{ sub.name }}</a>
+                    </li>
+                </ul>
+            </ng-container>
+
+            <ng-container *ngIf="category?.children?.length > 6">
+                <ul class="widget-categories-list__child" appCollapseContent>
+                    <li *ngFor="let sub of category.children|slice:5" class="widget-categories-list__child-item">
+                        <a [routerLink]="url.category(sub)" class="widget-categories-list__child-link">{{ sub.name }}</a>
+                    </li>
+                </ul>
+                <button type="button" class="widget-categories-list__show-more" (click)="collapseItem.toggle()">
+                    <span class="widget-categories-list__show-more-expand-text">Show More</span>
+                    <span class="widget-categories-list__show-more-collapse-text">Show Less</span>
+                    <span class="widget-categories-list__show-more-arrow"><app-icon icon="arrow-down-9x6"></app-icon></span>
+                </button>
+            </ng-container>
+        </li>
+    </ul>
+</div>

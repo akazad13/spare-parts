@@ -1,0 +1,27 @@
+<ng-template #empty>
+    <div class="filter-vehicle__empty">
+        {{ 'TEXT_VEHICLE_FILTER_HELP'|translate }}
+    </div>
+</ng-template>
+
+<ul *ngIf="vehicle; else empty" class="filter-vehicle__list">
+    <li class="filter-vehicle__item">
+        <label class="filter-vehicle__item-label">
+            <app-checkbox class="filter-list__input" [formControl]="control"></app-checkbox>
+
+            <span class="filter-vehicle__item-title">
+                {{ 'INPUT_ONLY_EXACT_FIT_PARTS_LABEL'|translate }}
+            </span>
+        </label>
+    </li>
+    <li class="filter-vehicle__vehicle">
+        <div class="filter-vehicle__vehicle-title">{{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}</div>
+        <div class="filter-vehicle__vehicle-subtitle">{{ vehicle.engine }}</div>
+    </li>
+</ul>
+
+<div class="filter-vehicle__button">
+    <button type="button" class="btn btn-xs btn-secondary" (click)="showPicker()">
+        {{ 'BUTTON_SELECT_VEHICLE'|translate }}
+    </button>
+</div>

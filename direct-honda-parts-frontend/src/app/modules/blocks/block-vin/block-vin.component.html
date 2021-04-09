@@ -1,0 +1,25 @@
+<form [formGroup]="form" (submit)="findParts()">
+  <div class="vehicle-form__item">
+    <div>
+      For the most accurate results, search by your VIN (Vehicle Identification
+      Number).
+    </div>
+    <div class="vehicle-form__item-input d-flex center">
+      <input
+        type="text"
+        class="form-control mt-2"
+        formControlName="vin"
+        aria-label=""
+        [attr.aria-label]="'INPUT_VIN_LABEL' | translate"
+        [placeholder]="'INPUT_VIN_PLACEHOLDER' | translate"
+      />
+      <button
+        [disabled]="!form.controls.vin.dirty"
+        class="block-finder__button ml-12 mt-2"
+        type="submit"
+      >
+        Find My Parts
+      </button>
+    </div>
+  </div>
+</form>

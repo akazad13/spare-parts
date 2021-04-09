@@ -1,0 +1,270 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: endless Admin
+    Template URI: themes.pixelstrap.com/endless
+    Description: This is Admin theme
+    Author: Pixelstrap
+    Author URI: https://themeforest.net/user/pixelstrap
+
+-----------------------------------------------------------------------------------
+
+01. General CSS
+  02. Generic CSS
+  03. Card CSS
+  04. Loader CSS
+  05. Header CSS
+  06. Button CSS
+  07. Color CSS
+  08. GRID CSS
+  09. Error-page  CSS
+  10. Icon css
+  11. Form Builder 1 CSS
+  12. Form Builder 2 CSS
+   13. Email Application  CSS
+   14. Chat CSS
+   15. Alert CSS
+   16. Popover CSS
+   17. List CSS
+   18. Switch  CSS
+   19. Mega option CSS
+   20. Touchspin  CSS
+    21. Select 2 CSS
+	22. User profile css
+	23. Progress CSS
+	24. According CSS
+	25. Authentication CSS
+	26. Form CSS
+	27. Coming Soon CSS
+	28. Radio CSS
+	29. Form Input CSS
+	30. Data-table CSS
+	 31. JS datagrid CSS
+	 32. Page CSS
+	 33. Ecommerce  CSS
+	 34. Pricing CSS
+	 35. Form builder css
+	 36. NAV CSS
+	 37. Dropdown CSS
+	 38. Landing CSS
+	 39. Table  CSS
+	 40. Alertbox-call-out CSS
+	 41. Chart CSS
+	 42. Timeline CSS
+	 43. Timeline 2 CSS
+	 44. Tabs CSS
+	 45. Gallery CSS
+	 46. Blog CSS
+	 47. Footer CSS
+	 48. Form Wizard
+	 49. Badge CSS
+	 50. Tree CSS
+	 51. Search CSS
+	 52. Datepicker CSS
+	 53. Dashboard CSS
+	 54. Tour  CSS
+	 55. theme layout CSS
+	 56. Ribbon CSS
+	 57. breadcrumb CSS
+	 58. Steps  CSS
+	 59. Customizer CSS
+	 60. RTL CSS
+	 61. base_inputs CSS
+	 62. Responsive css
+	 63. Box-layout css
+	 64. Button Builder css
+	 65. Button Builder color picker CSS
+	 66. FullCalendar CSS
+	 67. Dashboard bitcoin
+	 68. Dashboard Ecommerce
+	 69. Dashboard Project
+	 70. Dashboard Server
+	 71. Dashboard University
+	 72. Document css
+	 73. Faq CSS
+	 74. Job CSS
+	 75. knowledgebase CSS
+	 76. internationalization CSS
+	 77. Learning CSS
+	 78. Order History css
+	 79. Print CSS
+	 80. Sidebar CSS
+	 81. social app
+	 82. avatars
+ */
+
+/* Icons */
+@import 'icons/whether-icon/whether-icon';
+@import 'icons/flag-icon/flag-icon-base';
+@import 'icons/flag-icon/flag-icon-more';
+@import 'icons/flag-icon/flag-icon-list';
+@import 'icons/icoicon/icons';
+@import 'icons/font-awesome/variables';
+@import 'icons/font-awesome/mixins';
+@import 'icons/font-awesome/path';
+@import 'icons/font-awesome/core';
+@import 'icons/font-awesome/larger';
+@import 'icons/font-awesome/fixed-width';
+@import 'icons/font-awesome/list';
+@import 'icons/font-awesome/bordered-pulled';
+@import 'icons/font-awesome/animated';
+@import 'icons/font-awesome/rotated-flipped';
+@import 'icons/font-awesome/stacked';
+@import 'icons/font-awesome/icons';
+@import 'icons/font-awesome/screen-reader';
+@import 'icons/themify/themify-icons';
+
+@import 'theme/variables';
+@import 'theme/general';
+@import 'theme/generic';
+@import 'theme/card';
+@import 'theme/loader';
+@import 'theme/header';
+@import 'theme/typeahead-search';
+@import 'theme/sidebar';
+@import 'theme/buttons';
+@import 'theme/grid';
+@import 'theme/errorpage';
+@import 'theme/icons';
+@import 'theme/form-builder';
+@import 'theme/form_builder-2';
+@import 'theme/email-application';
+@import 'theme/chat';
+@import 'theme/alert';
+@import 'theme/popover';
+@import 'theme/list';
+@import 'theme/switch';
+@import 'theme/megaoption';
+@import 'theme/touchspin';
+@import 'theme/select2';
+@import 'theme/user-profile';
+@import 'theme/progress';
+@import 'theme/according';
+@import 'theme/login';
+@import 'theme/forms';
+@import 'theme/comingsoon';
+@import 'theme/radio';
+@import 'theme/form-input';
+@import 'theme/datatable';
+@import 'theme/jsgrid';
+@import 'theme/page';
+@import 'theme/_checkout';
+@import 'theme/_cart';
+@import 'theme/ecommerce';
+@import 'theme/pricing';
+@import 'theme/builders';
+@import 'theme/navs';
+@import 'theme/dropdown';
+@import 'theme/table';
+@import 'theme/chart';
+@import 'theme/timeline-v';
+@import 'theme/timeliny';
+@import 'theme/tab';
+@import 'theme/gallery';
+@import 'theme/blog';
+@import 'theme/footer';
+@import 'theme/form-wizard';
+@import 'theme/badge';
+@import 'theme/tree';
+@import 'theme/search';
+@import 'theme/datepicker';
+@import 'theme/tour';
+@import 'theme/custom-theme-options';
+@import 'theme/ribbon';
+@import 'theme/breadcrumb';
+@import 'theme/steps';
+@import 'theme/theme-customizer';
+@import 'theme/faq';
+@import 'theme/order-history';
+@import 'theme/internationalization';
+@import 'theme/social-app';
+@import 'theme/avatars';
+@import 'theme/bookmark';
+@import 'theme/rating';
+@import 'theme/dashboard_default';
+@import 'theme/dashboard_ecommerce';
+@import 'theme/box-layout';
+@import 'theme/rtl';
+@import 'theme/color';
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  position: relative;
+}
+.spinner span {
+  visibility: hidden;
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: -15px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-top-color: #07d;
+  animation: spinner 0.6s linear infinite;
+}
+
+body.dark-only .modal-body .card-body {
+  background-color: #2f3c4e;
+}
+
+body.dark-only .form-control {
+  background-color: #293240;
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid #374558;
+}
+
+.dark-header-sidebar-mix .main-header-right,
+.dark-header-sidebar-mix .main-header-right input {
+  background-color: #1c1d1e !important;
+}
+
+.dark-header-sidebar-mix .modal {
+  color: #313131;
+}
+
+.logo-text {
+  color: #fff;
+  font-size: 16px;
+  margin-top: -15px;
+}
+
+.light .logo-text {
+  color: #374558;
+}
+
+.logo-wrapper img {
+  margin-top: -20px;
+}
+
+@media (min-width: 1900px) {
+  .compact-padding {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
+
+@media (min-width: 1670px) and (max-width: 1899px) {
+  .compact-padding {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}
+
+@media (min-width: 1350px) and (max-width: 1669px) {
+  .compact-padding {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}

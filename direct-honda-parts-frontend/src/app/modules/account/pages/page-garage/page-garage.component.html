@@ -1,0 +1,64 @@
+<div class="card">
+    <ng-container *ngIf="hasVehicles$|async">
+        <div class="card-header">
+            <h5>{{ 'HEADER_GARAGE'|translate }}</h5>
+        </div>
+        <div class="card-divider"></div>
+
+        <div class="card-body card-body--padding--2">
+            <div class="vehicles-list vehicles-list--layout--account">
+                <div class="vehicles-list__body">
+                    <div *ngFor="let vehicle of vehicles$|async" class="vehicles-list__item">
+                        <div class="vehicles-list__item-info">
+                            <div class="vehicles-list__item-name">
+                                {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
+                            </div>
+                            <div class="vehicles-list__item-details">
+                                {{ 'TEXT_VEHICLE_ENGINE'|translate:{engine: vehicle.engine} }}
+                            </div>
+                            <div class="vehicles-list__item-links">
+                                <a
+                                    [routerLink]="url.allProducts()"
+                                    [queryParams]="{filter_vehicle: vehicle.id}"
+                                >{{ 'LINK_SHOW_PARTS'|translate }}</a>
+                            </div>
+                        </div>
+                        <button
+                            appRemoveVehicle
+                            type="button"
+                            class="vehicles-list__item-remove"
+                            [class.vehicles-list__item-remove--loading]="removeVehicle.inProgress"
+                            (click)="removeVehicle.remove(vehicle)"
+                            #removeVehicle="removeVehicle"
+                        >
+                            <app-icon icon="recycle-bin-16"></app-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-divider"></div>
+    </ng-container>
+
+    <div class="card-header">
+        <h5>{{ 'HEADER_ADD_VEHICLE'|translate }}</h5>
+    </div>
+    <div class="card-divider"></div>
+
+    <div class="card-body card-body--padding--2">
+        <app-vehicle-form location="account" [formControl]="vehicle"></app-vehicle-form>
+
+        <div class="mt-4 pt-3">
+            <button
+                appAddVehicle
+                type="button"
+                class="btn btn-primary"
+                [class.btn-loading]="addVehicle.inProgress"
+                [disabled]="vehicle.value === null"
+                (click)="addVehicle.add(vehicle.value?.id)"
+                #addVehicle="addVehicle"
+            >{{ 'BUTTON_ADD_VEHICLE'|translate }}</button>
+        </div>
+    </div>
+</div>

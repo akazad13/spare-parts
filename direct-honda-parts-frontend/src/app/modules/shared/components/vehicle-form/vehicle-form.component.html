@@ -1,0 +1,115 @@
+<ng-container [formGroup]="form">
+  <div
+    class="vehicle-form__item vehicle-form__item--select"
+    [ngClass]="{ 'vehicle-form__item--loading': loading.years }"
+  >
+    <select
+      class="form-control"
+      formControlName="year"
+      aria-label=""
+      [attr.aria-label]="'INPUT_VEHICLE_YEAR_LABEL' | translate"
+    >
+      <option value="none">
+        {{ 'INPUT_VEHICLE_YEAR_PLACEHOLDER' | translate }}
+      </option>
+      <option *ngFor="let year of years" [value]="year.id">
+        {{ year.description }}
+      </option>
+    </select>
+    <div class="vehicle-form__loader"></div>
+  </div>
+  <div
+    class="vehicle-form__item vehicle-form__item--select"
+    [ngClass]="{ 'vehicle-form__item--loading': loading.bodyAndTrims }"
+  >
+    <select
+      class="form-control"
+      formControlName="make"
+      aria-label=""
+      [attr.aria-label]="'INPUT_VEHICLE_BRAND_LABEL' | translate"
+    >
+      <option value="none">
+        {{ 'INPUT_VEHICLE_BRAND_PLACEHOLDER' | translate }}
+      </option>
+      <option *ngFor="let bodyAndTrim of bodyAndTrims" [value]="bodyAndTrim.id">
+        {{ bodyAndTrim.description }}
+      </option>
+    </select>
+    <div class="vehicle-form__loader"></div>
+  </div>
+  <div
+    class="vehicle-form__item vehicle-form__item--select"
+    [ngClass]="{ 'vehicle-form__item--loading': loading.models }"
+  >
+    <select
+      class="form-control"
+      formControlName="model"
+      aria-label=""
+      [attr.aria-label]="'INPUT_VEHICLE_MODEL_LABEL' | translate"
+    >
+      <option value="none">
+        {{ 'INPUT_VEHICLE_MODEL_PLACEHOLDER' | translate }}
+      </option>
+      <option *ngFor="let model of models" [value]="model.id">
+        {{ model.description }}
+      </option>
+    </select>
+    <div class="vehicle-form__loader"></div>
+  </div>
+  <div
+    class="vehicle-form__item vehicle-form__item--select"
+    [ngClass]="{ 'vehicle-form__item--loading': loading.vehicles }"
+  >
+    <select
+      class="form-control"
+      formControlName="engine"
+      aria-label=""
+      [attr.aria-label]="'INPUT_VEHICLE_ENGINE_LABEL' | translate"
+    >
+      <option value="none">
+        {{ 'INPUT_VEHICLE_ENGINE_PLACEHOLDER' | translate }}
+      </option>
+      <option *ngFor="let vehicle of vehicles" [value]="vehicle.engine">
+        {{ vehicle.engine }}
+      </option>
+    </select>
+    <div class="vehicle-form__loader"></div>
+  </div>
+  <div class="vehicle-form__divider">{{ 'TEXT_OR' | translate }}</div>
+  <div
+    class="vehicle-form__item"
+    [ngClass]="{ 'vehicle-form__item--loading': loading.vin }"
+  >
+    <div class="vehicle-form__item-input">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="vin"
+        aria-label=""
+        [attr.aria-label]="'INPUT_VIN_LABEL' | translate"
+        [placeholder]="'INPUT_VIN_PLACEHOLDER' | translate"
+      />
+      <div class="vehicle-form__loader"></div>
+    </div>
+    <div
+      class="vehicle-form__item-alert"
+      *ngIf="this.vehicleByVin || this.errors.vin"
+    >
+      <div class="alert alert-sm alert-primary my-0" *ngIf="this.vehicleByVin">
+        {{
+          'TEXT_ALERT_VEHICLE_FOUND'
+            | translate
+              : {
+                  year: this.vehicleByVin.year,
+                  make: this.vehicleByVin.make,
+                  model: this.vehicleByVin.model,
+                  engine: this.vehicleByVin.engine
+                }
+        }}
+      </div>
+      <div class="alert alert-sm alert-danger my-0" *ngIf="this.errors.vin">
+        {{ 'TEXT_ALERT_UNABLE_TO_FIND_VEHICLE_BY_VIN' | translate }}
+      </div>
+    </div>
+  </div>
+</ng-container>

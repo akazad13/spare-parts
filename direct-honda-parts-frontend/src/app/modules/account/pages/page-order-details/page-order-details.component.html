@@ -1,0 +1,67 @@
+<div class="card" *ngIf="order">
+    <div class="order-header">
+        <div class="order-header__actions">
+            <a routerLink="/account/orders" class="btn btn-xs btn-secondary">{{ 'BUTTON_BACK_TO_LIST'|translate }}</a>
+        </div>
+        <h5 class="order-header__title">{{ 'TEXT_ORDER_WITH_NUMBER'|translate:{number: orderNumber} }}</h5>
+        <div
+            class="order-header__subtitle"
+            [innerHTML]="'TEXT_ORDER_SUMMARY'|translate:{
+                date: order.createdAt,
+                status: 'TEXT_ORDER_STATUS_' + order.status|translate
+            }"
+        ></div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-table">
+        <div class="table-responsive-sm">
+            <table>
+                <thead>
+                <tr>
+                    <th>{{ 'TABLE_PRODUCT'|translate }}</th>
+                    <th>{{ 'TABLE_TOTAL'|translate }}</th>
+                </tr>
+                </thead>
+                <tbody class="card-table__body card-table__body--merge-rows">
+                <tr *ngFor="let item of order.items">
+                    <td>{{ item.product.name }} × {{ item.quantity }}</td>
+                    <td>{{ item.total|currencyFormat }}</td>
+                </tr>
+                </tbody>
+                <tbody *ngIf="order.totals.length > 0" class="card-table__body card-table__body--merge-rows">
+                <tr>
+                    <th>{{ 'TABLE_SUBTOTAL'|translate }}</th>
+                    <td>{{ order.subtotal|currencyFormat }}</td>
+                </tr>
+                <tr *ngFor="let total of order.totals">
+                    <th>{{ 'TABLE_TOTAL_' + total.title|translate }}</th>
+                    <td>{{ total.price|currencyFormat }}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>{{ 'TABLE_TOTAL'|translate }}</th>
+                    <td>{{ order.total|currencyFormat }}</td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3 no-gutters mx-n2">
+    <div class="col-sm-6 col-12 px-2">
+        <app-address-card
+            [address]="order.billingAddress"
+            [featured]="true"
+            [label]="'TEXT_BILLING_ADDRESS'|translate"
+        ></app-address-card>
+    </div>
+    <div class="col-sm-6 col-12 px-2 mt-sm-0 mt-3">
+        <app-address-card
+            [address]="order.shippingAddress"
+            [featured]="true"
+            [label]="'TEXT_SHIPPING_ADDRESS'|translate"
+        ></app-address-card>
+    </div>
+</div>

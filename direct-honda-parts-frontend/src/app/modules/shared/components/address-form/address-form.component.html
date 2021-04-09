@@ -1,0 +1,275 @@
+<ng-container [formGroup]="form">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="{{ formId }}-first-name">{{
+        'INPUT_FIRST_NAME_LABEL' | translate
+      }}</label>
+      <input
+        type="text"
+        class="form-control"
+        id="{{ formId }}-first-name"
+        formControlName="firstName"
+        [class.is-invalid]="form.controls.firstName | isInvalid"
+      />
+      <div class="invalid-feedback">
+        <div *ngIf="form.controls.firstName | hasError: 'required'">
+          {{ 'ERROR_FORM_REQUIRED' | translate }}
+        </div>
+
+        <div *ngIf="form.controls.firstName | hasError: 'maxlength'">
+          Exceeded max length(50 chars).
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="{{ formId }}-last-name">{{
+        'INPUT_LAST_NAME_LABEL' | translate
+      }}</label>
+      <input
+        type="text"
+        class="form-control"
+        id="{{ formId }}-last-name"
+        formControlName="lastName"
+        [class.is-invalid]="form.controls.lastName | isInvalid"
+      />
+      <div class="invalid-feedback">
+        <div *ngIf="form.controls.lastName | hasError: 'required'">
+          {{ 'ERROR_FORM_REQUIRED' | translate }}
+        </div>
+        <div *ngIf="form.controls.lastName | hasError: 'maxlength'">
+          Exceeded max length(50 chars).
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="{{ formId }}-company-name"
+      >{{ 'INPUT_COMPANY_LABEL' | translate }}
+      <span class="text-muted">({{ 'TEXT_OPTIONAL' | translate }})</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="{{ formId }}-company-name"
+      formControlName="companyName"
+    />
+    <div class="invalid-feedback">
+      <div *ngIf="form.controls.companyName | hasError: 'maxlength'">
+        Exceeded max length(100 chars).
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="{{ formId }}-company-name">{{
+      'INPUT_COUNTRY_LABEL' | translate
+    }}</label>
+    <select
+      id="{{ formId }}-country"
+      class="form-control"
+      formControlName="country"
+      [class.is-invalid]="form.controls.country | isInvalid"
+    >
+      <option *ngFor="let country of countries" [value]="country">
+        {{ country | translate }}
+      </option>
+    </select>
+    <div class="invalid-feedback">
+      <div *ngIf="form.controls.country | hasError: 'required'">
+        {{ 'ERROR_FORM_REQUIRED' | translate }}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="{{ formId }}-address">{{
+      'INPUT_STREET_ADDRESS_LABEL' | translate
+    }}</label>
+    <input
+      type="text"
+      class="form-control"
+      id="{{ formId }}-address"
+      formControlName="address"
+      [class.is-invalid]="form.controls.address | isInvalid"
+    />
+    <div class="invalid-feedback">
+      <div *ngIf="form.controls.address | hasError: 'required'">
+        {{ 'ERROR_FORM_REQUIRED' | translate }}
+      </div>
+      <div *ngIf="form.controls.address | hasError: 'maxlength'">
+        Exceeded max length(255 chars).
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="{{ formId }}-city">{{ 'INPUT_CITY_LABEL' | translate }}</label>
+    <input
+      type="text"
+      class="form-control"
+      id="{{ formId }}-city"
+      formControlName="city"
+      [class.is-invalid]="form.controls.city | isInvalid"
+    />
+    <div class="invalid-feedback">
+      <div *ngIf="form.controls.city | hasError: 'required'">
+        {{ 'ERROR_FORM_REQUIRED' | translate }}
+      </div>
+      <div *ngIf="form.controls.city | hasError: 'maxlength'">
+        Exceeded max length(50 chars).
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="{{ formId }}-state">{{
+      'INPUT_STATE_LABEL' | translate
+    }}</label>
+    <input
+      type="text"
+      class="form-control"
+      id="{{ formId }}-state"
+      formControlName="state"
+      [class.is-invalid]="form.controls.state | isInvalid"
+    />
+    <div class="invalid-feedback">
+      <div *ngIf="form.controls.state | hasError: 'required'">
+        {{ 'ERROR_FORM_REQUIRED' | translate }}
+      </div>
+      <div *ngIf="form.controls.state | hasError: 'maxlength'">
+        Exceeded max length(50 chars).
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="{{ formId }}-postcode">{{
+      'INPUT_POSTCODE_LABEL' | translate
+    }}</label>
+    <input
+      type="number"
+      class="form-control"
+      id="{{ formId }}-postcode"
+      formControlName="postcode"
+      [class.is-invalid]="form.controls.postcode | isInvalid"
+    />
+    <div class="invalid-feedback">
+      <div *ngIf="form.controls.postcode | hasError: 'required'">
+        {{ 'ERROR_FORM_REQUIRED' | translate }}
+      </div>
+
+      <div
+        *ngIf="
+          !(form.controls.postcode | hasError: 'required') &&
+            form.controls.postcode | isInvalid
+        "
+      >
+        Please put a valid Postal code.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6 mb-0">
+      <label for="{{ formId }}-email">{{
+        'INPUT_EMAIL_ADDRESS_LABEL' | translate
+      }}</label>
+      <input
+        type="email"
+        class="form-control"
+        id="{{ formId }}-email"
+        formControlName="email"
+        [class.is-invalid]="form.controls.email | isInvalid"
+      />
+      <div class="invalid-feedback">
+        <div *ngIf="form.controls.email | hasError: 'required'">
+          {{ 'ERROR_FORM_REQUIRED' | translate }}
+        </div>
+        <div *ngIf="form.controls.email | hasError: 'email'">
+          {{ 'ERROR_FORM_INCORRECT_EMAIL' | translate }}
+        </div>
+        <div *ngIf="form.controls.email | hasError: 'maxlength'">
+          Exceeded max length(100 chars).
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-6 mb-0">
+      <label for="{{ formId }}-phone">{{
+        'INPUT_PHONE_NUMBER_LABEL' | translate
+      }}</label>
+      <input
+        type="text"
+        [pattern]="pattern"
+        class="form-control"
+        id="{{ formId }}-phone"
+        formControlName="phone"
+        [class.is-invalid]="form.controls.phone | isInvalid"
+      />
+      <div class="invalid-feedback">
+        <div *ngIf="form.controls.phone | hasError: 'required'">
+          {{ 'ERROR_FORM_REQUIRED' | translate }}
+        </div>
+        <div *ngIf="form.controls.phone | hasError: 'pattern'">
+          Invalid mobile number.
+        </div>
+        <div *ngIf="form.controls.phone | hasError: 'maxlength'">
+          Exceeded max length(50 chars).
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6 mb-0 pt-3 radio">
+      <div class="form-control" *ngIf="!hasDefaultAddress">
+        <input
+          class="form-check-input"
+          id="{{ formId }}-addressValueDefault"
+          type="radio"
+          value="1"
+          formControlName="addressType"
+          [checked]="form.controls.addressType.value == '1'"
+        />
+        <label class="form-check-label" for="{{ formId }}-addressValueDefault">
+          Set as my default address
+        </label>
+      </div>
+
+      <div class="form-control" *ngIf="addressType === 3">
+        <input
+          class="form-check-input"
+          id="{{ formId }}-addressValueDefault"
+          type="checkbox"
+          value="1"
+          formControlName="addressType"
+          [checked]="form.controls.addressType.value == '1'"
+        />
+        <label class="form-check-label" for="{{ formId }}-addressValueDefault">
+          Set as my default address
+        </label>
+      </div>
+
+      <div class="form-control" *ngIf="!hasShippingAddress && addressType == 0">
+        <input
+          class="form-check-input"
+          id="{{ formId }}-addressValueShipping"
+          type="radio"
+          value="2"
+          formControlName="addressType"
+          [checked]="form.controls.addressType.value == '2'"
+        />
+        <label class="form-check-label" for="{{ formId }}-addressValueShipping">
+          Set as my shipping address
+        </label>
+      </div>
+
+      <div class="form-control" *ngIf="!hasOtherAddress && addressType == 0">
+        <input
+          class="form-check-input"
+          id="{{ formId }}-addressValueOther"
+          type="radio"
+          value="3"
+          formControlName="addressType"
+          [checked]="form.controls.addressType.value == '3'"
+        />
+        <label class="form-check-label" for="{{ formId }}-addressValueOther">
+          Set as Additional address
+        </label>
+      </div>
+    </div>
+  </div>
+</ng-container>

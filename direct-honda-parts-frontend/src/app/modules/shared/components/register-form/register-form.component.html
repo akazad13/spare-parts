@@ -1,0 +1,53 @@
+<ng-container [formGroup]="form">
+    <div class="form-group">
+        <label for="{{ formId }}-email">{{ 'INPUT_EMAIL_ADDRESS_LABEL'|translate }}</label>
+        <input
+            type="text"
+            class="form-control"
+            id="{{ formId }}-email"
+            formControlName="email"
+            [class.is-invalid]="form.controls.email|isInvalid"
+        >
+        <div class="invalid-feedback">
+            <div *ngIf="form.controls.email|hasError:'required'">
+                {{ 'ERROR_FORM_REQUIRED'|translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="{{ formId }}-password">{{ 'INPUT_PASSWORD_LABEL'|translate }}</label>
+        <input
+            type="password"
+            class="form-control"
+            id="{{ formId }}-password"
+            formControlName="password"
+            [class.is-invalid]="form.controls.password|isInvalid"
+        >
+        <div class="invalid-feedback">
+            <div *ngIf="form.controls.password|hasError:'required'">
+                {{ 'ERROR_FORM_REQUIRED'|translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mb-0">
+        <label for="{{ formId }}-confirm-password">{{ 'INPUT_PASSWORD_REPEAT_LABEL'|translate }}</label>
+        <input
+            type="password"
+            class="form-control"
+            id="{{ formId }}-confirm-password"
+            formControlName="confirmPassword"
+            [class.is-invalid]="form.controls.confirmPassword|isInvalid"
+            [placeholder]="'INPUT_PASSWORD_REPEAT_PLACEHOLDER'|translate"
+        >
+        <div class="invalid-feedback">
+            <div *ngIf="form.controls.confirmPassword|hasError:'required'">
+                {{ 'ERROR_FORM_REQUIRED'|translate }}
+            </div>
+            <div *ngIf="form.controls.confirmPassword|hasError:'mustMatch'">
+                {{ 'ERROR_FORM_PASSWORD_DOES_NOT_MATCH'|translate }}
+            </div>
+        </div>
+    </div>
+</ng-container>

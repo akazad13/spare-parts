@@ -1,0 +1,7 @@
+<div class="rating__body">
+    <div
+        *ngFor="let i of [1, 2, 3, 4, 5]"
+        class="rating__star"
+        [class.rating__star--active]="value >= i"
+    ></div>
+</div>

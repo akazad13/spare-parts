@@ -1,0 +1,243 @@
+<app-block-header
+  [pageTitle]="'HEADER_CHECKOUT' | translate"
+  [breadcrumb]="[
+    { label: 'LINK_HOME' | translate, url: url.home() },
+    { label: 'LINK_CART' | translate, url: url.cart() },
+    { label: 'LINK_CHECKOUT' | translate, url: url.checkout() }
+  ]"
+></app-block-header>
+
+<div class="checkout block" [formGroup]="form">
+  <div class="container container--max--xl">
+    <div class="row">
+      <div *ngIf="!(accountApi.user$ | async)" class="col-12 mb-3">
+        <div
+          class="alert alert-lg alert-primary"
+          [appSplitString]="'TEXT_ALERT_RETURNING_CUSTOMER' | translate"
+          #string="splitString"
+        >
+          {{ string.getPart(0) }}
+          <a [routerLink]="url.login()">{{ string.getPart(1) }}</a>
+          {{ string.getPart(2) }}
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6 col-xl-7">
+        <div class="card mb-lg-0">
+          <div class="card-body card-body--padding--2">
+            <h3 class="card-title">
+              {{ 'HEADER_BILLING_DETAILS' | translate }}
+            </h3>
+
+            <app-address-form
+              formControlName="billingAddress"
+              class="form-group d-block"
+              #billingAddressForm
+            ></app-address-form>
+
+            <div class="form-group">
+              <div class="form-check">
+                <app-checkbox
+                  class="form-check-input"
+                  formControlName="createAccount"
+                  #checkboxCreateAccount
+                ></app-checkbox>
+                <label
+                  class="form-check-label"
+                  [htmlFor]="checkboxCreateAccount.inputId"
+                >
+                  {{ 'INPUT_CREATE_ACCOUNT_LABEL' | translate }}
+                </label>
+              </div>
+
+              <div
+                class="collapse-area"
+                appCollapseItem="collapse-area--open"
+                [appCollapseItemIsOpen]="checkboxCreateAccount.checked"
+              >
+                <div class="pt-2"></div>
+
+                <app-register-form
+                  formControlName="account"
+                  class="d-block mb-2 pb-1"
+                  #registerForm
+                ></app-register-form>
+              </div>
+
+              <div class="form-check mt-1">
+                <app-checkbox
+                  class="form-check-input"
+                  formControlName="shipToDifferentAddress"
+                  #checkboxDifferentAddress
+                ></app-checkbox>
+                <label
+                  class="form-check-label"
+                  [htmlFor]="checkboxDifferentAddress.inputId"
+                >
+                  {{ 'INPUT_SHIP_TO_DIFFERENT_ADDRESS_LABEL' | translate }}
+                </label>
+              </div>
+
+              <div
+                class="collapse-area"
+                appCollapseItem="collapse-area--open"
+                [appCollapseItemIsOpen]="checkboxDifferentAddress.checked"
+              >
+                <div class="pt-2"></div>
+
+                <app-address-form
+                  formControlName="shippingAddress"
+                  class="d-block"
+                  #shippingAddressForm
+                ></app-address-form>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="checkout-comment">
+                {{ 'INPUT_ORDER_NOTES_LABEL' | translate }}
+                <span class="text-muted">
+                  ({{ 'TEXT_OPTIONAL' | translate }})
+                </span>
+              </label>
+              <textarea
+                id="checkout-comment"
+                class="form-control"
+                rows="4"
+                formControlName="comments"
+                >{{ 'INPUT_ORDER_NOTES_PLACEHOLDER' | translate }}</textarea
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6 col-xl-5 mt-4 mt-lg-0">
+        <div class="card mb-0">
+          <div class="card-body card-body--padding--2">
+            <h3 class="card-title">{{ 'HEADER_YOUR_ORDER' | translate }}</h3>
+
+            <table class="checkout__totals">
+              <thead class="checkout__totals-header">
+                <tr>
+                  <th>{{ 'TABLE_PRODUCT' | translate }}</th>
+                  <th>{{ 'TABLE_TOTAL' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody class="checkout__totals-products">
+                <tr *ngFor="let item of cart.items$ | async">
+                  <td>{{ item.product.name }} × {{ item.quantity }}</td>
+                  <td>
+                    {{ item.product.price * item.quantity | currencyFormat }}
+                  </td>
+                </tr>
+              </tbody>
+              <tbody
+                *ngIf="(cart.totals$ | async).length"
+                class="checkout__totals-subtotals"
+              >
+                <tr>
+                  <th>{{ 'TABLE_SUBTOTAL' | translate }}</th>
+                  <td>{{ cart.subtotal$ | async | currencyFormat }}</td>
+                </tr>
+                <tr *ngFor="let total of cart.totals$ | async">
+                  <th>{{ 'TABLE_TOTAL_' + total.title | translate }}</th>
+                  <td>{{ total.price | currencyFormat }}</td>
+                </tr>
+              </tbody>
+              <tfoot class="checkout__totals-footer">
+                <tr>
+                  <th>{{ 'TABLE_TOTAL' | translate }}</th>
+                  <td>{{ cart.total$ | async | currencyFormat }}</td>
+                </tr>
+              </tfoot>
+            </table>
+
+            <div class="checkout__payment-methods payment-methods">
+              <ul
+                class="payment-methods__list"
+                formControlName="paymentMethod"
+                appRadioGroup
+              >
+                <li
+                  *ngFor="let payment of payments"
+                  class="payment-methods__item"
+                  appCollapseItem="payment-methods__item--active"
+                  [appCollapseItemIsOpen]="
+                    form.controls.paymentMethod.value === payment.name
+                  "
+                >
+                  <label class="payment-methods__item-header">
+                    <app-radio-button
+                      class="payment-methods__item-radio"
+                      [value]="payment.name"
+                    ></app-radio-button>
+                    <span class="payment-methods__item-title">
+                      {{ payment.label | translate }}
+                    </span>
+                  </label>
+                  <div
+                    class="payment-methods__item-container"
+                    appCollapseContent
+                  >
+                    <div class="payment-methods__item-details text-muted">
+                      {{ payment.description | translate }}
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="checkout__agree form-group">
+              <div class="form-check">
+                <app-checkbox
+                  formControlName="agree"
+                  class="form-check-input"
+                  [class.is-invalid]="form.controls.agree | isInvalid"
+                  #termsCheckbox="appCheckbox"
+                ></app-checkbox>
+                <label
+                  class="form-check-label"
+                  [htmlFor]="termsCheckbox.inputId"
+                  [appSplitString]="'INPUT_TERMS_AGREE_LABEL' | translate"
+                  #string="splitString"
+                >
+                  {{ string.getPart(0) }}
+                  <a [href]="'site/terms'" (click)="showTerms($event)">{{
+                    string.getPart(1)
+                  }}</a>
+                  {{ string.getPart(2) }}
+                </label>
+              </div>
+            </div>
+
+            <div [style.display]="payPalInit ? 'block' : 'none'">
+              <ngx-paypal
+                *ngIf="form.controls.paymentMethod.value === 'paypal'"
+                [config]="payPalConfig"
+              ></ngx-paypal>
+            </div>
+
+            <button
+              *ngIf="
+                form.controls.paymentMethod.value !== 'paypal' || !payPalInit
+              "
+              type="submit"
+              class="btn btn-primary btn-xl btn-block"
+              [disabled]="form.controls.paymentMethod.value === 'paypal'"
+              [class.btn-loading]="
+                form.controls.paymentMethod.value === 'paypal' ||
+                checkoutInProgress
+              "
+              (click)="createOrder()"
+            >
+              {{ 'BUTTON_PLACE_ORDER' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-block-space layout="before-footer"></app-block-space>

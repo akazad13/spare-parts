@@ -1,0 +1,37 @@
+<div class="block-sale__content">
+    <div class="block-sale__header">
+        <div class="block-sale__title">{{ 'HEADER_DEAL_ZONE_TITLE'|translate }}</div>
+        <div class="block-sale__subtitle">{{ 'HEADER_DEAL_ZONE_SUBTITLE'|translate }}</div>
+        <div class="block-sale__timer">
+            <app-timer [time]="3 * 24 * 60 * 60"></app-timer>
+        </div>
+        <div class="block-sale__controls">
+            <app-arrow class="block-sale__arrow block-sale__arrow--prev" direction="prev" (click)="carousel.prev()"></app-arrow>
+            <div class="block-sale__link"><a routerLink="/">{{ 'LINK_VIEW_ALL_AVAILABLE_OFFERS'|translate }}</a></div>
+            <app-arrow class="block-sale__arrow block-sale__arrow--next" direction="next" (click)="carousel.next()"></app-arrow>
+            <app-decor class="block-sale__header-decor" type="center"></app-decor>
+        </div>
+    </div>
+    <div class="block-sale__body">
+        <app-decor class="block-sale__body-decor" type="bottom"></app-decor>
+        <div
+            class="block-sale__image"
+            style="background-image: url(assets/images/sale.jpg);"
+        ></div>
+        <div class="block-sale__loader"></div>
+        <div class="container">
+            <div class="block-sale__carousel" *ngIf="showCarousel">
+                <owl-carousel-o [options]="carouselOptions" appOwlPreventClick>
+                    <ng-template *ngFor="let product of products" carouselSlide>
+                        <div class="block-sale__item">
+                            <app-product-card
+                                [product]="product"
+                                [exclude]="['features', 'list-buttons']"
+                            ></app-product-card>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</div>

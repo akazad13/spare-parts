@@ -1,0 +1,84 @@
+<app-block-finder></app-block-finder>
+
+<app-block-features layout="top-strip"></app-block-features>
+
+<app-block-space layout="divider-nl"></app-block-space>
+
+<app-block-products-carousel
+  [blockTitle]="'HEADER_FEATURED_PRODUCTS' | translate"
+  layout="grid-5"
+  rows="1"
+  [loading]="this.featuredProducts.loading"
+  [products]="this.featuredProducts.products$ | async"
+  [groups]="this.featuredProducts.groups"
+  (changeGroup)="groupChange(featuredProducts, $event)"
+></app-block-products-carousel>
+
+<app-block-space layout="divider-nl"></app-block-space>
+
+<app-block-sale
+  [loading]="blockSale.loading"
+  [products]="blockSale.data$ | async"
+></app-block-sale>
+
+<app-block-space layout="divider-lg"></app-block-space>
+
+<ng-container *ngFor="let blockZone of blockZones; let last = last">
+  <app-block-zone
+    [image]="blockZone.image"
+    [mobileImage]="blockZone.mobileImage"
+    [category]="blockZone.category$ | async"
+  ></app-block-zone>
+  <app-block-space *ngIf="!last" layout="divider-sm"></app-block-space>
+</ng-container>
+
+<app-block-space layout="divider-nl"></app-block-space>
+
+<app-block-banners></app-block-banners>
+
+<app-block-space layout="divider-nl"></app-block-space>
+
+<app-block-products-carousel
+  [blockTitle]="'HEADER_NEW_ARRIVALS' | translate"
+  layout="horizontal"
+  rows="2"
+  [loading]="newArrivals.loading"
+  [products]="newArrivals.data$ | async"
+  [links]="[
+    { label: 'Wheel Covers', url: '/shop' },
+    { label: 'Timing Belts', url: '/shop' },
+    { label: 'Oil Pans', url: '/shop' },
+    { label: 'Show All', url: '/shop' }
+  ]"
+></app-block-products-carousel>
+
+<app-block-space layout="divider-nl"></app-block-space>
+
+<app-block-brands
+  layout="columns-8-full"
+  [brands]="brands$ | async"
+></app-block-brands>
+
+<app-block-space
+  class="d-xl-block d-none"
+  layout="divider-nl"
+></app-block-space>
+
+<app-block-products-columns
+  [columns]="[
+    {
+      title: 'HEADER_TOP_RATED' | translate,
+      products: columnTopRated$ | async
+    },
+    {
+      title: 'HEADER_SPECIAL_OFFERS' | translate,
+      products: columnSpecialOffers$ | async
+    },
+    {
+      title: 'HEADER_BESTSELLERS' | translate,
+      products: columnBestsellers$ | async
+    }
+  ]"
+></app-block-products-columns>
+
+<app-block-space layout="before-footer"></app-block-space>

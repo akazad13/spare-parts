@@ -1,0 +1,333 @@
+<app-block-header
+    pageTitle="Components"
+    [breadcrumb]="[
+        {label: 'Home', url: ''},
+        {label: 'Breadcrumb', url: ''},
+        {label: 'Current Page', url: ''}
+    ]"
+></app-block-header>
+
+<div class="block">
+    <div class="container">
+        <div class="card mb-4">
+            <div class="card-body card-body--padding--2">
+                <h2 class="card-title">Alerts</h2>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-primary alert-lg mb-3 alert-dismissible fade show">
+                            A simple large alert with <a href="">an example link</a>. Give it a click if you like.
+
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <app-icon icon="cross-12"></app-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="alert alert-info mb-3">A simple alert with <a href="">an example link</a>. Give it a click if you like.</div>
+                        <div class="alert alert-primary mb-3">A simple alert with <a href="">an example link</a>. Give it a click if you like.</div>
+                        <div class="alert alert-secondary mb-3 mb-md-5">A simple alert with <a href="">an example link</a>. Give it a click if you like.</div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="alert alert-success mb-3">A simple alert with <a href="">an example link</a>. Give it a click if you like.</div>
+                        <div class="alert alert-danger mb-3">A simple alert with <a href="">an example link</a>. Give it a click if you like.</div>
+                        <div class="alert alert-warning mb-5">A simple alert with <a href="">an example link</a>. Give it a click if you like.</div>
+                    </div>
+                </div>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                    <hr>
+                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-body card-body--padding--2">
+                <h2 class="card-title">Input Number</h2>
+
+                <div class="row">
+                    <div class="col-3">
+                        <app-input-number class="mb-3" size="lg" min="1" [formControl]="inputNumber"></app-input-number>
+
+                        <app-input-number class="mb-3" min="1" [formControl]="inputNumber"></app-input-number>
+
+                        <app-input-number size="sm" min="1" [formControl]="inputNumber"></app-input-number>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-body card-body--padding--2">
+                <h2 class="card-title">Buttons</h2>
+                <div class="row">
+                    <ng-container *ngFor="let style of ['primary', 'secondary', 'light', 'muted']">
+                        <div class="col-lg-4">
+                            <p><strong>{{ style|titlecase }} Buttons</strong></p>
+
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-xl">Extra Large</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-xl btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-lg">Button Large</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-lg btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }}">Button Normal</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-sm">Button Small</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-sm btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-xs">Extra Small</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-xs btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+
+                            <p><strong>Loading State</strong></p>
+
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-loading btn-xl">Extra Large</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-loading btn-xl btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-loading btn-lg">Button Large</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-loading btn-lg btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-loading">Button Normal</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-loading btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-loading btn-sm">Button Small</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-loading btn-sm btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-loading btn-xs">Extra Small</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-loading btn-xs btn-icon">
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+
+                            <p><strong>Disabled State</strong></p>
+
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-lg" disabled>Button Large</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-lg btn-icon" disabled>
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }}" disabled>Button Normal</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-icon" disabled>
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-sm" disabled>Button Small</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-sm btn-icon" disabled>
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-{{ style }} btn-xs" disabled>Extra Small</button>{{ ' ' }}
+                                <button class="btn btn-{{ style }} btn-xs btn-icon" disabled>
+                                    <app-icon icon="quickview-16"></app-icon>
+                                </button>{{ ' ' }}
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-body card-body--padding--2">
+                <h2 class="card-title">Fields</h2>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <p><strong>Text Field</strong></p>
+
+                        <div class="form-group">
+                            <label>Default</label>
+                            <input type="text" class="form-control" placeholder="Placeholder">
+                        </div>
+                        <div class="form-group">
+                            <label>Readonly</label>
+                            <input type="text" class="form-control" placeholder="Placeholder" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Disabled</label>
+                            <input type="text" class="form-control" placeholder="Placeholder" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Success</label>
+                            <input type="text" class="form-control is-valid" placeholder="Placeholder">
+                            <div class="valid-feedback">Example invalid feedback text</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Error</label>
+                            <input type="text" class="form-control is-invalid" placeholder="Placeholder">
+                            <div class="invalid-feedback">Example invalid feedback text</div>
+                        </div>
+
+                        <p class="mt-5"><strong>Text Field Sizes</strong></p>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-lg" placeholder="Large">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Normal">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-sm" placeholder="Small">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <p><strong>Select</strong></p>
+
+                        <div class="form-group">
+                            <label>Default</label>
+                            <select class="form-control">
+                                <option>Select</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Disabled</label>
+                            <select class="form-control" disabled>
+                                <option>Select</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Success</label>
+                            <select class="form-control is-valid">
+                                <option>Select</option>
+                            </select>
+                            <div class="valid-feedback">Example invalid feedback text</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Error</label>
+                            <select class="form-control is-invalid">
+                                <option>Select</option>
+                            </select>
+                            <div class="invalid-feedback">Example invalid feedback text</div>
+                        </div>
+
+                        <p class="mt-5"><strong>Select Sizes</strong></p>
+
+                        <div class="form-group">
+                            <select class="form-control form-control-lg">
+                                <option>Large</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Normal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control form-control-sm">
+                                <option>Small</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <p><strong>Textarea</strong></p>
+
+                        <div class="form-group">
+                            <label>Default</label>
+                            <textarea rows="3" class="form-control" placeholder="Placeholder"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Readonly</label>
+                            <textarea rows="3" class="form-control" placeholder="Placeholder" readonly></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Disabled</label>
+                            <textarea rows="3" class="form-control" placeholder="Placeholder" disabled></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Success</label>
+                            <textarea rows="3" class="form-control is-valid" placeholder="Placeholder"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Error</label>
+                            <textarea rows="3" class="form-control is-invalid" placeholder="Placeholder"></textarea>
+                        </div>
+
+                        <p class="mt-5"><strong>Textarea Sizes</strong></p>
+                        <div class="form-group">
+                            <textarea rows="3" class="form-control form-control-lg" placeholder="Large"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="3" class="form-control" placeholder="Normal"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="3" class="form-control form-control-sm" placeholder="Small"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-body card-body--padding--2">
+                <h2 class="card-title">Status Badge</h2>
+
+                <div>
+                    <app-status-badge type="success" text="In Stock" tooltipContent="In Stock" icon="success"></app-status-badge>{{ ' ' }}
+                    <app-status-badge type="failure" text="Out of Stock" tooltipContent="Out of Stock" icon="failure"></app-status-badge>{{ ' ' }}
+                    <app-status-badge type="warning" text="On Order" tooltipContent="On Order" icon="success"></app-status-badge>{{ ' ' }}
+                    <app-status-badge type="unknown" text="Unknown" tooltipContent="Unknown" icon="failure"></app-status-badge>{{ ' ' }}
+                </div>
+                <div class="mt-3">
+                    <app-status-badge type="success" text="In Stock" tooltipContent="In Stock"></app-status-badge>{{ ' ' }}
+                    <app-status-badge type="failure" text="Out of Stock" tooltipContent="Out of Stock"></app-status-badge>{{ ' ' }}
+                    <app-status-badge type="warning" text="On Order" tooltipContent="On Order"></app-status-badge>{{ ' ' }}
+                    <app-status-badge type="unknown" text="Unknown" tooltipContent="Unknown"></app-status-badge>{{ ' ' }}
+                </div>
+                <div class="mt-3">
+                    <app-status-badge type="success" tooltipContent="In Stock" icon="success"></app-status-badge>{{ ' ' }}
+                    <app-status-badge type="failure" tooltipContent="Out of Stock" icon="failure"></app-status-badge>{{ ' ' }}
+                    <app-status-badge type="warning" tooltipContent="On Order" icon="success"></app-status-badge>{{ ' ' }}
+                    <app-status-badge type="unknown" tooltipContent="Unknown" icon="failure"></app-status-badge>{{ ' ' }}
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body card-body--padding--2">
+                <h2 class="card-title">Tag Badge</h2>
+
+                <div>
+                    <div class="tag-badge tag-badge--theme">Theme</div>
+                    <div class="tag-badge tag-badge--sale">Sale</div>
+                    <div class="tag-badge tag-badge--new">New</div>
+                    <div class="tag-badge tag-badge--hot">Hot</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-block-space layout="before-footer"></app-block-space>

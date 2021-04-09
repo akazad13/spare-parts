@@ -1,0 +1,24 @@
+<div class="container">
+    <app-section-header
+        [sectionTitle]="label"
+        [arrows]="true"
+        [links]="links"
+        (next)="carousel.next()"
+        (prev)="carousel.prev()"
+    ></app-section-header>
+
+    <div
+        *ngIf="showCarousel"
+        class="block-posts-carousel__carousel"
+        [class.block-posts-carousel__carousel--has-items]="posts?.length > 0"
+    >
+        <div class="block-posts-carousel__carousel-loader"></div>
+        <owl-carousel-o [options]="carouselOptions" appOwlPreventClick>
+            <ng-template *ngFor="let post of posts" carouselSlide>
+                <div class="block-posts-carousel__item">
+                    <app-post-card [post]="post"></app-post-card>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+</div>

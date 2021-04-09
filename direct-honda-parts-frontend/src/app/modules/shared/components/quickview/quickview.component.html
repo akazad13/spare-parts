@@ -1,0 +1,139 @@
+<div class="modal fade" tabindex="-1" role="dialog" bsModal #modal="bs-modal">
+    <div class="modal-dialog modal-dialog-centered quickview">
+        <div *ngIf="product" class="modal-content">
+            <button type="button" class="quickview__close" (click)="modal.hide()">
+                <app-icon icon="cross-12"></app-icon>
+            </button>
+            <div class="quickview__body" [formGroup]="form">
+                <app-product-gallery
+                    *ngIf="showGallery"
+                    class="quickview__gallery"
+                    layout="quickview"
+                    [images]="product.images"
+                ></app-product-gallery>
+
+                <div class="quickview__product">
+                    <div class="quickview__product-name">
+                        {{ product.name }}
+                    </div>
+                    <div class="quickview__product-rating">
+                        <div class="quickview__product-rating-stars">
+                            <app-rating [value]="product.rating"></app-rating>
+                        </div>
+                        <div class="quickview__product-rating-title">
+                            {{ 'TEXT_RATING_LABEL'|translate:{rating: product.rating, reviews: product.reviews} }}
+                        </div>
+                    </div>
+                    <div class="quickview__product-meta">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th>{{ 'TABLE_SKU'|translate }}</th>
+                                <td>{{ product.sku }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ 'TABLE_BRAND'|translate }}</th>
+                                <td>
+                                    <a [routerLink]="url.brand(product.brand)">
+                                        {{ product.brand.name }}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>{{ 'TABLE_COUNTRY'|translate }}</th>
+                                <td>{{ 'COUNTRY_NAME_' + product.brand.country|translate }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ 'TABLE_PART_NUMBER'|translate }}</th>
+                                <td>{{ product.partNumber }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div *ngIf="product.excerpt" class="quickview__product-description">
+                        {{ product.excerpt }}
+                    </div>
+                    <div class="quickview__product-prices-stock">
+                        <div class="quickview__product-prices">
+                            <ng-container *ngIf="product.compareAtPrice">
+                                <div class="quickview__product-price quickview__product-price--old">
+                                    {{ product.compareAtPrice|currencyFormat }}
+                                </div>
+                                <div class="quickview__product-price quickview__product-price--new">
+                                    {{ product.price|currencyFormat }}
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="!product.compareAtPrice">
+                                <div class="quickview__product-price quickview__product-price--current">
+                                    {{ product.price|currencyFormat }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <app-status-badge
+                            class="quickview__product-stock"
+                            [type]="{
+                                'in-stock': 'success',
+                                'out-of-stock': 'failure',
+                                'on-backorder': 'warning'
+                            }[product.stock]"
+                            [text]="{
+                                'in-stock': 'TEXT_STOCK_IN_STOCK',
+                                'out-of-stock': 'TEXT_STOCK_OUT_OF_STOCK',
+                                'on-backorder': 'TEXT_STOCK_ON_BACKORDER'
+                            }[product.stock]|translate"
+                        ></app-status-badge>
+                    </div>
+
+                    <app-product-form
+                        *ngIf="product.options.length > 0"
+                        formControlName="options"
+                        class="quickview__product-form"
+                        [options]="product.options"
+                    ></app-product-form>
+
+                    <div class="quickview__product-actions">
+                        <div class="quickview__product-actions-item quickview__product-actions-item--quantity">
+                            <app-input-number formControlName="quantity" min="1"></app-input-number>
+                        </div>
+                        <div class="quickview__product-actions-item quickview__product-actions-item--addtocart">
+                            <button
+                                class="btn btn-primary btn-block"
+                                [class.btn-loading]="addToCartInProgress"
+                                (click)="addToCart()"
+                            >
+                                {{ 'BUTTON_ADD_TO_CART'|translate }}
+                            </button>
+                        </div>
+                        <div class="quickview__product-actions-item quickview__product-actions-item--wishlist">
+                            <button
+                                appAddToWishlist
+                                type="button"
+                                class="btn btn-muted btn-icon"
+                                [class.btn-loading]="addToWishlist.inProgress"
+                                (click)="addToWishlist.add(product)"
+                                #addToWishlist="addToWishlist"
+                            >
+                                <app-icon icon="wishlist-16"></app-icon>
+                            </button>
+                        </div>
+                        <div class="quickview__product-actions-item quickview__product-actions-item--compare">
+                            <button
+                                appAddToCompare
+                                type="button"
+                                class="btn btn-muted btn-icon"
+                                [class.btn-loading]="addToCompare.inProgress"
+                                (click)="addToCompare.add(product)"
+                                #addToCompare="addToCompare"
+                            >
+                                <app-icon icon="compare-16"></app-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a [routerLink]="url.product(product)" class="quickview__see-details">
+                {{ 'BUTTON_SEE_FULL_DETAILS'|translate }}
+            </a>
+        </div>
+    </div>
+</div>

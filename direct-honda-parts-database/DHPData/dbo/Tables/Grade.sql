@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Grade]
+(
+	[ID] INT CONSTRAINT PK_Grade PRIMARY KEY CLUSTERED (ID),
+	[Description] VARCHAR(50) NOT NULL,
+	[EffectiveDate] DATETIME NOT NULL CONSTRAINT DF_Grade_EffectiveDate DEFAULT(GETDATE()),
+	[DateLastUpdated] DATETIME NOT NULL CONSTRAINT DF_Grade_DateLastUpdated DEFAULT(GETDATE()),
+	[UserIDLastUpdated] BIGINT NOT NULL CONSTRAINT DF_Grade_UserIDLastUpdated DEFAULT(0)
+
+)

@@ -1,0 +1,31 @@
+.categories-list li {
+  border-bottom: 1px dotted #d0d0d0;
+  > a {
+    color: #406cc8;
+    white-space: normal;
+    &:hover {
+      cursor: pointer;
+      color: #f97653;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+}
+
+.widget-categories-list__body {
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.09);
+  li {
+    padding: 0.3rem 0;
+    cursor: pointer;
+  }
+
+  .category-title {
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 1px dotted #d0d0d0;
+  }
+}
+.widget-categories-list__root-link {
+  font-size: 15px;
+}

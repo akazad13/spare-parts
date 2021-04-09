@@ -1,0 +1,31 @@
+<app-block-space layout="spaceship-ledge-height"></app-block-space>
+
+<div class="block">
+  <div class="container">
+    <div class="not-found">
+      <div class="not-found__404" *ngIf="varificationStatus">Success</div>
+
+      <div class="not-found__404" *ngIf="verificationError != null">
+        {{ verificationError.statusText }}
+      </div>
+
+      <div class="not-found__content" *ngIf="varificationStatus">
+        <h1 class="not-found__title">
+          Your account is verified. Thank you for joining us.
+        </h1>
+
+        <a class="btn btn-secondary btn-sm" routerLink="../../account/login"
+          >Go To Login Page</a
+        >
+      </div>
+
+      <div class="not-found__content" *ngIf="verificationError != null">
+        <h1 class="not-found__title">
+          {{ verificationError.error.message }}
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-block-space layout="before-footer"></app-block-space>

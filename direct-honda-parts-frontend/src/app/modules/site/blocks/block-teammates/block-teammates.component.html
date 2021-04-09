@@ -1,0 +1,21 @@
+<div class="container container--max--xl">
+    <div class="block-teammates__title">Professional Team</div>
+    <div class="block-teammates__subtitle">Meet this is our professional team.</div>
+    <div class="block-teammates__list" *ngIf="showCarousel">
+        <owl-carousel-o [options]="carouselOptions" appOwlPreventClick>
+            <ng-container *ngFor="let teammate of teammates">
+                <ng-template carouselSlide>
+                    <div class="block-teammates__item teammate">
+                        <div class="teammate__avatar">
+                            <img [src]="teammate.avatar" alt="">
+                        </div>
+                        <div class="teammate__info">
+                            <div class="teammate__name">{{ teammate.name }}</div>
+                            <div class="teammate__position">{{ teammate.position }}</div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+</div>

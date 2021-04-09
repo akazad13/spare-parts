@@ -1,0 +1,119 @@
+<ng-container *ngIf="!(wishlist.items$|async).length">
+    <app-block-header
+        [breadcrumb]="[
+            {label: 'LINK_HOME'|translate, url: '/'},
+            {label: 'LINK_WISHLIST'|translate, url: ''}
+        ]"
+    ></app-block-header>
+
+    <div class="block-empty">
+        <div class="container">
+            <div class="block-empty__body">
+                <h1 class="block-empty__title">{{ 'HEADER_WISHLIST_EMPTY_TITLE'|translate }}</h1>
+                <div
+                    class="block-empty__message"
+                    [innerHTML]="'HEADER_WISHLIST_EMPTY_SUBTITLE'|translate">
+                </div>
+                <div class="block-empty__action">
+                    <a routerLink="/" class="btn btn-primary btn-sm">{{ 'BUTTON_GO_TO_HOMEPAGE'|translate }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="(wishlist.items$|async).length">
+    <app-block-header
+        [pageTitle]="'HEADER_WISHLIST'|translate"
+        [breadcrumb]="[
+            {label: 'LINK_HOME'|translate, url: '/'},
+            {label: 'LINK_WISHLIST'|translate, url: ''}
+        ]"
+    ></app-block-header>
+
+    <div class="block">
+        <div class="container container--max--xl">
+            <div class="wishlist">
+                <table class="wishlist__table">
+                    <thead class="wishlist__head">
+                    <tr class="wishlist__row wishlist__row--head">
+                        <th class="wishlist__column wishlist__column--head wishlist__column--image">{{ 'TABLE_IMAGE'|translate }}</th>
+                        <th class="wishlist__column wishlist__column--head wishlist__column--product">{{ 'TABLE_PRODUCT'|translate }}</th>
+                        <th class="wishlist__column wishlist__column--head wishlist__column--stock">{{ 'TABLE_STOCK_STATUS'|translate }}</th>
+                        <th class="wishlist__column wishlist__column--head wishlist__column--price">{{ 'TABLE_PRICE'|translate }}</th>
+                        <th class="wishlist__column wishlist__column--head wishlist__column--button"></th>
+                        <th class="wishlist__column wishlist__column--head wishlist__column--remove"></th>
+                    </tr>
+                    </thead>
+                    <tbody class="wishlist__body">
+                    <tr *ngFor="let product of wishlist.items$|async" class="wishlist__row wishlist__row--body">
+                        <td class="wishlist__column wishlist__column--body wishlist__column--image">
+                            <div class="image image--type--product">
+                                <a [routerLink]="url.product(product)" class="image__body">
+                                    <img class="image__tag" [src]="product.images[0]" alt="">
+                                </a>
+                            </div>
+                        </td>
+                        <td class="wishlist__column wishlist__column--body wishlist__column--product">
+                            <div class="wishlist__product-name">
+                                <a [routerLink]="url.product(product)">{{ product.name }}</a>
+                            </div>
+                            <div class="wishlist__product-rating">
+                                <div class="wishlist__product-rating-stars">
+                                    <app-rating [value]="product.rating"></app-rating>
+                                </div>
+                                <div class="wishlist__product-rating-title">
+                                    {{ 'TEXT_RATING_LABEL'|translate:{rating: product.rating, reviews: product.reviews} }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="wishlist__column wishlist__column--body wishlist__column--stock">
+                            <app-status-badge
+                                class="product__stock"
+                                [type]="{
+                                    'in-stock': 'success',
+                                    'out-of-stock': 'failure',
+                                    'on-backorder': 'warning'
+                                }[product.stock]"
+                                [text]="{
+                                    'in-stock': 'TEXT_STOCK_IN_STOCK',
+                                    'out-of-stock': 'TEXT_STOCK_OUT_OF_STOCK',
+                                    'on-backorder': 'TEXT_STOCK_ON_BACKORDER'
+                                }[product.stock]|translate"
+                            ></app-status-badge>
+                        </td>
+                        <td class="wishlist__column wishlist__column--body wishlist__column--price">
+                            {{ product.price|currencyFormat }}
+                        </td>
+                        <td class="wishlist__column wishlist__column--body wishlist__column--button">
+                            <button
+                                appAddToCart
+                                type="button"
+                                class="btn btn-sm btn-primary"
+                                [class.btn-loading]="addToCart.inProgress"
+                                (click)="addToCart.add(product)"
+                                #addToCart="addToCart"
+                            >
+                                {{ 'BUTTON_ADD_TO_CART'|translate }}
+                            </button>
+                        </td>
+                        <td class="wishlist__column wishlist__column--body wishlist__column--remove">
+                            <button
+                                appRemoveFromWishlist
+                                type="button"
+                                class="wishlist__remove btn btn-sm btn-muted btn-icon"
+                                [class.btn-loading]="removeFromWishlist.inProgress"
+                                (click)="removeFromWishlist.remove(product)"
+                                #removeFromWishlist="removeFromWishlist"
+                            >
+                                <app-icon icon="cross-12"></app-icon>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<app-block-space layout="before-footer"></app-block-space>

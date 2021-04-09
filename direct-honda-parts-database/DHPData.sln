@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DHPData", "DHPData\DHPData.sqlproj", "{458AF9C7-C96A-400C-9B85-0133A2227F03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{458AF9C7-C96A-400C-9B85-0133A2227F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{458AF9C7-C96A-400C-9B85-0133A2227F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{458AF9C7-C96A-400C-9B85-0133A2227F03}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{458AF9C7-C96A-400C-9B85-0133A2227F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{458AF9C7-C96A-400C-9B85-0133A2227F03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{458AF9C7-C96A-400C-9B85-0133A2227F03}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3A0E7B5-FB8F-4823-AB9B-456425365A9A}
+	EndGlobalSection
+EndGlobal

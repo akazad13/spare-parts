@@ -1,0 +1,27 @@
+<h5 class="footer-newsletter__title">{{ 'HEADER_NEWSLETTER'|translate }}</h5>
+<div class="footer-newsletter__text">{{ 'TEXT_NEWSLETTER_MESSAGE'|translate }}</div>
+
+<form class="footer-newsletter__form" (submit)="$event.preventDefault()">
+    <label class="sr-only" for="footer-newsletter-address">
+        {{ 'INPUT_EMAIL_ADDRESS_LABEL'|translate }}
+    </label>
+    <input
+        type="text"
+        class="footer-newsletter__form-input"
+        id="footer-newsletter-address"
+        [placeholder]="'INPUT_EMAIL_ADDRESS_PLACEHOLDER'|translate"
+    >
+    <button type="submit" class="footer-newsletter__form-button">{{ 'BUTTON_SUBSCRIBE'|translate }}</button>
+</form>
+
+<div class="footer-newsletter__text footer-newsletter__text--social">
+    {{ 'TEXT_SOCIAL_LINKS_MESSAGE'|translate }}
+</div>
+
+<div class="footer-newsletter__social-links social-links">
+    <ul class="social-links__list">
+        <li *ngFor="let link of socialLinks" class="social-links__item social-links__item--{{ link.type }}">
+            <a href="{{ link.url }}" target="_blank"><i [ngClass]="link.icon"></i></a>
+        </li>
+    </ul>
+</div>

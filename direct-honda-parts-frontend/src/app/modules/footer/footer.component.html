@@ -1,0 +1,60 @@
+<div class="site-footer">
+    <app-decor class="site-footer__decor" type="bottom"></app-decor>
+    <div class="site-footer__widgets">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-xl-4">
+                    <app-contacts class="site-footer__widget"></app-contacts>
+                </div>
+                <div class="col-6 col-md-3 col-xl-2">
+                    <app-links
+                        class="site-footer__widget"
+                        [header]="'HEADER_INFORMATION'|translate"
+                        [links]="[
+                            {title: 'LINK_ABOUT_US'|translate},
+                            {title: 'LINK_DELIVERY_INFORMATION'|translate},
+                            {title: 'LINK_PRIVACY_POLICY'|translate},
+                            {title: 'LINK_BRANDS'|translate},
+                            {title: 'LINK_CONTACT_US'|translate},
+                            {title: 'LINK_RETURNS'|translate},
+                            {title: 'LINK_SITE_MAP'|translate}
+                        ]"
+                    ></app-links>
+                </div>
+                <div class="col-6 col-md-3 col-xl-2">
+                    <app-links
+                        class="site-footer__widget"
+                        [header]="'HEADER_MY_ACCOUNT'|translate"
+                        [links]="[
+                            {title: 'LINK_STORE_LOCATION'|translate},
+                            {title: 'LINK_ORDER_HISTORY'|translate},
+                            {title: 'LINK_WISH_LIST'|translate},
+                            {title: 'LINK_NEWSLETTER'|translate},
+                            {title: 'LINK_SPECIAL_OFFERS'|translate},
+                            {title: 'LINK_GIFT_CERTIFICATES'|translate},
+                            {title: 'LINK_AFFILIATE'|translate}
+                        ]"
+                    ></app-links>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <app-newsletter class="site-footer__widget"></app-newsletter>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-footer__bottom">
+        <div class="container">
+            <div class="site-footer__bottom-row">
+                <div class="site-footer__copyright">
+                    <!-- copyright -->
+                    Powered by <a href="https://angular.io/" target="_blank">Angular</a> —
+                    Designed by <a href="{{ theme.author.profile_url }}" target="_blank">{{ theme.author.name }}</a>
+                    <!-- copyright / end -->
+                </div>
+                <div class="site-footer__payments">
+                    <img src="assets/images/payments.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

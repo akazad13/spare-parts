@@ -1,0 +1,12 @@
+<div class="sidebar__backdrop" (click)="sidebar.close()"></div>
+<div class="sidebar__body">
+  <div class="sidebar__header">
+    <div class="sidebar__title">{{ 'HEADER_FILTERS' | translate }}</div>
+    <button class="sidebar__close" type="button" (click)="sidebar.close()">
+      <app-icon icon="cross-12"></app-icon>
+    </button>
+  </div>
+  <div class="sidebar__content">
+    <app-widget-filters [offcanvasSidebar]="offcanvas"></app-widget-filters>
+  </div>
+</div>

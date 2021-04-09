@@ -1,0 +1,45 @@
+<app-block-header
+  [pageTitle]="pageTitle$ | async"
+  [breadcrumb]="breadcrumbs$ | async"
+></app-block-header>
+
+<!-- <ng-template #sidebar>
+    <app-shop-sidebar [offcanvas]="offCanvasSidebar"></app-shop-sidebar>
+</ng-template> -->
+
+<ng-template #sidebar>
+  <div class="block-split__item block-split__item-sidebar col-auto">
+    <app-widget-categories-list></app-widget-categories-list>
+  </div>
+</ng-template>
+
+<div class="block-split" [class.block-split--has-sidebar]="hasSidebar">
+  <ng-container *ngIf="offCanvasSidebar === 'always'">
+    <ng-container *ngTemplateOutlet="sidebar"></ng-container>
+  </ng-container>
+  <div class="container">
+    <div class="block-split__row row no-gutters">
+      <ng-container *ngIf="sidebarPosition === 'start' && hasSidebar">
+        <div class="block-split__item block-split__item-sidebar col-auto">
+          <ng-container *ngTemplateOutlet="sidebar"></ng-container>
+        </div>
+      </ng-container>
+      <div class="block-split__item block-split__item-content col-auto">
+        <div class="block">
+          <app-products-view
+            [layout]="layout"
+            [gridLayout]="gridLayout"
+            [offCanvasSidebar]="offCanvasSidebar"
+          ></app-products-view>
+        </div>
+      </div>
+      <ng-container *ngIf="sidebarPosition === 'end' && hasSidebar">
+        <div class="block-split__item block-split__item-sidebar col-auto">
+          <ng-container *ngTemplateOutlet="sidebar"></ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<app-block-space layout="before-footer"></app-block-space>

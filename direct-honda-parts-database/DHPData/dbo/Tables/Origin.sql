@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Origin]
+(
+	[ID] INT CONSTRAINT PK_Origin PRIMARY KEY CLUSTERED (ID),
+	[Description] VARCHAR(10) NOT NULL,
+	[EffectiveDate] DATETIME NOT NULL CONSTRAINT DF_Origin_EffectiveDate DEFAULT(GETDATE()),
+	[DateLastUpdated] DATETIME NOT NULL CONSTRAINT DF_Origin_DateLastUpdated DEFAULT(GETDATE()),
+	[UserIDLastUpdated] BIGINT NOT NULL CONSTRAINT DF_Origin_UserIDLastUpdated DEFAULT(0)
+)

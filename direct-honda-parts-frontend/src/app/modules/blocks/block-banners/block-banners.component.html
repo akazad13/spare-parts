@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="block-banners__list">
+        <a routerLink="/" class="block-banners__item block-banners__item--style--one">
+            <span class="block-banners__item-image">
+                <img class="reflect-rtl" src="assets/images/banners/banner1.jpg" alt="">
+            </span>
+            <span class="block-banners__item-image block-banners__item-image--blur">
+                <img class="reflect-rtl" src="assets/images/banners/banner1.jpg" alt="">
+            </span>
+            <span class="block-banners__item-title">{{ 'TEXT_BANNER_ONE_TITLE'|translate }}</span>
+            <span class="block-banners__item-details" [innerHTML]="'TEXT_BANNER_ONE_SUBTITLE'|translate"></span>
+            <span class="block-banners__item-button btn btn-primary btn-sm">{{ 'TEXT_BANNER_ONE_BUTTON'|translate }}</span>
+        </a>
+
+        <a routerLink="/" class="block-banners__item block-banners__item--style--two">
+            <span class="block-banners__item-image">
+                <img class="reflect-rtl" src="assets/images/banners/banner2.jpg" alt="">
+            </span>
+            <span class="block-banners__item-image block-banners__item-image--blur">
+                <img class="reflect-rtl" src="assets/images/banners/banner2.jpg" alt="">
+            </span>
+            <span class="block-banners__item-title">{{ 'TEXT_BANNER_TWO_TITLE'|translate }}</span>
+            <span class="block-banners__item-details" [innerHTML]="'TEXT_BANNER_TWO_SUBTITLE'|translate"></span>
+            <span class="block-banners__item-button btn btn-primary btn-sm">{{ 'TEXT_BANNER_TWO_BUTTON'|translate }}</span>
+        </a>
+    </div>
+</div>

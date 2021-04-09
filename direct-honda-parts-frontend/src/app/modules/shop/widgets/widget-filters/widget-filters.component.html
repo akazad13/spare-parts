@@ -1,0 +1,47 @@
+<div class="widget__header widget-filters__header">
+  <h4>{{ 'HEADER_FILTERS' | translate }}</h4>
+</div>
+
+<div class="widget-filters__list" [formGroup]="form">
+  <div
+    *ngFor="let filter of filters; trackBy: trackBySlug"
+    class="widget-filters__item"
+  >
+    <div
+      class="filter filter--opened"
+      appCollapseItem="filter--opened"
+      #collapseItem="appCollapseItem"
+    >
+      <button
+        type="button"
+        class="filter__title"
+        (click)="collapseItem.toggle()"
+      >
+        {{ filter.name }}
+        <span class="filter__arrow"
+          ><app-icon icon="arrow-rounded-down-12x7"></app-icon
+        ></span>
+      </button>
+      <div class="filter__body" appCollapseContent>
+        <div class="filter__container">
+          <app-filter-category
+            *ngIf="filter.type === 'category'"
+            [options]="filter"
+          ></app-filter-category>
+
+          <app-filter-vehicle
+            *ngIf="filter.type === 'vehicle'"
+            [options]="filter"
+            [formControlName]="filter.slug"
+          ></app-filter-vehicle>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="widget-filters__actions d-flex">
+  <button class="btn btn-secondary btn-sm">
+    {{ 'BUTTON_RESET' | translate }}
+  </button>
+</div>

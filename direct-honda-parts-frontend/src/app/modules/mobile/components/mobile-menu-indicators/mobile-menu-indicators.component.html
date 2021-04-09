@@ -1,0 +1,26 @@
+<a class="mobile-menu__indicator" routerLink="/shop/wishlist" (click)="menu.close()">
+    <span class="mobile-menu__indicator-icon">
+        <app-icon icon="heart-20"></app-icon>
+        <span class="mobile-menu__indicator-counter" *ngIf="(wishlist.count$|async) > 0">{{ wishlist.count$|async }}</span>
+    </span>
+    <span class="mobile-menu__indicator-title">{{ 'TEXT_MOBILE_INDICATOR_WISHLIST'|translate }}</span>
+</a>
+<a class="mobile-menu__indicator" routerLink="/account" (click)="menu.close()">
+    <span class="mobile-menu__indicator-icon">
+        <app-icon icon="person-20"></app-icon>
+    </span>
+    <span class="mobile-menu__indicator-title">{{ 'TEXT_MOBILE_INDICATOR_ACCOUNT'|translate }}</span>
+</a>
+<a class="mobile-menu__indicator" routerLink="/shop/cart" (click)="menu.close()">
+    <span class="mobile-menu__indicator-icon">
+        <app-icon icon="cart-20"></app-icon>
+        <span class="mobile-menu__indicator-counter" *ngIf="(cart.quantity$|async) > 0">{{ cart.quantity$|async }}</span>
+    </span>
+    <span class="mobile-menu__indicator-title">{{ 'TEXT_MOBILE_INDICATOR_CART'|translate }}</span>
+</a>
+<a class="mobile-menu__indicator" routerLink="/account/garage" (click)="menu.close()">
+    <span class="mobile-menu__indicator-icon">
+        <app-icon icon="car-20"></app-icon>
+    </span>
+    <span class="mobile-menu__indicator-title">{{ 'TEXT_MOBILE_INDICATOR_GARAGE'|translate }}</span>
+</a>

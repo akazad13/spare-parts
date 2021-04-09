@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header">
+        <h5>{{ 'HEADER_ORDER_HISTORY'|translate }}</h5>
+    </div>
+    <ng-container *ngIf="list">
+        <div class="card-divider"></div>
+        <div class="card-table">
+            <div class="table-responsive-sm">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>{{ 'TABLE_NUMBER'|translate }}</th>
+                        <th>{{ 'TABLE_DATE'|translate }}</th>
+                        <th>{{ 'TABLE_STATUS'|translate }}</th>
+                        <th>{{ 'TABLE_TOTAL'|translate }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let order of list.items">
+                        <td>
+                            <a [routerLink]="url.order(order)">
+                                {{ 'FORMAT_ORDER_NUMBER'|translate:{number: order.number} }}
+                            </a>
+                        </td>
+                        <td>{{ 'FORMAT_DATE_MEDIUM'|translate:{date: order.createdAt} }}</td>
+                        <td>{{ 'TEXT_ORDER_STATUS_' + order.status|translate }}</td>
+                        <td>{{ 'TEXT_ORDER_TOTAL'|translate:{total: order.total|currencyFormat, quantity: order.quantity} }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-footer">
+            <app-pagination [formControl]="currentPage" [siblings]="2" [total]="list.pages"></app-pagination>
+        </div>
+    </ng-container>
+</div>

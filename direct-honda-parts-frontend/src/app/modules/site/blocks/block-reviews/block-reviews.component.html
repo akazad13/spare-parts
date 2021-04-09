@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="block-reviews__title">Testimonials</div>
+    <div class="block-reviews__subtitle">During our work we have accumulated<br>hundreds of positive reviews.</div>
+    <div class="block-reviews__list" *ngIf="showCarousel">
+        <owl-carousel-o [options]="carouselOptions" appOwlPreventClick>
+            <ng-container *ngFor="let testimonial of testimonials">
+                <ng-template carouselSlide>
+                    <div class="block-reviews__item">
+                        <div class="block-reviews__item-avatar">
+                            <img [src]="testimonial.avatar" alt="">
+                        </div>
+                        <div class="block-reviews__item-content">
+                            <div class="block-reviews__item-text">{{ testimonial.review }}</div>
+                            <div class="block-reviews__item-meta">
+                                <div class="block-reviews__item-rating">
+                                    <app-rating [value]="testimonial.rating"></app-rating>
+                                </div>
+                                <div class="block-reviews__item-author">
+                                    {{ testimonial.name }}, {{ testimonial.position }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+</div>

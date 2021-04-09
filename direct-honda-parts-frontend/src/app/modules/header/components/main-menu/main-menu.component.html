@@ -1,0 +1,43 @@
+<ul class="main-menu__list">
+  <ng-container *ngFor="let item of items">
+    <li
+      class="main-menu__item"
+      [class.main-menu__item--has-submenu]="item.submenu"
+      [class.main-menu__item--submenu--menu]="item.submenu?.type == 'menu'"
+      [class.main-menu__item--hover]="item === hoveredItem"
+      (mouseenter)="onItemEnter(item)"
+      (mouseleave)="onItemLeave(item)"
+    >
+      <ng-template #linkContent>
+        {{ item.title }}
+        <app-icon *ngIf="item.submenu" icon="arrow-down-sm-7x5"></app-icon>
+      </ng-template>
+
+      <a
+        *ngIf="!item.external"
+        [routerLink]="item.url"
+        class="main-menu__link"
+        (click)="onItemClick()"
+      >
+        <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+      </a>
+      <a
+        *ngIf="item.external"
+        [href]="item.url"
+        class="main-menu__link"
+        target="_blank"
+        (click)="onItemClick()"
+      >
+        <ng-container *ngTemplateOutlet="linkContent"></ng-container>
+      </a>
+
+      <div *ngIf="item.submenu" class="main-menu__submenu">
+        <app-menu
+          *ngIf="item.submenu.type == 'menu'"
+          [items]="item.submenu.links"
+          (itemClick)="onItemClick()"
+        ></app-menu>
+      </div>
+    </li>
+  </ng-container>
+</ul>

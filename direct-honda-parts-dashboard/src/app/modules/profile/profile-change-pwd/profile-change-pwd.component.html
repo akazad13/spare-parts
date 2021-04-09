@@ -1,0 +1,93 @@
+<div class="container-fluid">
+  <div class="edit-profile">
+    <div class="row">
+      <div class="col-lg-7 compact-padding m-auto">
+        <form [formGroup]="form" class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Update Password</h4>
+          </div>
+          <div class="card-body">
+            <div
+              *ngIf="form.errors?.server"
+              class="alert alert-sm alert-danger"
+            >
+              {{ form.errors.server }}
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label pt-0" for="curren-password"
+                >Current Passwor</label
+              >
+              <input
+                id="current-password"
+                type="password"
+                class="form-control"
+                [class.is-invalid]="form.controls.currentPassword | isInvalid"
+                formControlName="currentPassword"
+              />
+              <div class="invalid-feedback">
+                <div
+                  *ngIf="form.controls.currentPassword | hasError: 'required'"
+                >
+                  Password is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label pt-0" for="new-password"
+                >New Password</label
+              >
+              <input
+                id="new-password"
+                type="password"
+                class="form-control"
+                [class.is-invalid]="form.controls.newPassword | isInvalid"
+                formControlName="newPassword"
+              />
+              <div class="invalid-feedback">
+                <div *ngIf="form.controls.newPassword | hasError: 'required'">
+                  Password is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="confirm-password"
+                >Retype Password</label
+              >
+              <input
+                id="confirm-password"
+                type="password"
+                class="form-control"
+                [class.is-invalid]="form.controls.confirmPassword | isInvalid"
+                formControlName="confirmPassword"
+              />
+              <div class="invalid-feedback">
+                <div
+                  *ngIf="form.controls.confirmPassword | hasError: 'required'"
+                >
+                  Password is required
+                </div>
+                <div
+                  *ngIf="form.controls.confirmPassword | hasError: 'mustMatch'"
+                >
+                  Password didn't match
+                </div>
+              </div>
+            </div>
+            <div class="card-footer form-row mt-3 mb-0">
+              <button
+                class="btn btn-primary btn-block"
+                type="submit"
+                [class.spinner]="saveInProgress"
+                (click)="save()"
+              >
+                <span>Submit</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+    <div *ngIf="showCarousel" class="block-slideshow__carousel">
+        <owl-carousel-o [options]="carouselOptions" appOwlPreventClick>
+            <ng-template *ngFor="let slide of slides" carouselSlide>
+                <a [routerLink]="slide.url" class="block-slideshow__item">
+                    <span
+                        class="block-slideshow__item-image block-slideshow__item-image--desktop reflect-rtl"
+                        [style.backgroundImage]="'url(' + slide.desktopImage + ')'"
+                    ></span>
+                    <span
+                        class="block-slideshow__item-image block-slideshow__item-image--mobile reflect-rtl"
+                        [style.backgroundImage]="'url(' + slide.mobileImage + ')'"
+                    ></span>
+                    <span *ngIf="slide.offer" class="block-slideshow__item-offer">{{ slide.offer }}</span>
+                    <span class="block-slideshow__item-title" [innerHTML]="slide.title"></span>
+                    <span class="block-slideshow__item-details" [innerHTML]="slide.details"></span>
+                    <span class="block-slideshow__item-button">{{ slide.buttonLabel }}</span>
+                </a>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+</div>

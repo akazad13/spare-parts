@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Section]
+(
+	[ID] INT CONSTRAINT PK_Section PRIMARY KEY CLUSTERED (ID),
+	[Description] VARCHAR(75) NOT NULL,
+	[EffectiveDate] DATETIME NOT NULL CONSTRAINT DF_Section_EffectiveDate DEFAULT(GETDATE()),
+	[DateLastUpdated] DATETIME NOT NULL CONSTRAINT DF_Section_DateLastUpdated DEFAULT(GETDATE()),
+	[UserIDLastUpdated] BIGINT NOT NULL CONSTRAINT DF_Section_UserIDLastUpdated DEFAULT(0)
+)

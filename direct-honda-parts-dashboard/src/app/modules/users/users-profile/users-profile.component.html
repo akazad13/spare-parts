@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>All Users</h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive shopping-table text-center">
+            <table class="table table-bordernone">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th colspan="3">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let userProfile of usersProfile; let i = index">
+                  <td colspan="1">{{ i + 1 }}</td>
+                  <td>
+                    {{ userProfile.firstName }} {{ userProfile.lastName }}
+                  </td>
+                  <td>{{ userProfile.email }}</td>
+                  <td>{{ userProfile.role }}</td>
+                  <td>
+                    <span
+                      class="badge {{
+                        userProfile.active == true
+                          ? 'badge-success'
+                          : 'badge-danger'
+                      }}"
+                    >
+                      {{ userProfile.active == true ? 'Active' : 'Inactive' }}
+                    </span>
+                  </td>
+                  <td>
+                    <button
+                      class="btn btn-primary mr-1"
+                      placement="top"
+                      ngbTooltip="View Details"
+                      (click)="viewUserDetails(i)"
+                    >
+                      <i class="fa fa-eye"></i>
+                    </button>
+                    <button
+                      class="btn btn-secondary mr-1"
+                      placement="top"
+                      ngbTooltip="Edit User"
+                      (click)="editUser(i)"
+                      *ngIf="userProfile.role != 'Customer'"
+                    >
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button
+                      class="btn btn-danger"
+                      placement="top"
+                      ngbTooltip="Delete User"
+                      (click)="deleteUser(i)"
+                    >
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

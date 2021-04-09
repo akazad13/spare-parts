@@ -1,0 +1,170 @@
+<form class="search__body">
+    <div class="search__shadow"></div>
+
+    <label class="sr-only" for="site-search">{{ 'INPUT_SEARCH_LABEL'|translate }}</label>
+    <input
+        type="text"
+        id="site-search"
+        autocapitalize="off"
+        autocomplete="off"
+        spellcheck="false"
+        name="search"
+        class="search__input"
+        [placeholder]="searchPlaceholder$|async"
+        (focus)="onInputFocus($event)"
+        (input)="onInput($event)"
+    >
+    <button
+        type="button"
+        class="search__button search__button--start"
+        [class.search__button--hover]="vehiclePickerIsOpen"
+        (click)="toggleVehiclePicker()"
+        #selectVehicleButton
+    >
+        <span class="search__button-icon">
+            <app-icon icon="car-20"></app-icon>
+        </span>
+        <span class="search__button-title">{{ 'BUTTON_SEARCH_SELECT_VEHICLE_DESKTOP'|translate }}</span>
+    </button>
+    <button class="search__button search__button--end" type="submit">
+        <span class="search__button-icon">
+            <app-icon icon="search-20"></app-icon>
+        </span>
+    </button>
+    <div class="search__box"></div>
+    <div class="search__decor">
+        <div class="search__decor-start"></div>
+        <div class="search__decor-end"></div>
+    </div>
+
+    <div
+        class="search__dropdown search__dropdown--suggestions suggestions"
+        [class.search__dropdown--open]="suggestionsIsOpen && hasSuggestions"
+    >
+        <div class="suggestions__group" *ngIf="products.length > 0">
+            <div class="suggestions__group-title">{{ 'TEXT_PRODUCTS'|translate }}</div>
+            <div class="suggestions__group-content">
+                <a
+                    *ngFor="let product of products"
+                    class="suggestions__item suggestions__product"
+                    [routerLink]="url.product(product)"
+                    (click)="toggleSuggestions(false)"
+                >
+                    <div class="suggestions__product-image">
+                        <img [src]="product.images[0]" alt="">
+                    </div>
+                    <div class="suggestions__product-info">
+                        <div class="suggestions__product-name">
+                            {{ product.name }}
+                        </div>
+                        <div class="suggestions__product-rating">
+                            <div class="suggestions__product-rating-stars">
+                                <app-rating [value]="product.rating"></app-rating>
+                            </div>
+                            <div class="suggestions__product-rating-label">
+                                {{ 'TEXT_RATING_LABEL'|translate:{rating: product.rating, reviews: product.reviews} }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="suggestions__product-price">
+                        {{ product.price|currencyFormat }}
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="suggestions__group" *ngIf="categories.length > 0">
+            <div class="suggestions__group-title">{{ 'TEXT_CATEGORIES'|translate }}</div>
+            <div class="suggestions__group-content">
+                <a
+                    *ngFor="let category of categories"
+                    class="suggestions__item suggestions__category"
+                    [routerLink]="url.category(category)"
+                    (click)="toggleSuggestions(false)"
+                >
+                    {{ category.name }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="search__dropdown search__dropdown--vehicle-picker vehicle-picker"
+        [class.search__dropdown--open]="vehiclePickerIsOpen"
+        #vehiclePickerDropdown
+    >
+        <div class="search__dropdown-arrow"></div>
+        <div
+            class="vehicle-picker__panel"
+            [class.vehicle-picker__panel--active]="vehiclePanel === 'list' && (vehicles$|async).length !== 0"
+        >
+            <div class="vehicle-picker__panel-body">
+                <div class="vehicle-picker__text">
+                    {{ 'TEXT_SELECT_VEHICLE_TO_FIND_EXACT_FIT_PARTS'|translate }}
+                </div>
+
+                <div class="vehicles-list">
+                    <div class="vehicles-list__body" appRadioGroup [formControl]="currentVehicleControl">
+                        <label class="vehicles-list__item">
+                            <app-radio-button class="vehicles-list__item-radio" [value]="null"></app-radio-button>
+                            <span class="vehicles-list__item-info">
+                                <span class="vehicles-list__item-name">
+                                    {{ 'TEXT_ALL_VEHICLES'|translate }}
+                                </span>
+                            </span>
+                        </label>
+                        <label *ngFor="let vehicle of vehicles$|async" class="vehicles-list__item">
+                            <app-radio-button class="vehicles-list__item-radio" [value]="vehicle.id"></app-radio-button>
+                            <span class="vehicles-list__item-info">
+                                <span class="vehicles-list__item-name">
+                                    {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
+                                </span>
+                                <span class="vehicles-list__item-details">
+                                    {{ 'TEXT_VEHICLE_ENGINE'|translate:{engine: vehicle.engine} }}
+                                </span>
+                            </span>
+                            <button
+                                appRemoveVehicle
+                                type="button"
+                                class="vehicles-list__item-remove"
+                                [class.vehicles-list__item-remove--loading]="removeVehicle.inProgress"
+                                (click)="removeVehicle.remove(vehicle)"
+                                #removeVehicle="removeVehicle"
+                            >
+                                <app-icon icon="recycle-bin-16"></app-icon>
+                            </button>
+                        </label>
+                    </div>
+                </div>
+                <div class="vehicle-picker__actions">
+                    <button type="button" class="btn btn-primary btn-sm" (click)="vehiclePanel = 'form'">
+                        {{ 'BUTTON_ADD_VEHICLE'|translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div
+            class="vehicle-picker__panel"
+            [class.vehicle-picker__panel--active]="vehiclePanel === 'form' || (vehicles$|async).length === 0"
+        >
+            <div class="vehicle-picker__panel-body">
+                <app-vehicle-form location="search" [formControl]="addVehicleControl"></app-vehicle-form>
+                <div class="vehicle-picker__actions">
+                    <div *ngIf="(vehicles$|async).length !== 0" class="search__car-selector-link">
+                        <a (click)="vehiclePanel = 'list'">{{ 'BUTTON_BACK_TO_LIST'|translate }}</a>
+                    </div>
+                    <button
+                        appAddVehicle
+                        type="button"
+                        class="btn btn-primary btn-sm"
+                        [class.btn-loading]="addVehicle.inProgress"
+                        [disabled]="addVehicleControl.value === null"
+                        (click)="addVehicle.add(addVehicleControl.value?.id)"
+                        #addVehicle="addVehicle"
+                    >
+                        {{ 'BUTTON_ADD_VEHICLE'|translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

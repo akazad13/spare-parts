@@ -1,0 +1,116 @@
+<app-block-space layout="spaceship-ledge-height"></app-block-space>
+
+<div class="block order-success">
+    <div class="container">
+        <div class="order-success__body">
+            <div class="order-success__header">
+                <app-icon class="order-success__icon" icon="check-100"></app-icon>
+                <h1 class="order-success__title">{{ 'HEADER_ORDER_SUCCESS_TITLE'|translate }}</h1>
+                <div class="order-success__subtitle">{{ 'HEADER_ORDER_SUCCESS_SUBTITLE'|translate }}</div>
+                <div class="order-success__actions">
+                    <a routerLink="/" class="btn btn-sm btn-secondary">{{ 'BUTTON_GO_TO_HOMEPAGE'|translate }}</a>
+                </div>
+            </div>
+
+            <div class="card order-success__meta">
+                <ul class="order-success__meta-list">
+                    <li class="order-success__meta-item">
+                        <span class="order-success__meta-title">{{ 'TEXT_ORDER_NUMBER'|translate }}:</span>
+                        <span class="order-success__meta-value">
+                            {{ 'FORMAT_ORDER_NUMBER'|translate:{number: order.number} }}
+                        </span>
+                    </li>
+                    <li class="order-success__meta-item">
+                        <span class="order-success__meta-title">{{ 'TEXT_CREATED_AT'|translate }}:</span>
+                        <span class="order-success__meta-value">{{ 'FORMAT_DATE_MEDIUM'|translate:{date: order.createdAt} }}</span>
+                    </li>
+                    <li class="order-success__meta-item">
+                        <span class="order-success__meta-title">{{ 'TEXT_TOTAL'|translate }}:</span>
+                        <span class="order-success__meta-value">{{ order.total|currencyFormat }}</span>
+                    </li>
+                    <li class="order-success__meta-item">
+                        <span class="order-success__meta-title">{{ 'TEXT_PAYMENT_METHOD'|translate }}:</span>
+                        <span class="order-success__meta-value">{{ order.payment }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="order-list">
+                    <table>
+                        <thead class="order-list__header">
+                        <tr>
+                            <th class="order-list__column-label" colspan="2">{{ 'TABLE_PRODUCT'|translate }}</th>
+                            <th class="order-list__column-quantity">{{ 'TABLE_QUANTITY'|translate }}</th>
+                            <th class="order-list__column-total">{{ 'TABLE_TOTAL'|translate }}</th>
+                        </tr>
+                        </thead>
+                        <tbody class="order-list__products">
+                        <tr *ngFor="let item of order.items">
+                            <td class="order-list__column-image">
+                                <div class="image image--type--product">
+                                    <a [routerLink]="url.product(item.product)" class="image__body">
+                                        <img class="image__tag" [src]="item.product.images[0]" alt="">
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="order-list__column-product">
+                                <a [routerLink]="url.product(item.product)">{{ item.product.name }}</a>
+                                <div *ngIf="item.options" class="order-list__options">
+                                    <ul class="order-list__options-list">
+                                        <li *ngFor="let option of item.options" class="order-list__options-item">
+                                            <span class="order-list__options-label">{{ option.name }}: </span>
+                                            <span class="order-list__options-value">{{ option.value }}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td
+                                class="order-list__column-quantity"
+                                [attr.data-title]="('TABLE_QUANTITY'|translate) + ':'"
+                            >
+                                {{ item.quantity }}
+                            </td>
+                            <td class="order-list__column-total">{{ item.price * item.quantity|currencyFormat }}</td>
+                        </tr>
+                        </tbody>
+                        <tbody *ngIf="order.totals?.length > 0" class="order-list__subtotals">
+                        <tr>
+                            <th class="order-list__column-label" colspan="3">{{ 'TABLE_SUBTOTAL'|translate }}</th>
+                            <td class="order-list__column-total">{{ order.subtotal|currencyFormat }}</td>
+                        </tr>
+                        <tr *ngFor="let total of order.totals">
+                            <th class="order-list__column-label" colspan="3">
+                                {{ 'TABLE_TOTAL_' + total.title|translate }}
+                            </th>
+                            <td class="order-list__column-total">{{ total.price|currencyFormat }}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot class="order-list__footer">
+                        <tr>
+                            <th class="order-list__column-label" colspan="3">{{ 'TABLE_TOTAL'|translate }}</th>
+                            <td class="order-list__column-total">{{ order.total|currencyFormat }}</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <div class="order-success__addresses">
+                <app-address-card
+                    class="order-success__address"
+                    [address]="order.shippingAddress"
+                    [label]="'TEXT_SHIPPING_ADDRESS'|translate"
+                ></app-address-card>
+
+                <app-address-card
+                    class="order-success__address"
+                    [address]="order.billingAddress"
+                    [label]="'TEXT_BILLING_ADDRESS'|translate"
+                ></app-address-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-block-space layout="before-footer"></app-block-space>

@@ -1,0 +1,106 @@
+<div class="auth-bg">
+  <div class="authentication-box">
+    <div class="text-center">
+      <img
+        src="assets/images/logo/logo_black.svg"
+        alt="site logo"
+        height="100"
+      />
+    </div>
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="text-center">
+          <h4>Reset Password</h4>
+          <h6>Enter your New Password</h6>
+        </div>
+        <form [formGroup]="resetForm" class="theme-form">
+          <div
+            *ngIf="resetForm.errors?.server"
+            class="alert alert-sm alert-danger"
+          >
+            {{ resetForm.errors.server }}
+          </div>
+
+          <div
+            *ngIf="successResponse != null"
+            class="alert alert-sm alert-success"
+          >
+            {{ successResponse }}
+          </div>
+
+          <div class="form-group" *ngIf="successResponse == null">
+            <label class="col-form-label pt-0" for="signup-password"
+              >Password</label
+            >
+            <input
+              *ngIf="successResponse == null"
+              id="signup-password"
+              type="password"
+              class="form-control"
+              [class.is-invalid]="resetForm.controls.password | isInvalid"
+              formControlName="password"
+            />
+            <div class="invalid-feedback">
+              <div *ngIf="resetForm.controls.password | hasError: 'required'">
+                Password is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf="successResponse == null">
+            <label class="col-form-label" for="signin-password"
+              >Retype Password</label
+            >
+            <input
+              *ngIf="successResponse == null"
+              id="signin-password"
+              type="password"
+              class="form-control"
+              [class.is-invalid]="
+                resetForm.controls.confirmPassword | isInvalid
+              "
+              formControlName="confirmPassword"
+            />
+            <div class="invalid-feedback">
+              <div
+                *ngIf="
+                  resetForm.controls.confirmPassword | hasError: 'required'
+                "
+              >
+                Password is required
+              </div>
+              <div
+                *ngIf="
+                  resetForm.controls.confirmPassword | hasError: 'mustMatch'
+                "
+              >
+                Password didn't match
+              </div>
+            </div>
+          </div>
+          <div
+            class="form-group form-row mt-3 mb-0"
+            *ngIf="successResponse == null"
+          >
+            <button
+              class="btn btn-primary btn-block"
+              type="submit"
+              [class.spinner]="resetInProgress"
+              (click)="reset()"
+            >
+              <span>Submit</span>
+            </button>
+          </div>
+
+          <div
+            class="form-group form-row mt-3 mb-0"
+            *ngIf="successResponse != null"
+          >
+            <button class="btn btn-primary mt-3" routerLink="../login">
+              Go to login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

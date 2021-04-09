@@ -1,0 +1,20 @@
+<div *ngIf="widgetTitle" class="widget__header">
+    <h4>{{ widgetTitle }}</h4>
+</div>
+<ul class="widget-categories__list widget-categories__list--root">
+    <li *ngFor="let category of categories" class="widget-categories__item" appCollapseItem="widget-categories__item--open" #collapseItem="appCollapseItem">
+        <a [routerLink]="url.category(category)" class="widget-categories__link">
+            {{ category.name }}
+        </a>
+        <ng-container *ngIf="category.children?.length">
+            <button class="widget-categories__expander" type="button" (click)="collapseItem.toggle()"></button>
+            <div class="widget-categories__container" appCollapseContent>
+                <ul class="widget-categories__list widget-categories__list--child">
+                    <li *ngFor="let child of category.children" class="widget-categories__item">
+                        <a [routerLink]="url.category(child)" class="widget-categories__link">{{ child.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+    </li>
+</ul>

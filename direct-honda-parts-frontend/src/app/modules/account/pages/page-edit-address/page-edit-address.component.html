@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header">
+    <h5>
+      {{
+        (addressId ? 'HEADER_EDIT_ADDRESS' : 'HEADER_NEW_ADDRESS') | translate
+      }}
+    </h5>
+  </div>
+  <div class="card-divider"></div>
+  <div class="card-body card-body--padding--2">
+    <div class="row no-gutters">
+      <div class="col-12 col-lg-10 col-xl-8" [formGroup]="form">
+        <div *ngIf="form.errors?.server" class="alert alert-sm alert-danger">
+          {{ form.errors.server | translate }}
+        </div>
+
+        <app-address-form
+          formControlName="address"
+          [hasDefaultAddress]="hasDefaultAddress"
+          [hasShippingAddress]="hasShippingAddress"
+          [hasOtherAddress]="hasOtherAddress"
+          [addressType]="addressType"
+        ></app-address-form>
+        <br />
+        <div class="form-group mb-0 pt-3">
+          <button
+            class="btn btn-primary"
+            [class.btn-loading]="saveInProgress"
+            (click)="save()"
+          >
+            {{ 'BUTTON_SAVE' | translate }}
+          </button>
+
+          <button
+            class="btn btn-primary"
+            id="cancelButton"
+            [class.btn-loading]="saveInProgress"
+            (click)="cancel()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

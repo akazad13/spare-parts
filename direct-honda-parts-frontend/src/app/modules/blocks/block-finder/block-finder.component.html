@@ -1,0 +1,26 @@
+<app-decor class="block-finder__decor" type="bottom"></app-decor>
+<div
+  class="block-finder__image"
+  style="background-image: url(https://dhp-images.s3.amazonaws.com/finder.jpg)"
+></div>
+<div class="block-finder__body container container--max--xl">
+  <div class="block-finder__title">
+    {{ 'TEXT_BLOCK_FINDER_TITLE' | translate }}
+  </div>
+  <div class="block-finder__subtitle">
+    {{ 'TEXT_BLOCK_FINDER_SUBTITLE' | translate }}
+  </div>
+  <form class="block-finder__form" (submit)="submit()">
+    <app-vehicle-select
+      class="block-finder__select"
+      [formControl]="vehicleControl"
+    ></app-vehicle-select>
+
+    <button class="block-finder__button" type="submit">
+      Find My Parts
+      <!-- {{ 'BUTTON_BLOCK_FINDER_SEARCH' | translate }} -->
+    </button>
+  </form>
+  <div class="vehicle-form__divider">{{ 'TEXT_OR' | translate }}</div>
+  <app-block-vin></app-block-vin>
+</div>

@@ -1,0 +1,272 @@
+<!-- Container-fluid starts-->
+<div class="container-fluid">
+  <div class="edit-profile">
+    <div class="row">
+      <div class="col-lg-12 compact-padding">
+        <form class="card" [formGroup]="registerForm">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Add New User</h4>
+          </div>
+          <div class="card-body">
+            <div
+              *ngIf="registerForm.errors?.server"
+              class="alert alert-sm alert-danger"
+            >
+              {{ registerForm.errors.server }}
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="firstName"
+                    [class.is-invalid]="
+                      registerForm.controls.firstName | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        registerForm.controls.firstName | hasError: 'required'
+                      "
+                    >
+                      FirstName is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="lastName"
+                    [class.is-invalid]="
+                      registerForm.controls.lastName | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        registerForm.controls.lastName | hasError: 'required'
+                      "
+                    >
+                      LastName is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Email address</label>
+                  <input
+                    class="form-control"
+                    type="email"
+                    maxlength="100"
+                    formControlName="email"
+                    [class.is-invalid]="registerForm.controls.email | isInvalid"
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="registerForm.controls.email | hasError: 'required'"
+                    >
+                      Email is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Role</label>
+                  <select
+                    class="form-control btn-square"
+                    formControlName="role"
+                    [class.is-invalid]="registerForm.controls.role | isInvalid"
+                  >
+                    <option value="0">--Select--</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Dealer">Dealer</option>
+                    <option value="Standard">Standard</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="registerForm.controls.role | hasError: 'required'"
+                    >
+                      Select a role.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Phone</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="phone"
+                    [class.is-invalid]="registerForm.controls.phone | isInvalid"
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="registerForm.controls.phone | hasError: 'required'"
+                    >
+                      Phone is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Company (Optional)</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    formControlName="companyName"
+                    maxlength="100"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label class="form-label">Address</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="255"
+                    formControlName="address"
+                    [class.is-invalid]="
+                      registerForm.controls.address | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        registerForm.controls.address | hasError: 'required'
+                      "
+                    >
+                      Address is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">City</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="city"
+                    [class.is-invalid]="registerForm.controls.city | isInvalid"
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="registerForm.controls.city | hasError: 'required'"
+                    >
+                      City is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">State</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    maxlength="50"
+                    formControlName="state"
+                    [class.is-invalid]="registerForm.controls.state | isInvalid"
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="registerForm.controls.state | hasError: 'required'"
+                    >
+                      State is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Zip</label>
+                  <input
+                    class="form-control"
+                    type="number"
+                    maxlength="9"
+                    formControlName="postCode"
+                    [class.is-invalid]="
+                      registerForm.controls.postCode | isInvalid
+                    "
+                  />
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        registerForm.controls.postCode | hasError: 'required'
+                      "
+                    >
+                      Postal Code is required.
+                    </div>
+                    <div
+                      *ngIf="
+                        !(
+                          registerForm.controls.postCode | hasError: 'required'
+                        ) && registerForm.controls.postCode | isInvalid
+                      "
+                    >
+                      Please put a valid postal code.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Country</label>
+                  <select
+                    class="form-control"
+                    formControlName="country"
+                    [class.is-invalid]="
+                      registerForm.controls.country | isInvalid
+                    "
+                  >
+                    <option *ngFor="let country of countries" [value]="country">
+                      {{ country | translate }}
+                    </option>
+                  </select>
+
+                  <div class="invalid-feedback">
+                    <div
+                      *ngIf="
+                        registerForm.controls.country | hasError: 'required'
+                      "
+                    >
+                      Country is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer text-right">
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  [class.spinner]="registerInProgress"
+                  (click)="addUser()"
+                >
+                  <span>Add User</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends-->

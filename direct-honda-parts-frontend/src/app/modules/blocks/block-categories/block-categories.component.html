@@ -1,0 +1,44 @@
+<div class="container" *ngIf="blockTitle">
+    <div class="block-categories__header">
+        <div class="block-categories__title">
+            {{ blockTitle }}
+            <app-decor class="block-categories__title-decor" type="center"></app-decor>
+        </div>
+    </div>
+</div>
+<div class="block-categories__body">
+    <app-decor class="block-categories__body-decor" type="bottom"></app-decor>
+    <div class="container">
+        <div class="block-categories__list">
+            <div
+                *ngFor="let category of categories"
+                class="block-categories__item category-card category-card--layout--classic"
+            >
+                <div class="category-card__body">
+                    <div class="category-card__content">
+                        <div class="category-card__image image image--type--category">
+                            <a [routerLink]="url.category(category)" class="image__body">
+                                <img class="image__tag" [src]="category.image" alt="">
+                            </a>
+                        </div>
+                        <div class="category-card__info">
+                            <div class="category-card__name">
+                                <a [routerLink]="url.category(category)">{{ category.name }}</a>
+                            </div>
+                            <ul class="category-card__children">
+                                <li *ngFor="let child of children[category.slug]">
+                                    <a [routerLink]="url.category(child)">{{ child.name }}</a>
+                                </li>
+                            </ul>
+                            <div class="category-card__actions">
+                                <a [routerLink]="url.category(category)" class="category-card__link">
+                                    {{ 'LINK_SHOP_ALL'|translate }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

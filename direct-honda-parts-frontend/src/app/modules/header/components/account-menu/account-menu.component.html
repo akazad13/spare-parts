@@ -1,0 +1,131 @@
+<form *ngIf="!(isAuth$ | async)" class="account-menu__form">
+  <ng-container [formGroup]="form">
+    <div class="account-menu__form-title">
+      {{ 'HEADER_LOGIN_TO_YOUR_ACCOUNT' | translate }}
+    </div>
+    <div
+      *ngIf="form | hasError: 'server'"
+      class="alert alert-xs alert-danger mt-n2"
+    >
+      {{ form.errors.server | translate }}
+    </div>
+    <div class="form-group">
+      <label for="header-signin-email" class="sr-only">{{
+        'INPUT_EMAIL_ADDRESS_LABEL' | translate
+      }}</label>
+      <input
+        id="header-signin-email"
+        type="email"
+        class="form-control form-control-sm"
+        placeholder="Enter your email"
+        formControlName="email"
+        [class.is-invalid]="form.controls.email | isInvalid"
+      />
+      <div class="invalid-feedback">
+        <div *ngIf="form.controls.email | hasError: 'required'">
+          {{ 'ERROR_FORM_REQUIRED' | translate }}
+        </div>
+        <div *ngIf="form.controls.email | hasError: 'email'">
+          {{ 'ERROR_FORM_INCORRECT_EMAIL' | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="header-signin-password" class="sr-only">{{
+        'INPUT_PASSWORD_LABEL' | translate
+      }}</label>
+      <div
+        class="account-menu__form-forgot"
+        [class.is-invalid]="form.controls.password | isInvalid"
+      >
+        <input
+          id="header-signin-password"
+          type="password"
+          class="form-control form-control-sm"
+          formControlName="password"
+          [placeholder]="'Password'"
+          [class.is-invalid]="form.controls.password | isInvalid"
+        />
+        <a
+          routerLink="/account/forget-password"
+          class="account-menu__form-forgot-link"
+          >{{ 'LINK_FORGOT' | translate }}</a
+        >
+      </div>
+      <div class="invalid-feedback">
+        <div *ngIf="form.controls.password | hasError: 'required'">
+          {{ 'ERROR_FORM_REQUIRED' | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group account-menu__form-button">
+      <button
+        type="submit"
+        class="btn btn-primary btn-sm"
+        [class.btn-loading]="loginInProgress"
+        (click)="login()"
+      >
+        {{ 'BUTTON_LOGIN' | translate }}
+      </button>
+    </div>
+    <div class="account-menu__form-link">
+      <a routerLink="/account/login" (click)="closeMenu.emit()">{{
+        'LINK_CREATE_ACCOUNT' | translate
+      }}</a>
+    </div>
+  </ng-container>
+</form>
+<ng-container *ngIf="isAuth$ | async">
+  <a
+    routerLink="/account/dashboard"
+    class="account-menu__user"
+    (click)="closeMenu.emit()"
+  >
+    <div class="account-menu__user-avatar">
+      <img [src]="avatar$ | async" alt="" />
+    </div>
+    <div class="account-menu__user-info">
+      <div class="account-menu__user-name">
+        {{ firstName$ | async }} {{ lastName$ | async }}
+      </div>
+      <div class="account-menu__user-email">{{ email$ | async }}</div>
+    </div>
+  </a>
+  <div class="account-menu__divider"></div>
+  <ul class="account-menu__links">
+    <li>
+      <a routerLink="/account/dashboard" (click)="closeMenu.emit()">{{
+        'LINK_ACCOUNT_DASHBOARD' | translate
+      }}</a>
+    </li>
+    <li>
+      <a routerLink="/account/garage" (click)="closeMenu.emit()">{{
+        'LINK_ACCOUNT_GARAGE' | translate
+      }}</a>
+    </li>
+    <li>
+      <a routerLink="/account/profile" (click)="closeMenu.emit()">{{
+        'LINK_ACCOUNT_PROFILE' | translate
+      }}</a>
+    </li>
+    <li>
+      <a routerLink="/account/orders" (click)="closeMenu.emit()">{{
+        'LINK_ACCOUNT_ORDERS' | translate
+      }}</a>
+    </li>
+    <li>
+      <a routerLink="/account/addresses" (click)="closeMenu.emit()">{{
+        'LINK_ACCOUNT_ADDRESSES' | translate
+      }}</a>
+    </li>
+  </ul>
+  <div class="account-menu__divider"></div>
+  <ul class="account-menu__links">
+    <li>
+      <button type="button" (click)="logout()">
+        {{ 'LINK_ACCOUNT_LOGOUT' | translate }}
+      </button>
+    </li>
+  </ul>
+</ng-container>

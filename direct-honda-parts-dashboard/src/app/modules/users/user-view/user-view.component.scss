@@ -1,0 +1,30 @@
+.row {
+  padding: 10px;
+}
+
+.border-1px {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.border-bottom-1px {
+  border-bottom: 1px solid grey;
+}
+.view-profile .row > .col-sm-4::after {
+  content: ':';
+  float: right;
+}
+.card {
+  margin-bottom: 0;
+}
+
+.card-body {
+  padding: 0 10px;
+}
+.view-profile .card-body .row {
+  margin-right: -10px;
+  margin-left: -10px;
+  > div {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

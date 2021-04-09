@@ -1,0 +1,18 @@
+<div class="status-badge__body">
+    <div *ngIf="icon" class="status-badge__icon">
+        <app-icon
+            [icon]="{
+                'success': 'fit',
+                'failure': 'no-fit'
+            }[icon]"
+        ></app-icon>
+    </div>
+    <div *ngIf="text" class="status-badge__text">{{ text }}</div>
+    <div
+        *ngIf="tooltipContent"
+        [tooltip]="tooltipContent"
+        class="status-badge__tooltip"
+        tabindex="0"
+        container="body"
+    ></div>
+</div>
