@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CartService } from '../../../services/cart.service';
 import { map } from 'rxjs/operators';
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root',
 })
-export class CheckoutGuard implements CanActivate {
+export class CheckoutGuard  {
     constructor(
         private cart: CartService,
         private router: Router,

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { ProductsList } from '../../../interfaces/list';
 import { Observable } from 'rxjs';
 import { parseProductsListParams } from '../../../functions/utils';
 import { ShopApi } from '../../../api/base';
 
 @Injectable()
-export class ProductsListResolver implements Resolve<ProductsList> {
+export class ProductsListResolver  {
     constructor(
         private shop: ShopApi,
     ) { }

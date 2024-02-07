@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { Product } from '../../../interfaces/product';
 import { EMPTY, Observable, throwError } from 'rxjs';
 import { ShopApi } from '../../../api/base';
@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
-export class ProductResolver implements Resolve<Product> {
+export class ProductResolver  {
     constructor(
         private router: Router,
         private shop: ShopApi,

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ShopCategory } from '../../../interfaces/category';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ShopApi } from '../../../api';
 
 @Injectable()
-export class CategoryResolver implements Resolve<ShopCategory> {
+export class CategoryResolver  {
     constructor(
         private shop: ShopApi,
     ) { }
