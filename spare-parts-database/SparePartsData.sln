@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DHPData", "DHPData\DHPData.sqlproj", "{458AF9C7-C96A-400C-9B85-0133A2227F03}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SparePartsData", "SparePartsData\SparePartsData.sqlproj", "{458AF9C7-C96A-400C-9B85-0133A2227F03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
