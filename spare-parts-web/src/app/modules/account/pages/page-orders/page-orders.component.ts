@@ -3,7 +3,7 @@ import { AccountApi } from '../../../../api/base';
 import { merge, of, Subject } from 'rxjs';
 import { OrdersList } from '../../../../interfaces/list';
 import { distinctUntilChanged, mergeMap, takeUntil } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { UrlService } from '../../../../services/url.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { UrlService } from '../../../../services/url.service';
 export class PageOrdersComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
-  currentPage: FormControl = new FormControl(1);
+  currentPage: UntypedFormControl = new UntypedFormControl(1);
   list: OrdersList;
 
   constructor(private accountApi: AccountApi, public url: UrlService) {}

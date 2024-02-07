@@ -1,5 +1,5 @@
 import { Component, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import {
   filter,
   finalize,
@@ -34,7 +34,7 @@ export class PageCheckoutComponent implements OnInit, OnDestroy {
 
   private checkout$: Subject<CheckoutData> = new Subject<CheckoutData>();
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   payPalConfig: IPayPalConfig;
   payPalInit = false;
@@ -77,7 +77,7 @@ export class PageCheckoutComponent implements OnInit, OnDestroy {
   disablePaypalButton = () => {};
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private modalService: BsModalService,
     private router: Router,
     private translate: TranslateService,

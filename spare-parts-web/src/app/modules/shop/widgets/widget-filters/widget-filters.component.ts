@@ -3,7 +3,7 @@ import { PageShopService } from '../../services/page-shop.service';
 import { Subject } from 'rxjs';
 import { Filter } from '../../../../interfaces/filter';
 import { map, takeUntil } from 'rxjs/operators';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { filterHandlers } from '../../filters/filter-handlers';
 
 @Component({
@@ -16,7 +16,7 @@ export class WidgetFiltersComponent implements OnInit, OnDestroy {
 
     filters: Filter[] = [];
 
-    form: FormGroup;
+    form: UntypedFormGroup;
 
     @Input() offcanvasSidebar: 'always' | 'mobile';
 
@@ -34,7 +34,7 @@ export class WidgetFiltersComponent implements OnInit, OnDestroy {
 
     constructor(
         private page: PageShopService,
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
     ) { }
 
     ngOnInit(): void {
@@ -48,7 +48,7 @@ export class WidgetFiltersComponent implements OnInit, OnDestroy {
                 .map(filter => ({filter, handler: filterHandlers.find(x => x.type === filter.type)}))
                 .filter(x => x.handler);
 
-            const fields: {[filterSlug: string]: FormControl} = {};
+            const fields: {[filterSlug: string]: UntypedFormControl} = {};
 
             filtersWithHandlers.forEach(({filter, handler}) => {
                 fields[filter.slug] = this.fb.control(filter.value);

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AccountApi } from '../../../../api/base';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class PageProfileComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   saveInProgress = false;
   user: User;
   successResponse = null;
@@ -25,7 +25,7 @@ export class PageProfileComponent implements OnInit, OnDestroy {
 
   constructor(
     private account: AccountApi,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private toastr: ToastrService,
     private translate: TranslateService,
     private router: Router

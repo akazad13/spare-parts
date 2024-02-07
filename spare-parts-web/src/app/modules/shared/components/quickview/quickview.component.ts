@@ -5,7 +5,7 @@ import { QuickviewService } from '../../../../services/quickview.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { filter, finalize, switchMap, takeUntil } from 'rxjs/operators';
 import { UrlService } from '../../../../services/url.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { CartService } from '../../../../services/cart.service';
 import { NavigationStart, Router } from '@angular/router';
@@ -22,14 +22,14 @@ export class QuickviewComponent implements OnDestroy, AfterViewInit {
 
     product: Product = null;
 
-    form: FormGroup;
+    form: UntypedFormGroup;
 
     addToCartInProgress = false;
 
     @ViewChild('modal') modal: ModalDirective;
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private quickview: QuickviewService,
         private translate: TranslateService,
         private cart: CartService,

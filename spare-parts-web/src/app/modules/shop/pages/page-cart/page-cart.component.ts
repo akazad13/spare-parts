@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartItem, CartService } from '../../../../services/cart.service';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UrlService } from '../../../../services/url.service';
@@ -14,7 +14,7 @@ export class PageCartComponent implements OnInit, OnDestroy {
     private destroy$: Subject<void> = new Subject();
 
     items: CartItem[] = [];
-    quantityControls: FormControl[] = [];
+    quantityControls: UntypedFormControl[] = [];
 
     updating = false;
 
@@ -26,7 +26,7 @@ export class PageCartComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.cart.items$.pipe(takeUntil(this.destroy$)).subscribe(items => {
             this.items = items;
-            this.quantityControls = items.map(item => new FormControl(item.quantity));
+            this.quantityControls = items.map(item => new UntypedFormControl(item.quantity));
         });
     }
 

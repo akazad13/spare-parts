@@ -8,8 +8,8 @@ import {
 import {
   AbstractControl,
   ControlValueAccessor,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
 import { Vehicle } from '../../../../interfaces/vehicle';
@@ -56,7 +56,7 @@ export class VehicleSelectComponent
 
   value: Vehicle = null;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   items: VehicleSelectItem[] = [];
 
@@ -96,20 +96,20 @@ export class VehicleSelectComponent
       })
     ];
 
-    const controls: { [key: string]: FormControl } = {};
+    const controls: { [key: string]: UntypedFormControl } = {};
 
     this.items.forEach((item, index) => {
       this.makeOptionsLoader(item, index)
         .pipe(takeUntil(this.destroy$))
         .subscribe((options) => (item.options = options));
 
-      controls[item.key] = new FormControl('none');
+      controls[item.key] = new UntypedFormControl('none');
       controls[item.key].valueChanges
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => this.onItemValueChange(index));
     });
 
-    this.form = new FormGroup(controls);
+    this.form = new UntypedFormGroup(controls);
 
     this.onItemValueChange(0);
     this.items[0].load.next();

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { VehicleApi } from '../../../../api/base';
 import { Observable, Subject } from 'rxjs';
 import { Vehicle } from '../../../../interfaces/vehicle';
@@ -18,7 +18,7 @@ export class PageGarageComponent implements OnInit, OnDestroy {
 
     hasVehicles$: Observable<boolean>;
 
-    vehicle: FormControl = new FormControl(null);
+    vehicle: UntypedFormControl = new UntypedFormControl(null);
 
     constructor(
         private vehiclesApi: VehicleApi,

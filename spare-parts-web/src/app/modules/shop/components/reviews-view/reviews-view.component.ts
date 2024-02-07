@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { PageProductLayout } from '../../pages/page-product/page-product.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ShopApi } from '../../../../api/base';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
@@ -18,7 +18,7 @@ export class ReviewsViewComponent implements OnInit, OnDestroy {
 
     submitInProgress = false;
 
-    form: FormGroup;
+    form: UntypedFormGroup;
 
     @Input() productId: number;
 
@@ -29,7 +29,7 @@ export class ReviewsViewComponent implements OnInit, OnDestroy {
     @ViewChild(ReviewsListComponent) list: ReviewsListComponent;
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private shop: ShopApi,
         private toastr: ToastrService,
         private translate: TranslateService,

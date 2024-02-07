@@ -9,7 +9,7 @@ import {
     PLATFORM_ID,
     ViewChild,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { VehicleApi } from '../../../../api/base';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { Vehicle } from '../../../../interfaces/vehicle';
@@ -46,9 +46,9 @@ export class SearchComponent implements OnInit, OnDestroy, AfterViewInit {
 
     currentVehicle$: Observable<Vehicle>;
 
-    currentVehicleControl: FormControl = new FormControl(null);
+    currentVehicleControl: UntypedFormControl = new UntypedFormControl(null);
 
-    addVehicleControl: FormControl = new FormControl(null);
+    addVehicleControl: UntypedFormControl = new UntypedFormControl(null);
 
     products: Product[] = [];
 

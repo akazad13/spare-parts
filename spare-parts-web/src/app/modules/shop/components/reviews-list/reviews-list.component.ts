@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, merge, of, Subject } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ReviewsList } from '../../../../interfaces/list';
 import { ShopApi } from '../../../../api/base';
 import { UrlService } from '../../../../services/url.service';
@@ -15,7 +15,7 @@ export class ReviewsListComponent implements OnInit, OnDestroy {
     private destroy$: Subject<void> = new Subject<void>();
     private productId$: BehaviorSubject<number> = new BehaviorSubject<number>(null);
 
-    currentPage: FormControl = new FormControl(1);
+    currentPage: UntypedFormControl = new UntypedFormControl(1);
 
     list: ReviewsList = null;
 

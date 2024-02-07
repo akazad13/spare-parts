@@ -10,7 +10,7 @@ import { Observable, Subject } from 'rxjs';
 import { finalize, map, takeUntil } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AccountApi } from '../../../../api/base';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
@@ -28,7 +28,7 @@ export class AccountMenuComponent implements OnInit, OnDestroy {
   email$: Observable<string>;
   avatar$: Observable<string>;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   loginInProgress = false;
 
@@ -37,7 +37,7 @@ export class AccountMenuComponent implements OnInit, OnDestroy {
   @HostBinding('class.account-menu') classAccountMenu = true;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     public account: AccountApi,
     public router: Router,
     private toastr: ToastrService

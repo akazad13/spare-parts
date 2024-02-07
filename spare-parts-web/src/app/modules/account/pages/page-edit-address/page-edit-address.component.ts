@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { AddressFormComponent } from '../../../shared/components/address-form/address-form.component';
 import { AccountApi, EditAddressData } from '../../../../api/base';
 import { Address } from '../../../../interfaces/address';
@@ -20,7 +20,7 @@ export class PageEditAddressComponent implements OnInit, OnDestroy {
   bsModalRef: BsModalRef;
   private destroy$: Subject<void> = new Subject<void>();
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   @ViewChild(AddressFormComponent) addressForm: AddressFormComponent;
   addressId = null;
@@ -39,7 +39,7 @@ export class PageEditAddressComponent implements OnInit, OnDestroy {
     private accountApi: AccountApi,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private toastr: ToastrService,
     private modalService: BsModalService
   ) {}

@@ -8,7 +8,7 @@ import {
 import { first, map, switchMap, takeUntil } from 'rxjs/operators';
 import { Vehicle } from '../../../../interfaces/vehicle';
 import { VehicleApi } from '../../../../api/base';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 
 @Component({
@@ -25,11 +25,11 @@ export class VehiclePickerModalComponent implements OnInit, OnDestroy, AfterView
 
     vehicles$: Observable<Vehicle[]>;
 
-    currentVehicleControl: FormControl = new FormControl(null);
+    currentVehicleControl: UntypedFormControl = new UntypedFormControl(null);
 
     currentPanel: 'list' | 'form' = 'list';
 
-    addVehicleControl: FormControl = new FormControl(null);
+    addVehicleControl: UntypedFormControl = new UntypedFormControl(null);
 
     @ViewChild('modal') modal: ModalDirective;
 

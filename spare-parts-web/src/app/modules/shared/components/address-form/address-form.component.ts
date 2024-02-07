@@ -9,8 +9,8 @@ import {
 import {
   AbstractControl,
   ControlValueAccessor,
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
@@ -62,7 +62,7 @@ export class AddressFormComponent
   @Input() hasOtherAddress: boolean;
   @Input() addressType: number;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   public pattern = new RegExp('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]*$');
 
   countries: string[] = ['USA'];
@@ -75,7 +75,7 @@ export class AddressFormComponent
 
   touchedFn: () => void = () => {};
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
   ngOnInit(): void {
     this.form = this.fb.group({
       firstName: ['', [Validators.required, Validators.maxLength(50)]],

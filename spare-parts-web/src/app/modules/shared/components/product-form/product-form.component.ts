@@ -3,8 +3,8 @@ import { ProductOption } from '../../../../interfaces/product';
 import {
     AbstractControl,
     ControlValueAccessor,
-    FormBuilder,
-    FormGroup,
+    UntypedFormBuilder,
+    UntypedFormGroup,
     NG_VALIDATORS,
     NG_VALUE_ACCESSOR,
     ValidationErrors,
@@ -31,7 +31,7 @@ import { colorType } from '../../../../functions/color';
     ],
 })
 export class ProductFormComponent implements OnChanges, ControlValueAccessor, Validator {
-    form: FormGroup = this.fb.group({});
+    form: UntypedFormGroup = this.fb.group({});
 
     @Input() options: ProductOption[] = [];
 
@@ -42,7 +42,7 @@ export class ProductFormComponent implements OnChanges, ControlValueAccessor, Va
     touchedFn: () => void = () => {};
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
     ) { }
 
     ngOnChanges(changes: SimpleChanges): void {

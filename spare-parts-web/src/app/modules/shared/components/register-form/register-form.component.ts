@@ -2,8 +2,8 @@ import { Component, forwardRef } from '@angular/core';
 import {
     AbstractControl,
     ControlValueAccessor,
-    FormBuilder,
-    FormGroup,
+    UntypedFormBuilder,
+    UntypedFormGroup,
     NG_VALIDATORS,
     NG_VALUE_ACCESSOR,
     ValidationErrors,
@@ -35,7 +35,7 @@ let uniqueId = 0;
 export class RegisterFormComponent implements ControlValueAccessor, Validator {
     private readonly dataId: number = ++uniqueId;
 
-    form: FormGroup;
+    form: UntypedFormGroup;
 
     get formId(): string {
         return `app-register-form-id-${this.dataId}`;
@@ -46,7 +46,7 @@ export class RegisterFormComponent implements ControlValueAccessor, Validator {
     touchedFn: () => void = () => {};
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
     ) {
         this.form = this.fb.group({
             email:           ['', [Validators.required, Validators.email]],

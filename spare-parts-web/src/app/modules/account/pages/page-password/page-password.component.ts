@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { mustMatchValidator } from '../../../../functions/validators/must-match';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class PagePasswordComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   saveInProgress = false;
   successResponse = null;
@@ -26,7 +26,7 @@ export class PagePasswordComponent implements OnInit, OnDestroy {
     private account: AccountApi,
     private toastr: ToastrService,
     private translate: TranslateService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router
   ) {}
 

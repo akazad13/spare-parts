@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { Product, ProductAttributeValue } from '../../../../interfaces/product';
 import { map, shareReplay, takeUntil } from 'rxjs/operators';
 import { UrlService } from '../../../../services/url.service';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 interface Attribute {
     slug: string;
@@ -25,7 +25,7 @@ export class PageCompareComponent implements OnDestroy {
     attributes$: Observable<Attribute[]>;
     differentAttributes$: Observable<Attribute[]>;
 
-    show: FormControl = new FormControl('all');
+    show: UntypedFormControl = new UntypedFormControl('all');
 
     clearInProgress = false;
 

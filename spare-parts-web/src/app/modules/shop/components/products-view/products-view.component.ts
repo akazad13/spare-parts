@@ -2,7 +2,7 @@ import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core'
 import { PageShopGridLayout, PageShopLayout } from '../../pages/page-shop/page-shop.component';
 import { ShopSidebarService } from '../../services/shop-sidebar.service';
 import { PageShopService } from '../../services/page-shop.service';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { merge, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
@@ -32,9 +32,9 @@ export class ProductsViewComponent implements OnInit, OnDestroy {
         {layout: 'table', icon: 'layout-table-16'},
     ];
 
-    pageControl: FormControl;
-    limitControl: FormControl;
-    sortControl: FormControl;
+    pageControl: UntypedFormControl;
+    limitControl: UntypedFormControl;
+    sortControl: UntypedFormControl;
 
     @Input() layout: PageShopLayout = 'grid';
 
@@ -54,9 +54,9 @@ export class ProductsViewComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        this.pageControl = new FormControl(this.page.defaultOptions.page);
-        this.limitControl = new FormControl(this.page.defaultOptions.limit);
-        this.sortControl = new FormControl(this.page.defaultOptions.sort);
+        this.pageControl = new UntypedFormControl(this.page.defaultOptions.page);
+        this.limitControl = new UntypedFormControl(this.page.defaultOptions.limit);
+        this.sortControl = new UntypedFormControl(this.page.defaultOptions.sort);
 
         merge(
             this.pageControl.valueChanges.pipe(map(v => ['page', v])),

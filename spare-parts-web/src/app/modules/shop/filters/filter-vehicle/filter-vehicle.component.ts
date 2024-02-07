@@ -1,5 +1,5 @@
 import { Component, forwardRef, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { VehicleFilter } from '../../../../interfaces/filter';
 import { Subject } from 'rxjs';
 import { distinctUntilChanged, map, switchMap, takeUntil } from 'rxjs/operators';
@@ -22,7 +22,7 @@ import { Vehicle } from '../../../../interfaces/vehicle';
 export class FilterVehicleComponent implements OnInit, OnDestroy, ControlValueAccessor {
     private destroy$: Subject<void> = new Subject<void>();
 
-    control: FormControl = new FormControl(false);
+    control: UntypedFormControl = new UntypedFormControl(false);
 
     vehicle: Vehicle = null;
 

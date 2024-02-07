@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-page-components',
@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['./page-components.component.scss'],
 })
 export class PageComponentsComponent {
-    inputNumber: FormControl = new FormControl(3);
+    inputNumber: UntypedFormControl = new UntypedFormControl(3);
 
     constructor() { }
 }

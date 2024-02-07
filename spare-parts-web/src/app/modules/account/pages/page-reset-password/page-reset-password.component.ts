@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { mustMatchValidator } from '../../../../functions/validators/must-match';
 import { finalize, takeUntil } from 'rxjs/operators';
@@ -16,11 +16,11 @@ export class PageResetPasswordComponent implements OnInit {
   private destroy$: Subject<void> = new Subject<void>();
 
   resetToken: string;
-  resetForm: FormGroup;
+  resetForm: UntypedFormGroup;
   resetInProgress = false;
   successResponse = null;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,

@@ -1,7 +1,7 @@
-import { FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UntypedFormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export function mustMatchValidator(first: string, second: string): ValidatorFn {
-    return (control: FormGroup): ValidationErrors | null => {
+    return (control: UntypedFormGroup): ValidationErrors | null => {
         const firstControl = control.get(first);
         const secondControl = control.get(second);
 

@@ -9,7 +9,7 @@ import {
 import { Vehicle } from '../../../../interfaces/vehicle';
 import { ProductGalleryLayout } from '../../../shared/components/product-gallery/product-gallery.component';
 import { UrlService } from '../../../../services/url.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { CartService } from '../../../../services/cart.service';
 import { finalize, map, switchMap, takeUntil } from 'rxjs/operators';
@@ -53,7 +53,7 @@ export class PageProductComponent implements OnInit {
 
     relatedProducts: Product[] = [];
 
-    form: FormGroup;
+    form: UntypedFormGroup;
 
     addToCartInProgress = false;
 
@@ -68,7 +68,7 @@ export class PageProductComponent implements OnInit {
     }
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private router: Router,
         private route: ActivatedRoute,
         private translate: TranslateService,

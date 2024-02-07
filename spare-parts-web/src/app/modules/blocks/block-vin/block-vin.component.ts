@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { VehicleApi } from 'src/app/api/base';
 
@@ -11,9 +11,9 @@ import { VehicleApi } from 'src/app/api/base';
 export class BlockVinComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder, private vehicleService: VehicleApi) {}
+  constructor(private fb: UntypedFormBuilder, private vehicleService: VehicleApi) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({

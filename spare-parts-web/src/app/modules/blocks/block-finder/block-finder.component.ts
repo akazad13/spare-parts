@@ -1,5 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Vehicle } from '../../../interfaces/vehicle';
 import { Router } from '@angular/router';
 import { UrlService } from '../../../services/url.service';
@@ -10,7 +10,7 @@ import { UrlService } from '../../../services/url.service';
     styleUrls: ['./block-finder.component.scss'],
 })
 export class BlockFinderComponent {
-    vehicleControl: FormControl = new FormControl(null);
+    vehicleControl: UntypedFormControl = new UntypedFormControl(null);
 
     get vehicle(): Vehicle { return this.vehicleControl.value; }
 

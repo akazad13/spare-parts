@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import {
   ControlValueAccessor,
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
 import { merge, of, Subject } from 'rxjs';
@@ -45,7 +45,7 @@ export class VehicleFormComponent
 
   value: Vehicle = null;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   years: VehiclesSearchDDL[] = [];
   bodyAndTrims: VehiclesSearchDDL[] = [];
@@ -90,7 +90,7 @@ export class VehicleFormComponent
 
   touchedFn: () => void = () => {};
 
-  constructor(private fb: FormBuilder, private vehicleService: VehicleApi) {}
+  constructor(private fb: UntypedFormBuilder, private vehicleService: VehicleApi) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({

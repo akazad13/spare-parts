@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, Validators, UntypedFormBuilder } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { finalize, takeUntil } from 'rxjs/operators';
@@ -19,11 +19,11 @@ export class PageForgetPasswordComponent implements OnInit {
   resetInProgress = false;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private http: HttpClient,
     private account: AccountApi
   ) {}
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   ngOnInit(): void {
     this.form = this.fb.group({

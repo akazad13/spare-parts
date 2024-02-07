@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountApi } from '../../../../api/base';
 import { Subject } from 'rxjs';
@@ -15,15 +15,15 @@ import { mustMatchValidator } from '../../../../functions/validators/must-match'
 export class PageLoginComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
-  loginForm: FormGroup;
+  loginForm: UntypedFormGroup;
   loginInProgress = false;
 
-  registerForm: FormGroup;
+  registerForm: UntypedFormGroup;
   registerInProgress = false;
   successResponse = null;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router,
     private account: AccountApi
   ) {}
