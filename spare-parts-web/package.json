@@ -28,7 +28,6 @@
     "messageformat": "^2.3.0",
     "ngx-bootstrap": "^5.6.1",
     "ngx-toastr": "^13.0.0",
-    "ngx-translate-messageformat-compiler": "^4.11.0",
     "parse5": "^6.0.1",
     "photoswipe": "^4.1.3",
     "rxjs": "~6.6.2",
