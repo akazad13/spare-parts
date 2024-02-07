@@ -51,11 +51,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      scrollPositionRestoration: 'disabled',
-      anchorScrolling: 'disabled',
-      initialNavigation: 'enabled',
-      preloadingStrategy: PreloadAllModules,
-    }),
+    scrollPositionRestoration: 'disabled',
+    anchorScrolling: 'disabled',
+    initialNavigation: 'enabled',
+    preloadingStrategy: PreloadAllModules,
+    relativeLinkResolution: 'legacy'
+}),
   ],
   exports: [RouterModule],
 })
