@@ -1,5 +1,9 @@
 import { Component, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators
+} from '@angular/forms';
 import {
   filter,
   finalize,
@@ -325,7 +329,7 @@ export class PageCheckoutComponent implements OnInit, OnDestroy {
               admin_area_1: shippingAddress.state,
               admin_area_2: shippingAddress.city,
               address_line_1: shippingAddress.address,
-              postal_code: shippingAddress.postCode
+              postal_code: `${shippingAddress.postCode}`
             }
           }
         }
@@ -336,7 +340,7 @@ export class PageCheckoutComponent implements OnInit, OnDestroy {
           admin_area_1: billingAddress.state,
           admin_area_2: billingAddress.city,
           address_line_1: billingAddress.address,
-          postal_code: billingAddress.postCode
+          postal_code: `${shippingAddress.postCode}`
         },
         name: {
           given_name: billingAddress.firstName,

@@ -23,32 +23,31 @@ import { BlockMapComponent } from './blocks/block-map/block-map.component';
 import { BlockReviewsComponent } from './blocks/block-reviews/block-reviews.component';
 import { BlockTeammatesComponent } from './blocks/block-teammates/block-teammates.component';
 
-
 @NgModule({
-    declarations: [
-        // pages
-        PageAboutUsComponent,
-        PageComponentsComponent,
-        PageContactUsOneComponent,
-        PageContactUsTwoComponent,
-        PageFaqComponent,
-        PageTermsComponent,
-        PageTypographyComponent,
-        // blocks
-        BlockMapComponent,
-        BlockReviewsComponent,
-        BlockTeammatesComponent,
-    ],
-    imports: [
-        // modules (angular)
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        // modules (third-party)
-        CarouselModule,
-        // modules
-        SharedModule,
-        SiteRoutingModule,
-    ],
+  declarations: [
+    // pages
+    PageAboutUsComponent,
+    PageComponentsComponent,
+    PageContactUsOneComponent,
+    PageContactUsTwoComponent,
+    PageFaqComponent,
+    PageTermsComponent,
+    PageTypographyComponent,
+    // blocks
+    BlockMapComponent,
+    BlockReviewsComponent,
+    BlockTeammatesComponent
+  ],
+  imports: [
+    // modules (angular)
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // modules (third-party)
+    CarouselModule,
+    // modules
+    SharedModule,
+    SiteRoutingModule
+  ]
 })
-export class SiteModule { }
+export class SiteModule {}

@@ -10,53 +10,52 @@ const routes: Routes = [
     component: RootComponent,
     data: {
       desktopHeader: 'spaceship/one',
-      mobileHeader: 'one',
+      mobileHeader: 'one'
     },
     children: [
       {
         path: '',
         pathMatch: 'full',
         loadChildren: () =>
-          import('./modules/home/home.module').then((m) => m.HomeModule),
+          import('./modules/home/home.module').then((m) => m.HomeModule)
       },
       {
         path: 'shop',
         loadChildren: () =>
-          import('./modules/shop/shop.module').then((m) => m.ShopModule),
+          import('./modules/shop/shop.module').then((m) => m.ShopModule)
       },
       {
         path: 'account',
         loadChildren: () =>
           import('./modules/account/account.module').then(
             (m) => m.AccountModule
-          ),
+          )
       },
       {
         path: 'site',
         loadChildren: () =>
-          import('./modules/site/site.module').then((m) => m.SiteModule),
+          import('./modules/site/site.module').then((m) => m.SiteModule)
       },
       {
         path: 'registration/verify-user',
-        component: EmailVerifyComponent,
+        component: EmailVerifyComponent
       },
       {
         path: '**',
-        component: PageNotFoundComponent,
-      },
-    ],
-  },
+        component: PageNotFoundComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'disabled',
-    anchorScrolling: 'disabled',
-    initialNavigation: 'enabled',
-    preloadingStrategy: PreloadAllModules
-}),
+      scrollPositionRestoration: 'disabled',
+      anchorScrolling: 'disabled',
+      preloadingStrategy: PreloadAllModules
+    })
   ],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

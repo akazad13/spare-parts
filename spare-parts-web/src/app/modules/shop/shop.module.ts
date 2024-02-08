@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // modules (third-party)
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxPayPalModule } from 'ngx-paypal';
-import { NgxSliderModule } from '@m0t0r/ngx-slider';
 import { TranslateModule } from '@ngx-translate/core';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 // modules
@@ -45,6 +44,7 @@ import { WidgetFiltersComponent } from './widgets/widget-filters/widget-filters.
 // filters
 import { FilterCategoryComponent } from './filters/filter-category/filter-category.component';
 import { FilterVehicleComponent } from './filters/filter-vehicle/filter-vehicle.component';
+import { NgxSliderModule } from 'ngx-slider-v2';
 
 @NgModule({
   declarations: [

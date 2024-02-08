@@ -32,7 +32,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { EmailVerifyComponent } from './email-verify/email-verify.component';
 
 export function tokenGetter(): string {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const storedUser = localStorage.getItem('user');
+  const user = storedUser == null ? null : JSON.parse(storedUser);
   if (user == null) {
     return user;
   }
@@ -51,7 +52,7 @@ export function tokenGetter(): string {
   imports: [
     // modules (angular)
     BrowserAnimationsModule,
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    // BrowserModule.withServerTransition({ appId: 'serverApp' }),
     // modules (third-party)
     ModalModule.forRoot(),
     ToastrModule.forRoot(),
@@ -79,22 +80,6 @@ export function tokenGetter(): string {
           name: 'Euro',
           code: 'EUR',
           rate: 0.92
-        },
-        {
-          symbol: '₽',
-          name: 'Russian Ruble',
-          code: 'RUB',
-          rate: 64,
-          formatFn: (value) => {
-            const digits = [].slice.call(Math.round(value).toFixed()).reverse();
-            const parts = [];
-
-            while (digits.length) {
-              parts.push(digits.splice(0, 3).reverse().join(''));
-            }
-
-            return parts.reverse().join(' ') + ' руб';
-          }
         }
       ]
     }),
