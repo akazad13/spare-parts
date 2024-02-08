@@ -41,7 +41,7 @@
     "@angular/cli": "^17.1.2",
     "@angular/compiler-cli": "^17.1.2",
     "@angular/language-service": "^17.1.2",
-    "@types/jasmine": "~3.6.0",
+    "@types/jasmine": "~5.1.4",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^20.11.16",
     "jasmine-core": "~5.1.1",
