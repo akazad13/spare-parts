@@ -28,7 +28,6 @@
     "bootstrap": "^4.5.2",
     "feather-icons": "^4.28.0",
     "ng-animate": "^0.3.4",
-    "ngx-owl-carousel-o": "^4.0.0",
     "ngx-toastr": "^13.0.0",
     "rxjs": "~6.5.5",
     "sweetalert2": "^9.17.1",
@@ -44,12 +43,12 @@
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "codelyzer": "^6.0.0",
-    "jasmine-core": "~3.6.0",
+    "jasmine-core": "~5.1.1",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.2",
     "karma-chrome-launcher": "~3.1.0",
     "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "^1.5.0",
+    "karma-jasmine-html-reporter": "^1.7.0",
     "typescript": "~4.1.6"
   }
 }
