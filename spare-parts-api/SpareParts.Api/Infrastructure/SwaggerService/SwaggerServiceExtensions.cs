@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
-using System.Collections.Generic;
+﻿using Microsoft.OpenApi.Models;
 
 namespace SpareParts.Api.Infrastructure.SwaggerService
 {

@@ -1,8 +1,6 @@
-﻿using System.Threading.Tasks;
-using SpareParts.AppService.ServiceInterfaces;
+﻿using SpareParts.AppService.ServiceInterfaces;
 using SpareParts.Domain.Dtos;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SpareParts.Api.Controllers

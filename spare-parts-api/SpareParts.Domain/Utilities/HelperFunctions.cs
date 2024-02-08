@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SpareParts.Domain.Utilities
+﻿namespace SpareParts.Domain.Utilities
 {
     public static class HelperFunctions
     {

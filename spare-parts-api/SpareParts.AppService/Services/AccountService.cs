@@ -7,12 +7,8 @@ using SpareParts.Domain.Security;
 using SpareParts.Domain.Utilities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace SpareParts.AppService.Services
 {
@@ -192,15 +188,15 @@ namespace SpareParts.AppService.Services
         }
 
         private async Task<IResult<GenericResponse>> Register(
-            string firstName,
-            string lastName,
+            string? firstName,
+            string? lastName,
             string email,
-            string phone,
+            string? phone,
             string password,
             string role,
             long createdBy,
             DateTime createdOn,
-            UserAddress addressData
+            UserAddress? addressData
         )
         {
             if (await _userService.DoesEmailExists(email))
@@ -251,7 +247,7 @@ namespace SpareParts.AppService.Services
                 }
                 else
                 {
-                    addressData.UserId = Id;
+                    addressData!.UserId = Id;
                     await _userService.AddOrUpdateAddress(addressData, true);
 
                     return await _emailService.SendVerificationEmail(
@@ -716,10 +712,10 @@ namespace SpareParts.AppService.Services
         }
 
         private User CreateNewUnverifiedUserObject(
-            string firstName,
-            string LastName,
+            string? firstName,
+            string? LastName,
             string email,
-            string phone,
+            string? phone,
             string password,
             string role,
             string verificationCode,
@@ -728,10 +724,10 @@ namespace SpareParts.AppService.Services
         )
         {
             return new User(
-                firstName,
-                LastName,
+                firstName ?? "",
+                LastName ?? "",
                 email,
-                phone,
+                phone ?? "",
                 password,
                 role,
                 verificationCode,

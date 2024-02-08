@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using SpareParts.AppService.ServiceInterfaces;
+﻿using SpareParts.AppService.ServiceInterfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SpareParts.Api.Controllers

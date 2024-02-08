@@ -1,9 +1,6 @@
 ﻿using Dapper;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Threading.Tasks;
 using static Dapper.SqlMapper;
 
 namespace SpareParts.Data.Core

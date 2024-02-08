@@ -4,13 +4,8 @@ using SpareParts.AppService.ServiceInterfaces;
 using SpareParts.Domain.Utilities;
 using Microsoft.Extensions.Options;
 using MimeKit;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Threading.Tasks;
 
 namespace SpareParts.AppService.Services
 {
@@ -161,8 +156,8 @@ namespace SpareParts.AppService.Services
             string subject,
             string body,
             bool isHtmlBody,
-            List<string> cc = null,
-            List<string> bcc = null
+            List<string>? cc = null,
+            List<string>? bcc = null
         )
         {
             var emailMessage = BuildEmailHeaders(
@@ -196,8 +191,8 @@ namespace SpareParts.AppService.Services
             string from,
             string fromName,
             List<string> to,
-            IReadOnlyCollection<string> cc,
-            IReadOnlyCollection<string> bcc,
+            IReadOnlyCollection<string>? cc,
+            IReadOnlyCollection<string>? bcc,
             string subject
         )
         {
@@ -207,14 +202,14 @@ namespace SpareParts.AppService.Services
             {
                 message.To.Add(new MailboxAddress(string.Empty, recipient));
             }
-            if (cc != null && cc.Any())
+            if (cc != null && cc.Count != 0)
             {
                 foreach (var recipient in cc)
                 {
                     message.Cc.Add(new MailboxAddress(string.Empty, recipient));
                 }
             }
-            if (bcc != null && bcc.Any())
+            if (bcc != null && bcc.Count != 0)
             {
                 foreach (var recipient in bcc)
                 {
@@ -247,8 +242,8 @@ namespace SpareParts.AppService.Services
             string subject,
             string body,
             bool isHtmlBody,
-            List<string> cc = null,
-            List<string> bcc = null
+            List<string>? cc = null,
+            List<string>? bcc = null
         )
         {
             MailMessage mailMessage = new MailMessage
@@ -281,7 +276,7 @@ namespace SpareParts.AppService.Services
                 await client.SendMailAsync(mailMessage);
                 return HttpStatusCode.OK;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return HttpStatusCode.BadGateway;
             }

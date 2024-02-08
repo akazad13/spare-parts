@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SpareParts.Domain.Utilities
+﻿namespace SpareParts.Domain.Utilities
 {
     public interface IOption<T>
     {

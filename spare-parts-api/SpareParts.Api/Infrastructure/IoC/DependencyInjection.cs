@@ -3,19 +3,21 @@ using AutoMapper;
 using SpareParts.Api.Infrastructure.SwaggerService;
 using SpareParts.Domain.Models.Authentication;
 using SpareParts.Domain.Utilities;
-using Lamar;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
+using SpareParts.Data.RepositoryInterfaces;
+using SpareParts.Data.Repository;
+using SpareParts.AppService.ServiceInterfaces;
+using SpareParts.AppService.Services;
 
 namespace SpareParts.Api.Infrastructure.IoC
 {
-    public static class InfrastructureRegister
+    public static class DependencyInjection
     {
-        public static void Register(ServiceRegistry services, IConfiguration configuration)
+        public static void Register(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddControllers();
+            services.AddCors();
             services.Configure<ConfigModel>(configuration);
             services.AddHttpContextAccessor();
 
@@ -41,7 +43,7 @@ namespace SpareParts.Api.Infrastructure.IoC
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    var signingKey = Convert.FromBase64String(configuration["Jwt:SigningSecret"]);
+                    var signingKey = Convert.FromBase64String(configuration["Jwt:SigningSecret"]!);
                     var validIssuer = configuration["Jwt:ValidIssuer"];
                     var validAudience = configuration["Jwt:ValidAudience"];
                     options.TokenValidationParameters = new TokenValidationParameters
@@ -68,6 +70,30 @@ namespace SpareParts.Api.Infrastructure.IoC
             services.AddSingleton(mapper);
 
             services.AddSwaggerDocumentation();
+
+            RepositoryRegister(services);
+            ServicesRegister(services);
+        }
+
+        private static void RepositoryRegister(IServiceCollection services)
+        {
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+        }
+
+        private static void ServicesRegister(IServiceCollection services)
+        {
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddSingleton<IEmailService, EmailService>();
+            //services.AddScoped<IBlobService, BlobService>();
+            //services.AddScoped<IImageService, ImageService>();
+            //services.AddScoped<ICategoryService, CategoryService>();
+            //services.AddScoped<IProductService, ProductService>();
+            //services.AddScoped<ITokenCleanerService, TokenCleanerService>();
+            //services.AddScoped<IPlaceOrderService, PlaceOrderService>();
+            //services.AddScoped<IOrderService, OrderService>();
         }
     }
 }

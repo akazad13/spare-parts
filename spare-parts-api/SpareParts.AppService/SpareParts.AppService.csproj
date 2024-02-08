@@ -1,22 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
-    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.101" />
-    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.3.101.189" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.6" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.7.1" />
-    <PackageReference Include="MimeKit" Version="2.9.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1"/>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300"/>
+    <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.300.47"/>
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1"/>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.3.1"/>
+    <PackageReference Include="MimeKit" Version="4.3.0"/>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1"/>
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\SpareParts.Data\SpareParts.Data.csproj" />
-    <ProjectReference Include="..\SpareParts.Domain\SpareParts.Domain.csproj" />
+    <ProjectReference Include="..\SpareParts.Data\SpareParts.Data.csproj"/>
+    <ProjectReference Include="..\SpareParts.Domain\SpareParts.Domain.csproj"/>
   </ItemGroup>
-
 </Project>

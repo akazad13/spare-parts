@@ -1,7 +1,5 @@
 ﻿using SpareParts.Domain.Models;
 using SpareParts.Domain.Utilities;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace SpareParts.AppService.ServiceInterfaces
 {

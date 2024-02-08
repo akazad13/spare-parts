@@ -1,8 +1,5 @@
 ﻿using SpareParts.Domain.Utilities;
-using System.Collections.Generic;
-using System.IO;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace SpareParts.AppService.ServiceInterfaces
 {

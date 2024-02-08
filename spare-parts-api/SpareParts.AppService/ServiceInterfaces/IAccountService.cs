@@ -1,9 +1,7 @@
 ﻿using SpareParts.Domain.Utilities;
 using SpareParts.Domain.Models;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using SpareParts.Domain.Dtos;
-using System.Collections.Generic;
 
 namespace SpareParts.AppService.ServiceInterfaces
 {

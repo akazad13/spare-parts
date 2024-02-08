@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace SpareParts.Domain.Utilities
+﻿namespace SpareParts.Domain.Utilities
 {
     public class GenericResponse
     {

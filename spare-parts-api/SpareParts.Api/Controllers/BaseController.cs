@@ -1,10 +1,7 @@
 ﻿using SpareParts.AppService.ServiceInterfaces;
 using SpareParts.Domain.Models.Authentication;
 using SpareParts.Domain.Utilities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
 using System.Security.Claims;
 
 namespace SpareParts.Api.Controllers
@@ -35,7 +32,7 @@ namespace SpareParts.Api.Controllers
 
         protected string GetCurrentUserEmail()
         {
-            return GetClaim(ClaimType.Email).Always()?.Value;
+            return GetClaim(ClaimType.Email).Always()?.Value ?? "";
         }
 
         protected IOption<long> GetCurrentUserId()
@@ -69,7 +66,7 @@ namespace SpareParts.Api.Controllers
         {
             return HelperFunctions.Pipe(
                 Option.FromMaybeNull(
-                    _httpContextAccessor.HttpContext.Request.Headers[headerStr].ToString()
+                    _httpContextAccessor.HttpContext!.Request.Headers[headerStr].ToString()
                 ),
                 header => header.IsSome && IsGuid(header.Always())
             );
@@ -89,7 +86,7 @@ namespace SpareParts.Api.Controllers
         private IOption<Claim> GetClaim(string clameType)
         {
             return HelperFunctions.Pipe(
-                _httpContextAccessor.HttpContext.User.Claims
+                _httpContextAccessor.HttpContext!.User.Claims
                     .Where(x => x.Type == clameType)
                     .SingleOrDefault(),
                 Option.FromMaybeNull

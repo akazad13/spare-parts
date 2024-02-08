@@ -1,22 +1,32 @@
-using Lamar.Microsoft.DependencyInjection;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using SpareParts.Api.Infrastructure.IoC;
+using SpareParts.Api.Infrastructure.SwaggerService;
 
-namespace SpareParts.Api
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.Register(builder.Configuration);
+
+var app = builder.Build();
+
+app.UseCors(builder =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+    builder
+        .WithOrigins(Origins())
+        .SetIsOriginAllowedToAllowWildcardSubdomains()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+});
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseLamar()
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-}
+app.UseHttpsRedirection();
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseSwaggerDocumentation();
+
+app.MapControllers();
+
+app.Run();
+
+static string[] Origins() => ["http://localhost:4200", "http://localhost:4201"];

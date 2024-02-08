@@ -3,9 +3,6 @@ using SpareParts.Data.RepositoryInterfaces;
 using SpareParts.Domain.Models;
 using SpareParts.Domain.Utilities;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace SpareParts.Data.Repository
 {

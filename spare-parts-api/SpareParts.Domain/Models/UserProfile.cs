@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SpareParts.Domain.Models
+﻿namespace SpareParts.Domain.Models
 {
     public class UserProfile
     {
