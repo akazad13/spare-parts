@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { AccountApi } from 'src/app/api';
 import { TranslateService } from '@ngx-translate/core';
@@ -18,14 +18,14 @@ import { ToastrService } from 'ngx-toastr';
 export class ProfileChangePwdComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   saveInProgress = false;
   constructor(
     private account: AccountApi,
     private toastr: ToastrService,
     private translate: TranslateService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private router: Router
   ) {}
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -22,11 +22,11 @@ export class UserEditComponent implements OnInit {
   private destroy$: Subject<void> = new Subject<void>();
   countries: string[] = ['USA'];
 
-  editProfileForm: FormGroup;
+  editProfileForm: UntypedFormGroup;
   updateInProgress = false;
   constructor(
     public activeModal: NgbActiveModal,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private accountApi: AccountApi,
     private toastr: ToastrService,
     private router: Router

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AccountApi } from 'src/app/api';
@@ -15,11 +15,11 @@ import { mustMatchValidator } from '../../../shared/functions/must-match';
 export class ResetPwdComponent implements OnInit {
   private destroy$: Subject<void> = new Subject<void>();
   resetToken: string;
-  resetForm: FormGroup;
+  resetForm: UntypedFormGroup;
   resetInProgress = false;
   successResponse = null;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,

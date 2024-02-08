@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -19,12 +19,12 @@ export class UserAddComponent implements OnInit {
   private destroy$: Subject<void> = new Subject<void>();
   userProfile: UserProfile;
 
-  registerForm: FormGroup;
+  registerForm: UntypedFormGroup;
   registerInProgress = false;
   countries: string[] = ['USA'];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private accountApi: AccountApi,
     private router: Router,
     private toastr: ToastrService

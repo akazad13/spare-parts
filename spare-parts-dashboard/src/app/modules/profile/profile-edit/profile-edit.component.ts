@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { takeUntil, finalize } from 'rxjs/operators';
@@ -22,9 +22,9 @@ export class ProfileEditComponent implements OnInit {
   countries: string[] = ['USA'];
 
   saveInProgress = false;
-  editProfileForm: FormGroup;
+  editProfileForm: UntypedFormGroup;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private route: ActivatedRoute,
     private accountApi: AccountApi,
     private toastr: ToastrService,
