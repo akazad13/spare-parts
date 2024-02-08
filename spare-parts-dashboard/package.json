@@ -28,7 +28,7 @@
     "animate.css": "^4.1.0",
     "bootstrap": "^4.5.2",
     "feather-icons": "^4.28.0",
-    "ng-animate": "^0.3.4",
+    "ng-animate": "^2.0.1",
     "ngx-owl-carousel-o": "^17.0.0",
     "ngx-toastr": "^18.0.0",
     "rxjs": "~6.5.5",
