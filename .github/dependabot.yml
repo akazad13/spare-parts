@@ -9,3 +9,27 @@ updates:
     directory: "/spare-parts-web" # Location of package manifests
     schedule:
       interval: "weekly"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/spare-parts-dashboard" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/spare-parts-api/SpareParts.Api" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/spare-parts-api/SpareParts.AppService" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/spare-parts-api/SpareParts.Data" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/spare-parts-api/SpareParts.Domain" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/spare-parts-database/SparePartsData" # Location of package manifests
+    schedule:
+      interval: "weekly"
