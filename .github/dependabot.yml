@@ -29,7 +29,3 @@ updates:
     directory: "/spare-parts-api/SpareParts.Domain" # Location of package manifests
     schedule:
       interval: "weekly"
-  - package-ecosystem: "nuget" # See documentation for possible values
-    directory: "/spare-parts-database/SparePartsData" # Location of package manifests
-    schedule:
-      interval: "weekly"
