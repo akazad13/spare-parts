@@ -31,7 +31,7 @@
     "ng-animate": "^0.3.4",
     "ngx-owl-carousel-o": "^17.0.0",
     "ngx-toastr": "^18.0.0",
-    "rxjs": "~6.5.5",
+    "rxjs": "~7.8.1",
     "sweetalert2": "^11.10.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.14.3"
