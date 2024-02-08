@@ -1,6 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ApiModule } from './api';
 import { SecureInnerPagesGuard } from './shared/guard/SecureInnerPagesGuard.guard';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): any {
@@ -33,7 +32,7 @@ export function tokenGetter(): string {
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -41,7 +40,6 @@ export function tokenGetter(): string {
     AppRoutingModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

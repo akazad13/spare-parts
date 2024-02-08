@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil, finalize } from 'rxjs/operators';
-import { AccountApi } from '../../../api/base';
+import { IAccountApi } from '../../../api/base';
 
 @Component({
   selector: 'app-login',
@@ -14,14 +14,14 @@ import { AccountApi } from '../../../api/base';
 export class LoginComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
-  loginForm: UntypedFormGroup;
+  loginForm: FormGroup;
   loginInProgress = false;
 
   successResponse = null;
   constructor(
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     private router: Router,
-    private account: AccountApi
+    private accountApi: IAccountApi
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.loginInProgress = true;
 
-    this.account
+    this.accountApi
       .signIn(this.loginForm.value.email, this.loginForm.value.password)
       .pipe(
         finalize(() => (this.loginInProgress = false)),

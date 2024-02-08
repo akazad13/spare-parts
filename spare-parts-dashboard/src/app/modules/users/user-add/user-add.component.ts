@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators
+} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 import Swal from 'sweetalert2';
 import { UserProfile } from '../../../shared/model/User/userProfile.model';
-import { AccountApi } from 'src/app/api';
+import { IAccountApi } from 'src/app/api';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
@@ -25,7 +29,7 @@ export class UserAddComponent implements OnInit {
 
   constructor(
     private fb: UntypedFormBuilder,
-    private accountApi: AccountApi,
+    private accountApi: IAccountApi,
     private router: Router,
     private toastr: ToastrService
   ) {}

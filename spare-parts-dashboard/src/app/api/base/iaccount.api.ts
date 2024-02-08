@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../shared/model/User/user.model';
 import { UserProfile } from '../../shared/model/User/userProfile.model';
 
-export abstract class AccountApi {
+export abstract class IAccountApi {
   abstract user: User | null;
 
   abstract user$: Observable<User | null>;

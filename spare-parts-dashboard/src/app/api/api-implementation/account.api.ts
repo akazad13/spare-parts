@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AccountApi } from '../base';
+import { IAccountApi } from '../base';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../../shared/model/User/user.model';
 import { tap } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserProfile } from '../../shared/model/User/userProfile.model';
 
 @Injectable()
-export class AccountImplementationApi extends AccountApi {
+export class AccountApi extends IAccountApi {
   private userSubject: BehaviorSubject<User | null>;
   baseUrl = environment.apiUrl;
 

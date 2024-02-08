@@ -1,96 +1,4 @@
-/*-----------------------------------------------------------------------------------
 
-    Template Name: endless Admin
-    Template URI: themes.pixelstrap.com/endless
-    Description: This is Admin theme
-    Author: Pixelstrap
-    Author URI: https://themeforest.net/user/pixelstrap
-
------------------------------------------------------------------------------------
-
-01. General CSS
-  02. Generic CSS
-  03. Card CSS
-  04. Loader CSS
-  05. Header CSS
-  06. Button CSS
-  07. Color CSS
-  08. GRID CSS
-  09. Error-page  CSS
-  10. Icon css
-  11. Form Builder 1 CSS
-  12. Form Builder 2 CSS
-   13. Email Application  CSS
-   14. Chat CSS
-   15. Alert CSS
-   16. Popover CSS
-   17. List CSS
-   18. Switch  CSS
-   19. Mega option CSS
-   20. Touchspin  CSS
-    21. Select 2 CSS
-	22. User profile css
-	23. Progress CSS
-	24. According CSS
-	25. Authentication CSS
-	26. Form CSS
-	27. Coming Soon CSS
-	28. Radio CSS
-	29. Form Input CSS
-	30. Data-table CSS
-	 31. JS datagrid CSS
-	 32. Page CSS
-	 33. Ecommerce  CSS
-	 34. Pricing CSS
-	 35. Form builder css
-	 36. NAV CSS
-	 37. Dropdown CSS
-	 38. Landing CSS
-	 39. Table  CSS
-	 40. Alertbox-call-out CSS
-	 41. Chart CSS
-	 42. Timeline CSS
-	 43. Timeline 2 CSS
-	 44. Tabs CSS
-	 45. Gallery CSS
-	 46. Blog CSS
-	 47. Footer CSS
-	 48. Form Wizard
-	 49. Badge CSS
-	 50. Tree CSS
-	 51. Search CSS
-	 52. Datepicker CSS
-	 53. Dashboard CSS
-	 54. Tour  CSS
-	 55. theme layout CSS
-	 56. Ribbon CSS
-	 57. breadcrumb CSS
-	 58. Steps  CSS
-	 59. Customizer CSS
-	 60. RTL CSS
-	 61. base_inputs CSS
-	 62. Responsive css
-	 63. Box-layout css
-	 64. Button Builder css
-	 65. Button Builder color picker CSS
-	 66. FullCalendar CSS
-	 67. Dashboard bitcoin
-	 68. Dashboard Ecommerce
-	 69. Dashboard Project
-	 70. Dashboard Server
-	 71. Dashboard University
-	 72. Document css
-	 73. Faq CSS
-	 74. Job CSS
-	 75. knowledgebase CSS
-	 76. internationalization CSS
-	 77. Learning CSS
-	 78. Order History css
-	 79. Print CSS
-	 80. Sidebar CSS
-	 81. social app
-	 82. avatars
- */
 
 /* Icons */
 @import 'icons/whether-icon/whether-icon';
@@ -184,7 +92,7 @@
 @import 'theme/dashboard_ecommerce';
 @import 'theme/box-layout';
 @import 'theme/rtl';
-@import 'theme/color';
+// @import 'theme/color';
 
 @keyframes spinner {
   to {

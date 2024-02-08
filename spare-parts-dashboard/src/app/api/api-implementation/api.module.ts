@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccountApi } from '../base';
-import { AccountImplementationApi } from './account-implementation.api';
+import { IAccountApi } from '../base';
+import { AccountApi } from './account.api';
 
 @NgModule({
   imports: [CommonModule],
-  providers: [{ provide: AccountApi, useClass: AccountImplementationApi }]
+  providers: [{ provide: IAccountApi, useClass: AccountApi }]
 })
 export class ApiModule {}

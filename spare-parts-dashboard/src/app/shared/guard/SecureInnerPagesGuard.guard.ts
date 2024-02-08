@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { AccountApi } from 'src/app/api';
+import { IAccountApi } from 'src/app/api';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SecureInnerPagesGuard  {
+export class SecureInnerPagesGuard {
   constructor(
     private router: Router,
     public toster: ToastrService,
-    private account: AccountApi,
+    private account: IAccountApi,
     private authService: AuthService
   ) {}
   canActivate(

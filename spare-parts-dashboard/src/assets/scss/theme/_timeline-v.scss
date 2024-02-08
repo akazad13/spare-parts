@@ -174,7 +174,7 @@ header {
 	}
 }
 
-@media only screen and(min-width: 1170px) {
+@media only screen and (min-width: 1170px) {
 	header {
 		height: 300px;
 		line-height: 300px;
@@ -385,7 +385,7 @@ header {
 	border: 7px solid transparent;
 	border-left: 7px solid $light-color;
 }
-@media only screen and(min-width: 768px) {
+@media only screen and (min-width: 768px) {
 	.cd-timeline-content {
 		.cd-date {
 			font-size: 14px;
@@ -455,7 +455,7 @@ header {
 		transform: translateX(0);
 	}
 }
-@media only screen and(max-width: 1169px){
+@media only screen and (max-width: 1169px){
 	.cd-timeline-block{
 		.cd-timeline-img{
 			left: -2px;
@@ -493,7 +493,7 @@ header {
 		}
 	}
 }
-@media only screen and(max-width: 576px){
+@media only screen and (max-width: 576px){
 	.cd-timeline-content {
 		padding: 15px;
 		h4{

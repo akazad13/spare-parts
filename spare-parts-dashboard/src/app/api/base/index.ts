@@ -1,1 +1,1 @@
-export * from './account.api';
+export * from './iaccount.api';

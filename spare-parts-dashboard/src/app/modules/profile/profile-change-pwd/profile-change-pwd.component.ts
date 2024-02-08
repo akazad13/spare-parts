@@ -1,14 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators
+} from '@angular/forms';
 import { Subject } from 'rxjs';
-import { AccountApi } from 'src/app/api';
+import { IAccountApi } from 'src/app/api';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { mustMatchValidator } from '../../../shared/functions/must-match';
 import Swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-change-pwd',
@@ -22,7 +26,7 @@ export class ProfileChangePwdComponent implements OnInit, OnDestroy {
 
   saveInProgress = false;
   constructor(
-    private account: AccountApi,
+    private account: IAccountApi,
     private toastr: ToastrService,
     private translate: TranslateService,
     private fb: UntypedFormBuilder,

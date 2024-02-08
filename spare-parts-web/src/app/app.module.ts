@@ -5,7 +5,6 @@ import { Router, Scroll, Event } from '@angular/router';
 
 // modules (angular)
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 // modules (third-party)
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';

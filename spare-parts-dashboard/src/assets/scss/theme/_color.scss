@@ -27,12 +27,12 @@ $or: $primary-color;
         color: $white;
         text-align: center;
       }
-      $m-val: $m-val - 1;
     }
     &:last-child {
       margin-bottom: 0;
     }
   }
+  $m-val: $m-val - 1;
 }
 //primary Color
 
@@ -52,12 +52,12 @@ $or: $secondary-color;
         color: $white;
         text-align: center;
       }
-      $m-val: $m-val - 1;
     }
     &:last-child {
       margin-bottom: 0;
     }
   }
+  $m-val: $m-val - 1;
 }
 //secondary Color
 
@@ -77,12 +77,12 @@ $or: $success-color;
         color: $white;
         text-align: center;
       }
-      $m-val: $m-val - 1;
     }
     &:last-child {
       margin-bottom: 0;
     }
   }
+  $m-val: $m-val - 1;
 }
 //Success Color
 
@@ -102,12 +102,12 @@ $or: $info-color;
         color: $white;
         text-align: center;
       }
-      $m-val: $m-val - 1;
     }
     &:last-child {
       margin-bottom: 0;
     }
   }
+  $m-val: $m-val - 1;
 }
 //Info Color
 
@@ -127,12 +127,12 @@ $or: $warning-color;
         color: $white;
         text-align: center;
       }
-      $m-val: $m-val - 1;
     }
     &:last-child {
       margin-bottom: 0;
     }
   }
+  $m-val: $m-val - 1;
 }
 //warning Color
 
@@ -152,12 +152,12 @@ $or: $danger-color;
         color: $white;
         text-align: center;
       }
-      $m-val: $m-val - 1;
     }
     &:last-child {
       margin-bottom: 0;
     }
   }
+  $m-val: $m-val - 1;
 }
 //Danger Color
 
@@ -177,12 +177,12 @@ $or: #e6155e;
         color: $white;
         text-align: center;
       }
-      $m-val: $m-val - 1;
     }
     &:last-child {
       margin-bottom: 0;
     }
   }
+  $m-val: $m-val - 1;
 }
 //Pink Color
 
@@ -202,12 +202,12 @@ $or: $dark-gray;
         color: $white;
         text-align: center;
       }
-      $m-val: $m-val - 1;
     }
     &:last-child {
       margin-bottom: 0;
     }
   }
+  $m-val: $m-val - 1;
 }
 //gray Color
 

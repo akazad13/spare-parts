@@ -1,16 +1,9 @@
-import {
-  Component,
-  Input,
-  ViewEncapsulation,
-  OnInit,
-  OnDestroy
-} from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { NavService, Menu } from '../../services/nav.service';
 import { Subject, Observable } from 'rxjs';
-import { AccountApi } from 'src/app/api';
+import { IAccountApi } from 'src/app/api';
 import { map, finalize, takeUntil } from 'rxjs/operators';
-import { UserProfile } from '../../model/User/userProfile.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../model/User/user.model';
@@ -37,7 +30,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     public navServices: NavService,
-    private accountApi: AccountApi,
+    private accountApi: IAccountApi,
     private toastr: ToastrService,
     private customizerService: CustomizerService
   ) {

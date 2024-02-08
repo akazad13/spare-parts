@@ -4,12 +4,12 @@ import { Router, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import { AccountApi } from '../../api';
+import { IAccountApi } from '../../api';
 import { UserProfile } from '../model/User/userProfile.model';
 @Injectable()
-export class ProfileViewResolver  {
+export class ProfileViewResolver {
   constructor(
-    private account: AccountApi,
+    private account: IAccountApi,
     private router: Router,
     private toastr: ToastrService
   ) {}

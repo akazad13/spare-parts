@@ -9,7 +9,7 @@ import {
 import { NavService, Menu } from '../../services/nav.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
-import { AccountApi } from 'src/app/api';
+import { IAccountApi } from 'src/app/api';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public navServices: NavService,
     @Inject(DOCUMENT) private document: any,
     private translate: TranslateService,
-    private account: AccountApi,
+    private account: IAccountApi,
     private router: Router,
     private toastr: ToastrService,
     private customizerService: CustomizerService

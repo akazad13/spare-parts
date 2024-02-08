@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { AccountApi } from 'src/app/api';
+import { IAccountApi } from 'src/app/api';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { mustMatchValidator } from '../../../shared/functions/must-match';
@@ -23,7 +27,7 @@ export class ResetPwdComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
-    private account: AccountApi
+    private account: IAccountApi
   ) {}
 
   ngOnInit(): void {

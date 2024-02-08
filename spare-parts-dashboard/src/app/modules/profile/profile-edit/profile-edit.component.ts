@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { takeUntil, finalize } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { takeUntil, finalize } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
 
-import { AccountApi } from 'src/app/api';
+import { IAccountApi } from 'src/app/api';
 import { UserProfile } from '../../../shared/model/User/userProfile.model';
 
 @Component({
@@ -22,11 +22,11 @@ export class ProfileEditComponent implements OnInit {
   countries: string[] = ['USA'];
 
   saveInProgress = false;
-  editProfileForm: UntypedFormGroup;
+  editProfileForm: FormGroup;
   constructor(
-    private fb: UntypedFormBuilder,
+    private fb: FormBuilder,
     private route: ActivatedRoute,
-    private accountApi: AccountApi,
+    private accountApi: IAccountApi,
     private toastr: ToastrService,
     private router: Router
   ) {}

@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { AccountApi } from '../../api/base';
+import { IAccountApi } from '../../api/base';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard  {
+export class AuthGuard {
   constructor(
     public router: Router,
     public toster: ToastrService,
-    private account: AccountApi,
+    private account: IAccountApi,
     private authService: AuthService
   ) {}
   canActivate(

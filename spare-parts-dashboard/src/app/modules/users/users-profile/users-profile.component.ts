@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserViewComponent } from '../user-view/user-view.component';
 import { UserEditComponent } from '../user-edit/user-edit.component';
 import { UserProfile } from '../../../shared/model/User/userProfile.model';
-import { AccountApi } from '../../../api';
+import { IAccountApi } from '../../../api';
 import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
@@ -29,7 +29,7 @@ export class UsersProfileComponent implements OnInit, OnDestroy {
   constructor(
     private modalService: NgbModal,
     private route: ActivatedRoute,
-    private accountApi: AccountApi,
+    private accountApi: IAccountApi,
     private toastr: ToastrService,
     private router: Router,
     private authService: AuthService

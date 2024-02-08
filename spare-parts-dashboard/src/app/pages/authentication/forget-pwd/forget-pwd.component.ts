@@ -3,9 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, Subject } from 'rxjs';
-import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators
+} from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { AccountApi } from 'src/app/api/base';
+import { IAccountApi } from 'src/app/api/base';
 import { finalize, takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -23,7 +27,7 @@ export class ForgetPwdComponent implements OnInit {
   constructor(
     private fb: UntypedFormBuilder,
     private http: HttpClient,
-    private account: AccountApi
+    private account: IAccountApi
   ) {}
 
   ngOnInit(): void {
