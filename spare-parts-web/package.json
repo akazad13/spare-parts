@@ -22,7 +22,7 @@
     "@angular/platform-server": "^17.1.2",
     "@angular/router": "^17.1.2",
     "@auth0/angular-jwt": "^5.2.0",
-    "@fortawesome/fontawesome-free": "^5.13.1",
+    "@fortawesome/fontawesome-free": "^6.5.1",
     "@messageformat/core": "^3.3.0",
     "@ngx-translate/core": "^13.0.0",
     "bootstrap": "^5.3.2",
