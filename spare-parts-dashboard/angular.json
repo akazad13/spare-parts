@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "direct-honda-parts-dashboard": {
+    "spare-parts-dashboard": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/direct-honda-parts-dashboard",
+            "outputPath": "dist/spare-parts-dashboard",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "direct-honda-parts-dashboard:build"
+            "browserTarget": "spare-parts-dashboard:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "direct-honda-parts-dashboard:build:production"
+              "browserTarget": "spare-parts-dashboard:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "direct-honda-parts-dashboard:build"
+            "browserTarget": "spare-parts-dashboard:build"
           }
         },
         "test": {
@@ -102,16 +102,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "direct-honda-parts-dashboard:serve"
+            "devServerTarget": "spare-parts-dashboard:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "direct-honda-parts-dashboard:serve:production"
+              "devServerTarget": "spare-parts-dashboard:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "direct-honda-parts-dashboard"
+  "defaultProject": "spare-parts-dashboard"
 }

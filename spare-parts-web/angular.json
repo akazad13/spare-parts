@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "direct-honda-parts-frontend": {
+    "spare-parts-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/direct-honda-parts-frontend",
+            "outputPath": "dist/spare-parts-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "direct-honda-parts-frontend:build"
+            "buildTarget": "spare-parts-web:build"
           },
           "configurations": {
             "production": {
-              "buildTarget": "direct-honda-parts-frontend:build:production"
+              "buildTarget": "spare-parts-web:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "direct-honda-parts-frontend:build"
+            "buildTarget": "spare-parts-web:build"
           }
         },
         "test": {
@@ -114,11 +114,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "direct-honda-parts-frontend:serve"
+            "devServerTarget": "spare-parts-web:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "direct-honda-parts-frontend:serve:production"
+              "devServerTarget": "spare-parts-web:serve:production"
             }
           }
         }
