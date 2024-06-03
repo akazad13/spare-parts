@@ -32,7 +32,7 @@
     "ngx-owl-carousel-o": "^17.0.0",
     "ngx-paypal": "^11.0.0",
     "ngx-slider-v2": "^17.0.0",
-    "ngx-toastr": "^18.0.0",
+    "ngx-toastr": "^19.0.0",
     "ngx-translate-messageformat-compiler": "^7.0.0",
     "parse5": "^7.1.2",
     "photoswipe": "^5.4.3",
