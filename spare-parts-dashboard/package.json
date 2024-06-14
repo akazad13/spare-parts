@@ -30,7 +30,7 @@
     "feather-icons": "^4.28.0",
     "ng-animate": "^2.0.1",
     "ngx-owl-carousel-o": "^17.0.0",
-    "ngx-toastr": "^18.0.0",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.1",
     "sweetalert2": "^11.10.7",
     "tslib": "^2.0.0",
