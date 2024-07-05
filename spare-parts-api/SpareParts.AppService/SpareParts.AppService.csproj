@@ -9,9 +9,9 @@
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.301"/>
     <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2"/>
     <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.300.108"/>
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.6.0"/>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.6.2"/>
     <PackageReference Include="MimeKit" Version="4.6.0"/>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1"/>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.2"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpareParts.Data\SpareParts.Data.csproj"/>
