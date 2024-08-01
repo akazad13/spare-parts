@@ -11,7 +11,7 @@
     <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.400.2"/>
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.1"/>
     <PackageReference Include="MimeKit" Version="4.7.1"/>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.2"/>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.1"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpareParts.Data\SpareParts.Data.csproj"/>
